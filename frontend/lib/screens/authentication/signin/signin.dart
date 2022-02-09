@@ -11,24 +11,6 @@ class SignIn extends StatefulWidget {
   _SignInState createState() => _SignInState();
 }
 
-// class _SignInState extends State<SignIn> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         elevation: 5,
-//         title: const Text('Sign In'),
-//       ),
-//       body: SingleChildScrollView(
-//         child: Container(
-//           height: 20,
-//           child: const Text('Hello', textAlign: TextAlign.center),
-//         ),
-//       ),
-//     );
-//   }
-// }
-
 class _SignInState extends State<SignIn> {
   final _formKey = GlobalKey<FormState>();
   @override
@@ -102,8 +84,10 @@ class _SignInState extends State<SignIn> {
           Row(
             children: <Widget>[
               FloatingActionButton.extended(
-                label: const Text('Sign in'),
-                onPressed: () {},
+                label: const Text('Sign In'),
+                onPressed: () {
+                  Navigator.of(context).pushNamed('/home');
+                },
               ),
             ],
             mainAxisAlignment: MainAxisAlignment.center,
