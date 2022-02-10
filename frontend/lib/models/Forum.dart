@@ -84,7 +84,7 @@ class _ForumState extends State<Forum> {
           },
           formKey: formKey,
           commentController: commentController,
-          backgroundColor: Colors.pink,
+          backgroundColor: Colors.orange,
           textColor: Colors.white,
           sendWidget: Icon(Icons.send_sharp, size: 30, color: Colors.white),
         ),
