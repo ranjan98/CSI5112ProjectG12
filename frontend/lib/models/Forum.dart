@@ -10,7 +10,7 @@ class _ForumState extends State<Forum> {
   final formKey = GlobalKey<FormState>();
   final TextEditingController commentController = TextEditingController();
   List filedata = [
-    {'name': 'Ranjan Goyal', 'pic': '', 'message': 'This is not'},
+    {'name': 'Ranjan Goyal', 'pic': '', 'message': 'This is not good'},
     {'name': 'Ashish', 'pic': '', 'message': 'So True'},
     {'name': 'Hari', 'pic': '', 'message': 'It was good'},
     {'name': 'John', 'pic': '', 'message': 'Okayish'},
