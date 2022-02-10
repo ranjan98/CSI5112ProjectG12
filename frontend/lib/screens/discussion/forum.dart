@@ -1,4 +1,4 @@
-import 'comment.dart';
+import '../../models/comment.dart';
 import 'package:flutter/material.dart';
 
 class Forum extends StatefulWidget {
