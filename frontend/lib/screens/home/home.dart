@@ -47,17 +47,17 @@ class _HomeState extends State<Home> {
             ),
             Container(
               alignment: Alignment.center,
-              padding: const EdgeInsets.all(5),
+              padding: const EdgeInsets.all(10),
               child: Wrap(
                 children: [
                   // mock up products list, will be replaced with dynamic data once connected with backend
-                  buildProductItem('assets/images/sample1.jpg', 'T-Shirts',
+                  buildCategoryItem('assets/images/sample1.jpg', 'T-Shirts',
                       'tshirts', context),
-                  buildProductItem(
+                  buildCategoryItem(
                       'assets/images/sample2.jpg', 'Shoes', 'shoes', context),
-                  buildProductItem(
+                  buildCategoryItem(
                       'assets/images/sample3.png', 'Socks', 'socks', context),
-                  buildProductItem('assets/images/sample4.png', 'Laptops',
+                  buildCategoryItem('assets/images/sample4.png', 'Laptops',
                       'laptops', context),
                 ],
               ),
@@ -68,6 +68,23 @@ class _HomeState extends State<Home> {
             const Text(
               'Recommended',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+            Container(
+              alignment: Alignment.center,
+              padding: const EdgeInsets.all(5),
+              child: Wrap(
+                children: [
+                  // mock up products list, will be replaced with dynamic data once connected with backend
+                  buildProductItem('assets/images/sample5.png', 'Puma Shoes',
+                      '\$149', 'puma-shoes', context),
+                  buildProductItem('assets/images/sample4.png',
+                      'Apple Macbook Pro', '\$1299', 'macbook-pro', context),
+                  buildProductItem('assets/images/sample7.jpg', 'iPhone 14',
+                      '\$899', 'socks', context),
+                  buildProductItem('assets/images/sample6.jpg', 'iPhone Cover',
+                      '\$49', 'laptops', context),
+                ],
+              ),
             ),
           ],
         ),
@@ -100,7 +117,7 @@ final List<Widget> imageSliders = imgList
     )
     .toList();
 
-Widget buildProductItem(
+Widget buildCategoryItem(
     String imgurl, String name, String routeName, BuildContext context) {
   return Padding(
     padding: const EdgeInsets.all(5.0),
@@ -110,13 +127,15 @@ Widget buildProductItem(
       },
       child: Card(
         elevation: 0,
+        // using a stack for positioned widgets
         child: Stack(
           children: <Widget>[
             ClipRRect(
                 borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(5), topRight: Radius.circular(5)),
                 child: Image.asset(imgurl,
-                    fit: BoxFit.fill, width: 180, height: 150)),
+                    fit: BoxFit.fill, width: 150, height: 130)),
+            // position the text on the image
             Positioned(
               right: 0,
               bottom: 0,
@@ -128,10 +147,58 @@ Widget buildProductItem(
                     backgroundColor: Colors.white54),
               ),
             ),
-            // Text(
-            //   name,
-            //   style: const TextStyle(fontSize: 20),
-            // ),
+          ],
+        ),
+      ),
+    ),
+  );
+}
+
+Widget buildProductItem(String imgurl, String name, String price,
+    String routeName, BuildContext context) {
+  return Padding(
+    padding: const EdgeInsets.all(5.0),
+    child: InkWell(
+      onTap: () {
+        Navigator.of(context).pushNamed("/" + routeName, arguments: name);
+      },
+      child: Card(
+        elevation: 0,
+        // using a stack for positioned widgets
+        child: Stack(
+          children: <Widget>[
+            ClipRRect(
+                borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(5), topRight: Radius.circular(5)),
+                child: Image.asset(imgurl,
+                    fit: BoxFit.fill, width: 300, height: 300)),
+            // position the text on the image
+            Positioned(
+              left: 0,
+              bottom: 0,
+              child: Container(
+                color: Colors.black54,
+                width: 200,
+                child: Text(
+                  name,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 30,
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              right: 0,
+              bottom: 0,
+              child: Text(
+                price,
+                style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 30,
+                    backgroundColor: Colors.black54),
+              ),
+            ),
           ],
         ),
       ),
