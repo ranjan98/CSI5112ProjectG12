@@ -1,5 +1,5 @@
 # CSI5112-Project
-CSI5112 Software Engineering Project
+CSI5112 Software Engineering Project (Group 12)
 
 ## List of Students
 Ranjan Goyal\
