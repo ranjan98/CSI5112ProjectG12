@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
@@ -17,7 +16,8 @@ class CommentBox extends StatelessWidget {
   Widget? header;
   FocusNode? focusNode;
   CommentBox(
-      {this.child,
+      {Key? key,
+      this.child,
       this.header,
       this.sendButtonMethod,
       this.formKey,
@@ -29,25 +29,26 @@ class CommentBox extends StatelessWidget {
       this.errorText,
       this.withBorder = true,
       this.backgroundColor,
-      this.textColor});
+      this.textColor})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Expanded(child: child!),
-        Divider(
+        const Divider(
           height: 1,
         ),
-        header ?? SizedBox.shrink(),
+        header ?? const SizedBox.shrink(),
         ListTile(
           tileColor: backgroundColor,
           leading: Container(
             height: 40.0,
             width: 40.0,
-            decoration: new BoxDecoration(
+            decoration: const BoxDecoration(
                 color: Colors.blue,
-                borderRadius: new BorderRadius.all(Radius.circular(50))),
+                borderRadius: BorderRadius.all(Radius.circular(50))),
             child: CircleAvatar(
                 radius: 50, backgroundImage: NetworkImage(userImage!)),
           ),

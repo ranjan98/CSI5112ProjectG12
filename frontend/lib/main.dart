@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/screens/authentication/myaccount.dart';
+import 'package:frontend/screens/orders/orders.dart';
 import 'screens/authentication/signin/signin.dart';
 import 'screens/home/home.dart';
 
@@ -19,7 +20,8 @@ class MyApp extends StatelessWidget {
       routes: {
         '/home': (context) => const Home(),
         '/signin': (context) => const SignIn(),
-        '/myaccount': (context) => const MyAccount()
+        '/myaccount': (context) => const MyAccount(),
+        '/orders': (context) => const Orders(),
       },
       theme: ThemeData(
         primarySwatch: Colors.orange,
