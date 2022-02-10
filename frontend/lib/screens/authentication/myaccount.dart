@@ -14,6 +14,8 @@ class MyAccount extends StatelessWidget {
           alignment: Alignment.center,
           child: Column(
             children: <Widget>[
+              const SizedBox(height: 30),
+              const Text('Account Details'),
               DataTable(
                 columns: [
                   DataColumn(
