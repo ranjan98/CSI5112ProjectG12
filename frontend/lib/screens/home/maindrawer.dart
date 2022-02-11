@@ -66,7 +66,7 @@ class MainDrawer extends StatelessWidget {
           buildDrawerItem('Sign Out', Icons.person_outline, Colors.deepPurple,
               () {
             Navigator.of(context).pop();
-            Navigator.of(context).pop('/signin');
+            Navigator.of(context).pop();
           }),
           const Divider(),
           // just pops up the drawer

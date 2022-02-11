@@ -15,6 +15,13 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Shop Now'),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed('/cart');
+              },
+              icon: const Icon(Icons.shopping_cart))
+        ],
       ),
       drawer: const MainDrawer(),
       body: const ProductsGrid(),

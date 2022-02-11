@@ -18,6 +18,13 @@ class ProductDetailScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(loadedProduct.title),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed('/cart');
+              },
+              icon: const Icon(Icons.shopping_cart))
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(
