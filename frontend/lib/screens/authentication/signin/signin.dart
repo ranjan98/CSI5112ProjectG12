@@ -17,7 +17,7 @@ class _SignInState extends State<SignIn> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Ameyroo',
+        title: const Text('UOMart',
             style: TextStyle(
               fontSize: 22,
               fontWeight: FontWeight.bold,
