@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:frontend/screens/authentication/forgotpassword/emailsend.dart';
 import 'package:frontend/screens/authentication/forgotpassword/forgotpassword.dart';
 import 'package:frontend/screens/authentication/myaccount.dart';
+import 'package:frontend/screens/categories/categories.dart';
 import 'package:frontend/screens/orders/orders.dart';
 import 'package:frontend/screens/orders/orderplaced.dart';
 import 'screens/authentication/signin/signin.dart';
@@ -27,7 +28,8 @@ class MyApp extends StatelessWidget {
         '/orders': (context) => const Orders(),
         '/forgotpassword': (context) => const ForgotPassword(),
         '/emailsent': (context) => const EmailSent(),
-        '/orderplaced': (context) => const OrderPlaced()
+        '/orderplaced': (context) => const OrderPlaced(),
+        'categories': (context) => const Categories()
       },
       theme: ThemeData(
         primarySwatch: Colors.orange,

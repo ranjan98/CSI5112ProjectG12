@@ -1,6 +1,6 @@
 import '../models/category.dart';
 
-const productsData = [
+const categoryData = [
   Category(
       cid: 1,
       cName: 'Clothing and Shoes',

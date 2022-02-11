@@ -50,7 +50,7 @@ class _HomeState extends State<Home> {
               padding: const EdgeInsets.all(10),
               child: Wrap(
                 children: [
-                  // mock up products list, will be replaced with dynamic data once connected with backend
+                  // mock up list, will be replaced with dynamic data once connected with backend
                   buildCategoryItem('assets/images/sample1.jpg', 'T-Shirts',
                       'tshirts', context),
                   buildCategoryItem(
