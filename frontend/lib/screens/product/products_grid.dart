@@ -5,12 +5,14 @@ import '../../providers/products.dart';
 import './product_item.dart';
 
 class ProductsGrid extends StatelessWidget {
-  const ProductsGrid({Key? key}) : super(key: key);
+  final String id;
+  const ProductsGrid({Key? key, required this.id}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final productsData = Provider.of<Products>(context);
     final products = productsData.items;
+    products.removeWhere((element) => element.category != id);
     return GridView.builder(
       padding: const EdgeInsets.all(10.0),
       itemCount: products.length,

@@ -7,6 +7,7 @@ class Products with ChangeNotifier {
     Product(
       id: 'p1',
       title: 'Red Shirt',
+      category: '1',
       description: 'A red shirt - it is pretty red!',
       price: 29.99,
       imageUrl:
@@ -15,6 +16,7 @@ class Products with ChangeNotifier {
     Product(
       id: 'p2',
       title: 'Trousers',
+      category: '1',
       description: 'A nice pair of trousers.',
       price: 59.99,
       imageUrl:
@@ -23,26 +25,79 @@ class Products with ChangeNotifier {
     Product(
       id: 'p3',
       title: 'Yellow Scarf',
+      category: '1',
       description: 'Warm and cozy - exactly what you need for the winter.',
       price: 19.99,
       imageUrl:
           'https://live.staticflickr.com/4043/4438260868_cc79b3369d_z.jpg',
     ),
     Product(
-      id: 'p4',
-      title: 'A Pan',
+      id: '',
+      title: 'Cast Iron Pan',
+      category: '5',
       description: 'Prepare any meal you want.',
       price: 49.99,
       imageUrl:
           'https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Cast-Iron-Pan.jpg/1024px-Cast-Iron-Pan.jpg',
     ),
+    Product(
+      id: 'p5',
+      title: 'Red Shirt',
+      category: '',
+      description: 'A red shirt - it is pretty red!',
+      price: 29.99,
+      imageUrl:
+          'https://cdn.pixabay.com/photo/2016/10/02/22/17/red-t-shirt-1710578_1280.jpg',
+    ),
+    Product(
+      id: 'p6',
+      title: 'Red Shirt',
+      category: '1',
+      description: 'A red shirt - it is pretty red!',
+      price: 29.99,
+      imageUrl:
+          'https://cdn.pixabay.com/photo/2016/10/02/22/17/red-t-shirt-1710578_1280.jpg',
+    ),
+    Product(
+      id: 'p7',
+      title: 'Red Shirt',
+      category: '1',
+      description: 'A red shirt - it is pretty red!',
+      price: 29.99,
+      imageUrl:
+          'https://cdn.pixabay.com/photo/2016/10/02/22/17/red-t-shirt-1710578_1280.jpg',
+    ),
+    Product(
+      id: 'p8',
+      title: 'Red Shirt',
+      category: '1',
+      description: 'A red shirt - it is pretty red!',
+      price: 29.99,
+      imageUrl:
+          'https://cdn.pixabay.com/photo/2016/10/02/22/17/red-t-shirt-1710578_1280.jpg',
+    ),
+    Product(
+      id: 'p9',
+      title: 'Red Shirt',
+      category: '1',
+      description: 'A red shirt - it is pretty red!',
+      price: 29.99,
+      imageUrl:
+          'https://cdn.pixabay.com/photo/2016/10/02/22/17/red-t-shirt-1710578_1280.jpg',
+    ),
+    Product(
+      id: 'p10',
+      title: 'Red Shirt',
+      category: '1',
+      description: 'A red shirt - it is pretty red!',
+      price: 29.99,
+      imageUrl:
+          'https://cdn.pixabay.com/photo/2016/10/02/22/17/red-t-shirt-1710578_1280.jpg',
+    ),
   ];
   // var _showFavoritesOnly = false;
 
   List<Product> get items {
-    // if (_showFavoritesOnly) {
-    //   return _items.where((prodItem) => prodItem.isFavorite).toList();
-    // }
     return [..._items];
   }
 
@@ -53,6 +108,7 @@ class Products with ChangeNotifier {
   void addProduct(Product product) {
     final newProduct = Product(
       title: product.title,
+      category: product.category,
       description: product.description,
       price: product.price,
       imageUrl: product.imageUrl,

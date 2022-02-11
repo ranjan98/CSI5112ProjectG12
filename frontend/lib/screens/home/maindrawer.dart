@@ -35,9 +35,9 @@ class MainDrawer extends StatelessWidget {
             ),
           ),
           // add drawer item
-          buildDrawerItem('My Account', Icons.person, Colors.cyan, () {
+          buildDrawerItem('Home', Icons.person, Colors.cyan, () {
             Navigator.of(context).pop();
-            Navigator.of(context).pushNamed('/myaccount');
+            Navigator.of(context).popAndPushNamed('/home');
           }),
           // adding a divider line to separate items in the drawer
           const Divider(),
@@ -51,12 +51,13 @@ class MainDrawer extends StatelessWidget {
             Navigator.of(context).pop();
             Navigator.of(context).pushNamed('/categories');
           }),
-          const Divider(),
-          buildDrawerItem('Products', Icons.category_outlined, Colors.green,
-              () {
-            Navigator.of(context).pop();
-            Navigator.of(context).pushNamed('/products-overview');
-          }),
+          // We will show categories first and then products for that category
+          // const Divider(),
+          // buildDrawerItem('Products', Icons.category_outlined, Colors.green,
+          //     () {
+          //   Navigator.of(context).pop();
+          //   Navigator.of(context).pushNamed('/products-overview');
+          // }),
           const Divider(),
           buildDrawerItem('Cart', Icons.shopping_cart, Colors.deepPurple, () {
             Navigator.of(context).pop();

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/screens/discussion/forum.dart';
 import 'package:provider/provider.dart';
 import '../../providers/products.dart';
 
@@ -56,6 +57,15 @@ class ProductDetailScreen extends StatelessWidget {
                 textAlign: TextAlign.center,
                 softWrap: true,
               ),
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed('/forum');
+              },
+              child: const Text('Go to Discussion'),
             )
           ],
         ),

@@ -10,7 +10,7 @@ class Categories extends StatelessWidget {
     return Scaffold(
       drawer: const MainDrawer(),
       appBar: AppBar(
-        title: const Text('Home'),
+        title: const Text('Categories'),
         elevation: 5,
         actions: [
           // shopping cart
@@ -53,7 +53,7 @@ class CategoryItem extends StatelessWidget {
 
   void selectCategory(BuildContext ctx) {
     Navigator.of(ctx).pushNamed(
-      '/category-products',
+      '/products-overview',
       arguments: {
         'id': id,
         'title': title,

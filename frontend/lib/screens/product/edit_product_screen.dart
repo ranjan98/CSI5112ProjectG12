@@ -22,6 +22,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
   var _editedProduct = Product(
     id: null.toString(),
     title: '',
+    category: '',
     price: 0,
     description: '',
     imageUrl: '',
@@ -29,6 +30,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
   var _initValues = {
     'title': '',
     'description': '',
+    'category': '',
     'price': '',
     'imageUrl': '',
   };
@@ -132,6 +134,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
                   _editedProduct = Product(
                       title: value.toString(),
                       price: _editedProduct.price,
+                      category: 'Clothing and Shoes',
                       description: _editedProduct.description,
                       imageUrl: _editedProduct.imageUrl,
                       id: _editedProduct.id);
@@ -139,7 +142,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
               ),
               TextFormField(
                 initialValue: _initValues['price'],
-                decoration: InputDecoration(labelText: 'Price'),
+                decoration: const InputDecoration(labelText: 'Price'),
                 textInputAction: TextInputAction.next,
                 keyboardType: TextInputType.number,
                 focusNode: _priceFocusNode,
@@ -161,6 +164,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
                 onSaved: (value) {
                   _editedProduct = Product(
                       title: _editedProduct.title,
+                      category: 'Clothing and Shoes',
                       price: double.parse(value.toString()),
                       description: _editedProduct.description,
                       imageUrl: _editedProduct.imageUrl,
@@ -185,6 +189,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
                 onSaved: (value) {
                   _editedProduct = Product(
                     title: _editedProduct.title,
+                    category: 'Clothing and Shoes',
                     price: _editedProduct.price,
                     description: value.toString(),
                     imageUrl: _editedProduct.imageUrl,
@@ -245,6 +250,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
                       onSaved: (value) {
                         _editedProduct = Product(
                           title: _editedProduct.title,
+                          category: 'Clothing and Shoes',
                           price: _editedProduct.price,
                           description: _editedProduct.description,
                           imageUrl: value.toString(),
