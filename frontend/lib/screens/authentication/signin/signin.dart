@@ -29,14 +29,14 @@ class _SignInState extends State<SignIn> {
           key: _formKey,
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            const SizedBox(height: 24),
+            const SizedBox(height: 60),
             Row(
               // ignore: prefer_const_literals_to_create_immutables
               children: <Widget>[
                 const Text(
-                  'Sign In',
+                  'Hello ',
                   style: TextStyle(
-                    fontSize: 22,
+                    fontSize: 28,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -44,44 +44,62 @@ class _SignInState extends State<SignIn> {
               mainAxisAlignment: MainAxisAlignment.center,
             ),
             const SizedBox(height: 30),
-            TextFormField(
-              keyboardType: TextInputType.emailAddress,
-              decoration: const InputDecoration(
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide(width: 2),
-                    borderRadius:
-                        const BorderRadius.all(const Radius.circular(20.0)),
-                  ),
-                  suffixIcon: const Icon(Icons.email),
-                  hintText: 'Enter your email',
-                  labelText: 'Email'),
-              // check the working  here (todo)
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return 'Please enter e-mail';
-                }
-                return null;
-              },
+            Center(
+              child: SizedBox(
+                width: 320.0,
+                child: TextFormField(
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: const InputDecoration(
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide(width: 2),
+                        borderRadius:
+                            const BorderRadius.all(const Radius.circular(20.0)),
+                      ),
+                      suffixIcon: const Icon(Icons.email),
+                      hintText: 'Enter your email',
+                      labelText: 'Email'),
+                  // check the working  here (todo)
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Please enter e-mail';
+                    }
+                    return null;
+                  },
+                ),
+              ),
             ),
-            const SizedBox(height: 15),
-            TextFormField(
-                obscureText: true,
-                decoration: const InputDecoration(
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide(width: 2),
-                      borderRadius:
-                          const BorderRadius.all(const Radius.circular(20.0)),
-                    ),
-                    suffixIcon: const Icon(Icons.visibility),
-                    hintText: 'Enter your password',
-                    labelText: 'Password')),
             const SizedBox(height: 10),
-            TextButton(
-              onPressed: () {
-                //forgot password screen
-              },
-              child: const Text(
-                'Forgot Password?',
+            Center(
+              child: SizedBox(
+                width: 320.0,
+                child: TextFormField(
+                    obscureText: true,
+                    decoration: const InputDecoration(
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide(width: 2),
+                          borderRadius: const BorderRadius.all(
+                              const Radius.circular(20.0)),
+                        ),
+                        suffixIcon: const Icon(Icons.visibility),
+                        hintText: 'Enter your password',
+                        labelText: 'Password')),
+              ),
+            ),
+            const SizedBox(height: 10),
+            Center(
+              child: SizedBox(
+                width: 320,
+                child: TextButton(
+                  onPressed: () {
+                    //forgot password screen
+                    Navigator.of(context).pop();
+                    Navigator.of(context).pushNamed('/forgotpassword');
+                  },
+                  child: const Text(
+                    'Forgot Password?',
+                    textAlign: TextAlign.end,
+                  ),
+                ),
               ),
             ),
             Row(
@@ -109,7 +127,7 @@ class _SignInState extends State<SignIn> {
               ],
               mainAxisAlignment: MainAxisAlignment.center,
             ),
-            const SizedBox(height: 24),
+            const SizedBox(height: 12),
             Row(
               children: <Widget>[
                 FloatingActionButton.extended(
