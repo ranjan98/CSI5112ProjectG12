@@ -19,7 +19,7 @@ class _HomeState extends State<Home> {
         elevation: 5,
         actions: [
           //search
-          IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
+          // IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
           // shopping cart
           IconButton(
               onPressed: () {
@@ -43,9 +43,23 @@ class _HomeState extends State<Home> {
             const SizedBox(
               height: 30,
             ),
-            const Text(
-              'Categories',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    'Categories',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                  const Spacer(),
+                  TextButton(
+                      onPressed: () {
+                        Navigator.of(context).pushNamed('/categories');
+                      },
+                      child: const Text('View All'))
+                ],
+              ),
             ),
             Container(
               alignment: Alignment.center,
@@ -68,7 +82,7 @@ class _HomeState extends State<Home> {
               height: 30,
             ),
             const Text(
-              'Recommended',
+              'Top Products',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             Container(

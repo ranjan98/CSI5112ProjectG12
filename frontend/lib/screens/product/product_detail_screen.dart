@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/screens/discussion/forum.dart';
 import 'package:provider/provider.dart';
 import '../../providers/products.dart';
 
