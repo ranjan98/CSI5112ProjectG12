@@ -22,7 +22,7 @@ class Categories extends StatelessWidget {
         ],
       ),
       body: GridView(
-        padding: const EdgeInsets.all(25),
+        padding: const EdgeInsets.all(5),
         children: categoryData
             .map(
               (catData) => CategoryItem(
@@ -33,8 +33,8 @@ class Categories extends StatelessWidget {
             )
             .toList(),
         gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-          maxCrossAxisExtent: 300,
-          childAspectRatio: 4 / 3,
+          maxCrossAxisExtent: 200,
+          childAspectRatio: 3 / 2,
           crossAxisSpacing: 20,
           mainAxisSpacing: 20,
         ),
@@ -76,7 +76,7 @@ class CategoryItem extends StatelessWidget {
                 borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(5), topRight: Radius.circular(5)),
                 child: Image.asset(imgUrl,
-                    fit: BoxFit.fill, width: 300, height: 300)),
+                    fit: BoxFit.fill, width: 250, height: 250)),
             // position the text on the image
             Positioned(
               right: 0,
@@ -88,12 +88,12 @@ class CategoryItem extends StatelessWidget {
                 child: Container(
                   padding: const EdgeInsets.all(10),
                   color: Colors.black54,
-                  width: 220,
+                  width: 150,
                   child: Text(
                     title,
                     style: const TextStyle(
                       color: Colors.white,
-                      fontSize: 30,
+                      fontSize: 20,
                     ),
                   ),
                 ),
@@ -102,23 +102,6 @@ class CategoryItem extends StatelessWidget {
           ],
         ),
       ),
-      // child: Container(
-      //   padding: const EdgeInsets.all(15),
-      //   child: Text(
-      //     title,
-      //   ),
-      //   decoration: BoxDecoration(
-      //     gradient: LinearGradient(
-      //       colors: [
-      //         Colors.blue.withOpacity(0.7),
-      //         Colors.blue,
-      //       ],
-      //       begin: Alignment.topLeft,
-      //       end: Alignment.bottomRight,
-      //     ),
-      //     borderRadius: BorderRadius.circular(15),
-      //   ),
-      // ),
     );
   }
 }
