@@ -37,7 +37,7 @@ class MainDrawer extends StatelessWidget {
           // add drawer item
           buildDrawerItem('My Account', Icons.person, Colors.cyan, () {
             Navigator.of(context).pop();
-            Navigator.of(context).pushNamed('/account');
+            Navigator.of(context).pushNamed('/myaccount');
           }),
           // adding a divider line to separate items in the drawer
           const Divider(),
@@ -61,7 +61,6 @@ class MainDrawer extends StatelessWidget {
               () {
             Navigator.of(context).pop();
             Navigator.of(context).pop();
-            Navigator.of(context).pushNamed('/signin');
           }),
           const Divider(),
           // just pops up the drawer
