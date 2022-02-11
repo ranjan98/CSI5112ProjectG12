@@ -15,7 +15,6 @@ class MyAccount extends StatelessWidget {
           child: Column(
             children: <Widget>[
               const SizedBox(height: 30),
-              const Text('Account Details'),
               DataTable(
                 columns: [
                   DataColumn(
@@ -50,6 +49,22 @@ class MyAccount extends StatelessWidget {
                               fontSize: 20, fontWeight: FontWeight.bold)),
                     ),
                     DataCell(Text('613-xxx-xxxx')),
+                  ]),
+                  DataRow(cells: [
+                    DataCell(
+                      Text("Job Title",
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold)),
+                    ),
+                    DataCell(Text('Software Developer')),
+                  ]),
+                  DataRow(cells: [
+                    DataCell(
+                      Text("Payment Method",
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold)),
+                    ),
+                    DataCell(Text('Credit Card')),
                   ]),
                 ],
               ),

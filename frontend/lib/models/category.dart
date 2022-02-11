@@ -1,8 +1,8 @@
 class Category {
-  final num pid;
+  final num cid;
   final String cName;
   final String imgUrl;
 
   const Category(
-      {required this.pid, required this.cName, required this.imgUrl});
+      {required this.cid, required this.cName, required this.imgUrl});
 }

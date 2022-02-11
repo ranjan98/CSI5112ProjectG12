@@ -32,21 +32,23 @@ class _TermsConditionsState extends State<TermsConditions> {
             // ignore: prefer_const_literals_to_create_immutables
             children: <Widget>[
               const Text(
-                "'Terms and Conditions'",
+                "Terms and Conditions",
                 style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.bold,
+                  decorationColor: Colors.red,
                 ),
               ),
             ],
             mainAxisAlignment: MainAxisAlignment.center,
           ),
           const SizedBox(height: 30),
-          const Text(
-            'These Terms of Use constitute a legally binding agreement made between you, whether personally or on behalf of an entity (“you”) and [business entity name] (“we,” “us” or “our”), concerning your access to and use of the [website name.com] website as well as any other media form, media channel, mobile website or mobile application related, linked, or otherwise connected thereto (collectively, the “Site”).',
-            overflow: TextOverflow.ellipsis,
-            textAlign: TextAlign.center,
-          ),
+          const Padding(
+              padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+              child: Expanded(
+                  child: Text(
+                      'These Terms of Use constitute a legally binding agreement made between you, whether personally or on behalf of an entity (“you”) and [business entity name] (“we,” “us” or “our”), concerning your access to and use of the [website name.com] website as well as any other media form, media channel, mobile website or mobile application related, linked, or otherwise connected thereto (collectively, the “Site”).',
+                      textAlign: TextAlign.justify))),
           const SizedBox(height: 30),
           Row(
             children: <Widget>[
