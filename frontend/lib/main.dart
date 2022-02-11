@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         '/forgotpassword': (context) => const ForgotPassword(),
         '/emailsent': (context) => const EmailSent(),
         '/orderplaced': (context) => const OrderPlaced(),
-        'categories': (context) => const Categories()
+        '/categories': (context) => const Categories()
       },
       theme: ThemeData(
         primarySwatch: Colors.orange,

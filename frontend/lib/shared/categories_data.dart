@@ -2,33 +2,19 @@ import '../models/category.dart';
 
 const categoryData = [
   Category(
-      cid: 1,
-      cName: 'Clothing and Shoes',
-      imgUrl:
-          "https://m.media-amazon.com/images/I/81ha5gEVJkL._AC_UL640_FMwebp_QL65_.jpg"),
+      cid: 1, cName: 'Clothing and Shoes', imgUrl: "assets/categories/1.png"),
   Category(
-      cid: 1,
-      cName: 'Laptops and Mobiles',
-      imgUrl:
-          "https://m.media-amazon.com/images/I/71an9eiBxpL._AC_UL640_FMwebp_QL65_.jpg"),
+      cid: 2, cName: 'Laptops and Mobiles', imgUrl: "assets/categories/2.png"),
   Category(
-      cid: 1,
-      cName: 'Books and Stationary',
-      imgUrl:
-          "https://m.media-amazon.com/images/I/71WC3z4Wt0L._AC_UL640_FMwebp_QL65_.jpg"),
+      cid: 3, cName: 'Books and Stationary', imgUrl: "assets/categories/3.png"),
   Category(
-      cid: 1,
+      cid: 4,
       cName: 'Electronics and Accessories',
-      imgUrl:
-          "https://m.media-amazon.com/images/I/71KGrESMM3L._AC_UL640_FMwebp_QL65_.jpg"),
+      imgUrl: "assets/categories/4.png"),
   Category(
-      cid: 1,
-      cName: 'Home and Kitchen',
-      imgUrl:
-          "https://m.media-amazon.com/images/I/717CGms8KWL._AC_UL640_QL65_.jpg"),
+      cid: 5, cName: 'Home and Kitchen', imgUrl: "assets/categories/5.jpg"),
   Category(
-      cid: 1,
+      cid: 6,
       cName: 'Beauty and Essentials',
-      imgUrl:
-          "https://m.media-amazon.com/images/I/61tjqD0ODiL._AC_UL640_FMwebp_QL65_.jpg"),
+      imgUrl: "assets/categories/6.png"),
 ];
