@@ -18,6 +18,8 @@ class _HomeState extends State<Home> {
         title: const Text('Home'),
         elevation: 5,
         actions: [
+          //search
+          IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
           // shopping cart
           IconButton(
               onPressed: () {

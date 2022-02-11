@@ -52,12 +52,6 @@ class MainDrawer extends StatelessWidget {
             Navigator.of(context).pushNamed('/categories');
           }),
           const Divider(),
-          buildDrawerItem('Products', Icons.category_outlined, Colors.green,
-              () {
-            Navigator.of(context).pop();
-            Navigator.of(context).pushNamed('/products-overview');
-          }),
-          const Divider(),
           buildDrawerItem('Cart', Icons.shopping_cart, Colors.deepPurple, () {
             Navigator.of(context).pop();
             Navigator.of(context).pushNamed('/cart');
@@ -66,7 +60,7 @@ class MainDrawer extends StatelessWidget {
           buildDrawerItem('Sign Out', Icons.person_outline, Colors.deepPurple,
               () {
             Navigator.of(context).pop();
-            Navigator.of(context).pop();
+            Navigator.of(context).pop('/signin');
           }),
           const Divider(),
           // just pops up the drawer
