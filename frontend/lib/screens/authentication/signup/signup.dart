@@ -11,25 +11,12 @@ class SignUp extends StatefulWidget {
   _SignUpState createState() => _SignUpState();
 }
 
-// class _SignUpState extends State<SignUp> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         elevation: 5,
-//         title: const Text('Sign In'),
-//       ),
-//       body: SingleChildScrollView(
-//         child: Container(
-//           height: 20,
-//           child: const Text('Hello', textAlign: TextAlign.center),
-//         ),
-//       ),
-//     );
-//   }
-// }
-
 class _SignUpState extends State<SignUp> {
+  bool showPassword = true;
+  bool showRePassword = true;
+  IconData visibility = Icons.visibility;
+  IconData visibilityRe = Icons.visibility;
+
   final _formKey = GlobalKey<FormState>();
   bool isChecked = false;
   @override
@@ -91,10 +78,9 @@ class _SignUpState extends State<SignUp> {
             decoration: const InputDecoration(
               border: OutlineInputBorder(
                 borderSide: BorderSide(width: 2),
-                borderRadius:
-                    const BorderRadius.all(const Radius.circular(20.0)),
+                borderRadius: BorderRadius.all(Radius.circular(20.0)),
               ),
-              suffixIcon: const Icon(Icons.email),
+              suffixIcon: Icon(Icons.email),
               hintText: 'Enter your email',
               labelText: 'Email',
             ),
@@ -111,10 +97,9 @@ class _SignUpState extends State<SignUp> {
             decoration: const InputDecoration(
               border: OutlineInputBorder(
                 borderSide: BorderSide(width: 2),
-                borderRadius:
-                    const BorderRadius.all(const Radius.circular(20.0)),
+                borderRadius: BorderRadius.all(Radius.circular(20.0)),
               ),
-              suffixIcon: const Icon(Icons.mobile_screen_share),
+              suffixIcon: Icon(Icons.mobile_screen_share),
               hintText: 'Enter your mobile number',
               labelText: 'Mobile',
             ),
@@ -127,26 +112,45 @@ class _SignUpState extends State<SignUp> {
           ),
           const SizedBox(height: 6),
           TextFormField(
-              obscureText: true,
-              decoration: const InputDecoration(
-                  border: OutlineInputBorder(
+              obscureText: showPassword,
+              decoration: InputDecoration(
+                  border: const OutlineInputBorder(
                     borderSide: BorderSide(width: 2),
-                    borderRadius:
-                        const BorderRadius.all(const Radius.circular(20.0)),
+                    borderRadius: BorderRadius.all(Radius.circular(20.0)),
                   ),
-                  suffixIcon: const Icon(Icons.visibility),
+                  suffixIcon: InkWell(
+                    onTap: () {
+                      setState(() {
+                        showPassword = !showPassword;
+                        visibility == Icons.visibility
+                            ? visibility = Icons.visibility_off
+                            : visibility = Icons.visibility;
+                      });
+                    },
+                    child: Icon(visibility),
+                  ),
                   hintText: 'Enter your password',
                   labelText: 'Password')),
           const SizedBox(height: 6),
           TextFormField(
-              obscureText: true,
-              decoration: const InputDecoration(
-                  border: OutlineInputBorder(
+              obscureText: showRePassword,
+              decoration: InputDecoration(
+                  border: const OutlineInputBorder(
                     borderSide: BorderSide(width: 2),
                     borderRadius:
                         const BorderRadius.all(const Radius.circular(20.0)),
                   ),
-                  suffixIcon: const Icon(Icons.visibility),
+                  suffixIcon: InkWell(
+                    onTap: () {
+                      setState(() {
+                        showRePassword = !showRePassword;
+                        visibilityRe == Icons.visibility
+                            ? visibilityRe = Icons.visibility_off
+                            : visibilityRe = Icons.visibility;
+                      });
+                    },
+                    child: Icon(visibilityRe),
+                  ),
                   hintText: 'Re-enter your password',
                   labelText: 'Re-enter password')),
           const SizedBox(height: 6),

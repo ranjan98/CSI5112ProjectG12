@@ -12,6 +12,9 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
+  bool showPassword = true;
+  IconData visibility = Icons.visibility;
+
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -73,16 +76,27 @@ class _SignInState extends State<SignIn> {
               child: SizedBox(
                 width: 320.0,
                 child: TextFormField(
-                    obscureText: true,
-                    decoration: const InputDecoration(
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide(width: 2),
-                          borderRadius: const BorderRadius.all(
-                              const Radius.circular(20.0)),
-                        ),
-                        suffixIcon: const Icon(Icons.visibility),
-                        hintText: 'Enter your password',
-                        labelText: 'Password')),
+                  obscureText: showPassword,
+                  decoration: InputDecoration(
+                      border: const OutlineInputBorder(
+                        borderSide: BorderSide(width: 2),
+                        borderRadius:
+                            const BorderRadius.all(const Radius.circular(20.0)),
+                      ),
+                      suffixIcon: InkWell(
+                        onTap: () {
+                          setState(() {
+                            showPassword = !showPassword;
+                            visibility == Icons.visibility
+                                ? visibility = Icons.visibility_off
+                                : visibility = Icons.visibility;
+                          });
+                        },
+                        child: Icon(visibility),
+                      ),
+                      hintText: 'Enter your password',
+                      labelText: 'Password'),
+                ),
               ),
             ),
             const SizedBox(height: 10),
