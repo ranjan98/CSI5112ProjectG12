@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import '../../models/category.dart';
+import '../../shared/categories_data.dart';
+import '../categories/categories.dart';
 import 'maindrawer.dart';
 
 class Home extends StatefulWidget {
@@ -67,14 +70,10 @@ class _HomeState extends State<Home> {
               child: Wrap(
                 children: [
                   // mock up list, will be replaced with dynamic data once connected with backend
-                  buildCategoryItem('assets/images/sample1.jpg', 'T-Shirts',
-                      'tshirts', context),
-                  buildCategoryItem(
-                      'assets/images/sample2.jpg', 'Shoes', 'shoes', context),
-                  buildCategoryItem(
-                      'assets/images/sample3.png', 'Socks', 'socks', context),
-                  buildCategoryItem('assets/images/sample4.png', 'Laptops',
-                      'laptops', context),
+                  buildCategoryItem(context, categoryData.elementAt(0)),
+                  buildCategoryItem(context, categoryData.elementAt(1)),
+                  buildCategoryItem(context, categoryData.elementAt(2)),
+                  buildCategoryItem(context, categoryData.elementAt(3)),
                 ],
               ),
             ),
@@ -131,13 +130,18 @@ final List<Widget> imageSliders = imgList
     )
     .toList();
 
-Widget buildCategoryItem(
-    String imgurl, String name, String routeName, BuildContext context) {
+Widget buildCategoryItem(BuildContext context, Category category) {
   return Padding(
     padding: const EdgeInsets.all(5.0),
     child: InkWell(
       onTap: () {
-        Navigator.of(context).pushNamed("/" + routeName, arguments: name);
+        Navigator.of(context).pushNamed(
+          '/products-overview',
+          arguments: {
+            'id': category.cid,
+            'title': category.cName,
+          },
+        );
       },
       child: Card(
         elevation: 0,
@@ -147,18 +151,19 @@ Widget buildCategoryItem(
             ClipRRect(
                 borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(5), topRight: Radius.circular(5)),
-                child: Image.asset(imgurl,
-                    fit: BoxFit.fill, width: 150, height: 130)),
+                child: Image.asset(category.imgUrl,
+                    fit: BoxFit.fill, width: 200, height: 150)),
             // position the text on the image
             Positioned(
               right: 0,
               bottom: 0,
+              width: 200,
               child: Text(
-                name,
+                category.cName,
                 style: const TextStyle(
-                    color: Colors.black,
+                    color: Colors.white,
                     fontSize: 20,
-                    backgroundColor: Colors.white54),
+                    backgroundColor: Colors.black54),
               ),
             ),
           ],
