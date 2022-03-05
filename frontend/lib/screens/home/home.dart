@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:provider/provider.dart';
 import '../../models/category.dart';
+import '../../providers/cart.dart';
+import '../../providers/products.dart';
 import '../../shared/categories_data.dart';
-import '../categories/categories.dart';
 import 'maindrawer.dart';
 
 class Home extends StatefulWidget {
@@ -90,14 +92,10 @@ class _HomeState extends State<Home> {
               child: Wrap(
                 children: [
                   // mock up products list, will be replaced with dynamic data once connected with backend
-                  buildProductItem('assets/images/sample5.png', 'Puma Shoes',
-                      '\$149', 'puma-shoes', context),
-                  buildProductItem('assets/images/sample4.png',
-                      'Apple Macbook Pro', '\$1299', 'macbook-pro', context),
-                  buildProductItem('assets/images/sample7.jpg', 'iPhone 14',
-                      '\$899', 'socks', context),
-                  buildProductItem('assets/images/sample6.jpg', 'iPhone Cover',
-                      '\$49', 'laptops', context),
+                  buildProductItem(context, "p1"),
+                  buildProductItem(context, "p3"),
+                  buildProductItem(context, "p5"),
+                  buildProductItem(context, "p2"),
                 ],
               ),
             ),
@@ -173,13 +171,21 @@ Widget buildCategoryItem(BuildContext context, Category category) {
   );
 }
 
-Widget buildProductItem(String imgurl, String name, String price,
-    String routeName, BuildContext context) {
+Widget buildProductItem(BuildContext context, var id) {
+  final productsData = Provider.of<Products>(context);
+  final cart = Provider.of<Cart>(context, listen: false);
+  final products = productsData.items;
+  // products.removeWhere((element) => element.category != id);
+  // get only 1 product for now
+  final product = products.firstWhere((element) => element.id == id);
   return Padding(
     padding: const EdgeInsets.all(5.0),
     child: InkWell(
       onTap: () {
-        Navigator.of(context).pushNamed("/" + routeName, arguments: name);
+        Navigator.of(context).pushNamed(
+          '/product-detail',
+          arguments: product.id,
+        );
       },
       child: Card(
         elevation: 0,
@@ -189,32 +195,40 @@ Widget buildProductItem(String imgurl, String name, String price,
             ClipRRect(
                 borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(5), topRight: Radius.circular(5)),
-                child: Image.asset(imgurl,
-                    fit: BoxFit.fill, width: 300, height: 300)),
+                child: Image.network(product.imageUrl,
+                    fit: BoxFit.fill, width: 200, height: 150)),
             // position the text on the image
+
+            Positioned(
+              right: 0,
+              top: 0,
+              child: TextButton(
+                  child: const Icon(Icons.add_shopping_cart),
+                  onPressed: () {
+                    cart.addItem(product.id.toString(),
+                        product.price.toDouble(), product.title);
+                  }),
+            ),
             Positioned(
               left: 0,
               bottom: 0,
-              child: Container(
-                color: Colors.black54,
-                width: 200,
-                child: Text(
-                  name,
-                  style: const TextStyle(
+              width: 150,
+              child: Text(
+                product.title,
+                style: const TextStyle(
                     color: Colors.white,
-                    fontSize: 30,
-                  ),
-                ),
+                    fontSize: 20,
+                    backgroundColor: Colors.black54),
               ),
             ),
             Positioned(
               right: 0,
               bottom: 0,
               child: Text(
-                price,
+                "\$" + product.price.toInt().toString(),
                 style: const TextStyle(
                     color: Colors.white,
-                    fontSize: 30,
+                    fontSize: 20,
                     backgroundColor: Colors.black54),
               ),
             ),
