@@ -10,7 +10,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<ProdService>();
 builder.Services.AddTransient<MerchantService>();
 builder.Services.AddTransient<CustomerService>();
-
+builder.Services.AddTransient<CatService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
