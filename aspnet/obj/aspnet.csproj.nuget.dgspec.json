@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/hshan059/Documents/GitHub/CSI5112ProjectG12/aspnet/aspnet.csproj": {}
+    "/Users/ranjan/Desktop/github/CSI5112ProjectG12/aspnet/aspnet.csproj": {}
   },
   "projects": {
-    "/Users/hshan059/Documents/GitHub/CSI5112ProjectG12/aspnet/aspnet.csproj": {
+    "/Users/ranjan/Desktop/github/CSI5112ProjectG12/aspnet/aspnet.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/hshan059/Documents/GitHub/CSI5112ProjectG12/aspnet/aspnet.csproj",
+        "projectUniqueName": "/Users/ranjan/Desktop/github/CSI5112ProjectG12/aspnet/aspnet.csproj",
         "projectName": "aspnet",
-        "projectPath": "/Users/hshan059/Documents/GitHub/CSI5112ProjectG12/aspnet/aspnet.csproj",
-        "packagesPath": "/Users/hshan059/.nuget/packages/",
-        "outputPath": "/Users/hshan059/Documents/GitHub/CSI5112ProjectG12/aspnet/obj/",
+        "projectPath": "/Users/ranjan/Desktop/github/CSI5112ProjectG12/aspnet/aspnet.csproj",
+        "packagesPath": "/Users/ranjan/.nuget/packages/",
+        "outputPath": "/Users/ranjan/Desktop/github/CSI5112ProjectG12/aspnet/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/hshan059/.nuget/NuGet/NuGet.Config"
+          "/Users/ranjan/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
