@@ -9,7 +9,10 @@ public class CatService
         new Category("1", "Clothing and Shoes", "assets/categories/1.png"),
         new Category("2", "Laptops and Mobiles", "assets/categories/2.png"),
         new Category("3", "Books and Stationary", "assets/categories/3.png"),
-        new Category("4", "Electronics and Accessories", "assets/categories/4.png")
+        new Category("4", "Electronics and Accessories", "assets/categories/4.png"),
+        new Category("5", "Home and Kitchen", "assets/categories/5.jpg"),
+        new Category("6", "Beauty and Essentials", "assets/categories/6.png"),
+
     };
 
     public CatService()
