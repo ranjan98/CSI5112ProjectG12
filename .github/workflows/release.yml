@@ -19,6 +19,7 @@ jobs:
       working-directory: ./aspnet
       run: dotnet restore
     - name: Build
+      working-directory: ./aspnet
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
