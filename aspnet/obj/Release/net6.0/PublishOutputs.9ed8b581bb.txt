@@ -1,0 +1,11 @@
+/Users/ranjan/Desktop/github/CSI5112ProjectG12/aspnet/out/aspnet
+/Users/ranjan/Desktop/github/CSI5112ProjectG12/aspnet/out/appsettings.Development.json
+/Users/ranjan/Desktop/github/CSI5112ProjectG12/aspnet/out/appsettings.json
+/Users/ranjan/Desktop/github/CSI5112ProjectG12/aspnet/out/aspnet.dll
+/Users/ranjan/Desktop/github/CSI5112ProjectG12/aspnet/out/aspnet.deps.json
+/Users/ranjan/Desktop/github/CSI5112ProjectG12/aspnet/out/aspnet.runtimeconfig.json
+/Users/ranjan/Desktop/github/CSI5112ProjectG12/aspnet/out/aspnet.pdb
+/Users/ranjan/Desktop/github/CSI5112ProjectG12/aspnet/out/Microsoft.OpenApi.dll
+/Users/ranjan/Desktop/github/CSI5112ProjectG12/aspnet/out/Swashbuckle.AspNetCore.Swagger.dll
+/Users/ranjan/Desktop/github/CSI5112ProjectG12/aspnet/out/Swashbuckle.AspNetCore.SwaggerGen.dll
+/Users/ranjan/Desktop/github/CSI5112ProjectG12/aspnet/out/Swashbuckle.AspNetCore.SwaggerUI.dll
