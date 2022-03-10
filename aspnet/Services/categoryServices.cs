@@ -6,9 +6,10 @@ public class CatService
 {
     // Data placeholder
     private List<Category> cat = new List<Category>() {
-        new Category("1", "Clothing", "url"),
-        new Category("2", "Electronics", "url"),
-        new Category("3", "Shoes", "url")
+        new Category("1", "Clothing and Shoes", "assets/categories/1.png"),
+        new Category("2", "Laptops and Mobiles", "assets/categories/2.png"),
+        new Category("3", "Books and Stationary", "assets/categories/3.png"),
+        new Category("4", "Electronics and Accessories", "assets/categories/4.png")
     };
 
     public CatService()

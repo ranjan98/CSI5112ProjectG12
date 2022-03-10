@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
-import '../../shared/categories_data.dart';
+import 'package:frontend/models/category.dart';
 import '../home/maindrawer.dart';
+import '../../../services/categories_service.dart';
 
-class Categories extends StatelessWidget {
+class Categories extends StatefulWidget {
   const Categories({Key? key}) : super(key: key);
+
+  @override
+  State<Categories> createState() => _CategoriesState();
+}
+
+class _CategoriesState extends State<Categories> {
+  late Future<List<Category>> futureCategories;
 
   @override
   Widget build(BuildContext context) {
@@ -21,50 +29,46 @@ class Categories extends StatelessWidget {
               icon: const Icon(Icons.shopping_cart))
         ],
       ),
-      body: GridView(
-        padding: const EdgeInsets.all(5),
-        children: categoryData
-            .map(
-              (catData) => CategoryItem(
-                catData.cid,
-                catData.cName,
-                catData.imgUrl,
+      body: SafeArea(
+          child: FutureBuilder(
+        builder: (context, snapshot) {
+          if (snapshot.hasData == false) {
+            return const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Center(child: CircularProgressIndicator()),
+            );
+          }
+          // using a grid view to display the categories
+          return GridView.builder(
+              gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                maxCrossAxisExtent: 200,
+                childAspectRatio: 3 / 2,
+                crossAxisSpacing: 20,
+                mainAxisSpacing: 20,
               ),
-            )
-            .toList(),
-        gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-          maxCrossAxisExtent: 200,
-          childAspectRatio: 3 / 2,
-          crossAxisSpacing: 20,
-          mainAxisSpacing: 20,
-        ),
-      ),
-    );
-  }
-}
-
-class CategoryItem extends StatelessWidget {
-  final num id;
-  final String title;
-  final String imgUrl;
-
-  const CategoryItem(this.id, this.title, this.imgUrl, {Key? key})
-      : super(key: key);
-
-  void selectCategory(BuildContext ctx) {
-    Navigator.of(ctx).pushNamed(
-      '/products-overview',
-      arguments: {
-        'id': id,
-        'title': title,
-      },
+              itemCount: (snapshot.data as List<Category>).length,
+              itemBuilder: (BuildContext context, int index) {
+                // getting each category and sending it to the widget for building category item
+                return buildCategoryItem(
+                    (snapshot.data as List<Category>)[index]);
+              });
+        },
+        future: futureCategories,
+      )),
     );
   }
 
-  @override
-  Widget build(BuildContext context) {
+  Widget buildCategoryItem(Category category) {
     return InkWell(
-      onTap: () => selectCategory(context),
+      onTap: () {
+        Navigator.of(context).pushNamed(
+          '/products-overview',
+          arguments: {
+            'id': category.cid,
+            'title': category.cName,
+          },
+        );
+      },
       splashColor: Theme.of(context).primaryColor,
       borderRadius: BorderRadius.circular(15),
       child: Card(
@@ -75,7 +79,7 @@ class CategoryItem extends StatelessWidget {
             ClipRRect(
                 borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(5), topRight: Radius.circular(5)),
-                child: Image.asset(imgUrl,
+                child: Image.asset(category.imgUrl,
                     fit: BoxFit.fill, width: 250, height: 250)),
             // position the text on the image
             Positioned(
@@ -90,7 +94,7 @@ class CategoryItem extends StatelessWidget {
                   color: Colors.black54,
                   width: 150,
                   child: Text(
-                    title,
+                    category.cName,
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 20,
@@ -103,5 +107,12 @@ class CategoryItem extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    futureCategories =
+        fetchCategories(); // fetch all the categories from backend
   }
 }
