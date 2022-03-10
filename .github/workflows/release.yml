@@ -1,37 +1,27 @@
-name: .NET
+name: Release
 
 on:
   release:
   workflow_dispatch:
 
 jobs:
-  build: 
-    
+  build:
+  
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@v2
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 6.0.x
-    - name: Restore dependencies
-      working-directory: ./aspnet
-      run: dotnet restore
-    - name: Build
-      working-directory: ./aspnet
-      run: dotnet build --no-restore
-    - name: Test
-      working-directory: ./aspnet
-      run: dotnet test --no-build --verbosity normal
-      
     
-    - name: Docker build
-      run: docker build -t latest .
-      
     - name: Docker login
-      run: docker login -u uomart --password ${{ secrets.DOCKERHUB_TOKEN }}
-      
-    - name: Push container
-      run: docker push uomart/csi5112project:latest
+      uses: docker/login-action@v1
+      with:
+        username: uomart
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+    
+    - name: Docker build and push
+      uses: docker/build-push-action@v2
+      with:
+        context: ${{ env.GITHUB_WORKSPACE }}
+        file: ${{ env.GITHUB_WORKSPACE }}/Dockerfile
+        tags: uomart/csi5112project:latest
+        push: true
     
