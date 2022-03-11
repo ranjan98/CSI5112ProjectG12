@@ -1,0 +1,24 @@
+name: Docker Image Build
+on:
+  release:
+    types: created
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Docker login
+      uses: docker/login-action@v1
+      with:
+        username: uomart
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+        
+    - name: Docker build and push
+      uses: docker/build-push-action@v2
+      with:
+        context: ${{ env.GITHUB_REPOSITORY }}
+        file: ${{ env.GITHUB_REPOSITORY }}/Dockerfile
+        tags: uomart/csi5112project:latest
+        push: true
