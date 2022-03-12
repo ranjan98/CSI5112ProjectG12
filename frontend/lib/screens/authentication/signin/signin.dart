@@ -171,7 +171,11 @@ class _SignInState extends State<SignIn> {
                         print("It is working: UID during sign in is : " +
                             user.uid);
                         if (user.password == password) {
-                          Navigator.of(context).pushNamed('/home');
+                          if (user.role == "merchant") {
+                            Navigator.of(context).pushNamed('/merchant-home');
+                          } else {
+                            Navigator.of(context).pushNamed('/home');
+                          }
                         } else {
                           setState(() {
                             error = 'Could not Sign In';

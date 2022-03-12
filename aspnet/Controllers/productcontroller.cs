@@ -4,23 +4,28 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace aspnet.controllers;
 
-// [ApiController]
+[ApiController]
 [Route("api/prod/[controller]")]
-public class ProdController : ControllerBase{
+public class ProdController : ControllerBase
+{
     private readonly ProdService prodService;
-    public ProdController(ProdService service) {
+    public ProdController(ProdService service)
+    {
         this.prodService = service;
     }
 
     [HttpGet]
-    public async Task<List<Product>> Get() {
+    public async Task<List<Product>> Get()
+    {
         return await prodService.getProd();
-    } 
+    }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<Product>> Get(string Id) {
+    public async Task<ActionResult<Product>> Get(string Id)
+    {
         var prod = await prodService.getProd(Id);
-        if (prod is null) {
+        if (prod is null)
+        {
             return NotFound();
         }
         return prod;
@@ -36,26 +41,31 @@ public class ProdController : ControllerBase{
     // }
 
     [HttpPost]
-    public async Task<ActionResult> Post(Product newProd) {
+    public async Task<ActionResult> Post(Product newProd)
+    {
         await prodService.createProd(newProd);
-        return CreatedAtAction(nameof(Get), new {id = newProd.id}, newProd);
+        return CreatedAtAction(nameof(Get), new { id = newProd.id }, newProd);
     }
 
     [HttpPut("{id}")]
-    public async Task<ActionResult> Update(string Id, Product updatedProd) {
+    public async Task<ActionResult> Update(string Id, Product updatedProd)
+    {
         bool updated = await prodService.updateProd(Id, updatedProd);
-        if (!updated) {
+        if (!updated)
+        {
             // this assumes that a failed update is always caused by the object 
             // not being found. This needs to be changed if the cause may be different
             return NotFound();
-        } 
+        }
         return NoContent();
     }
 
     [HttpDelete("{id}")]
-    public async Task<ActionResult> Delete(string Id) {
+    public async Task<ActionResult> Delete(string Id)
+    {
         var prod = await prodService.getProd(Id);
-        if (prod is null) {
+        if (prod is null)
+        {
             return NotFound();
         }
         await prodService.deleteProd(prod.id);

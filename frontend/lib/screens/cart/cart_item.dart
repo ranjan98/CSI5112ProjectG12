@@ -16,6 +16,7 @@ class CartItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cart = Provider.of<Cart>(context, listen: false);
     return Dismissible(
       key: ValueKey(id),
       background: Container(
@@ -79,7 +80,22 @@ class CartItem extends StatelessWidget {
             ),
             title: Text(title),
             subtitle: Text('Total: \$${(price * quantity)}'),
-            trailing: Text('$quantity x'),
+            trailing: Wrap(
+              children: [
+                TextButton(
+                    onPressed: () {
+                      cart.addItem(
+                          productId.toString(), price.toDouble(), title);
+                    },
+                    child: const Icon(Icons.add_circle)),
+                Text('$quantity x'),
+                TextButton(
+                    onPressed: () {
+                      cart.removeSingleItem(productId.toString());
+                    },
+                    child: const Icon(Icons.remove_circle)),
+              ],
+            ),
           ),
         ),
       ),

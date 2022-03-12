@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace aspnet.controllers;
 
-// [ApiController]
+[ApiController]
 [Route("api/user/[controller]")]
 public class UserController : ControllerBase
 {

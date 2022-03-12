@@ -7,6 +7,7 @@ import 'package:frontend/screens/authentication/signup/signup.dart';
 import 'package:frontend/screens/cart/cart.dart';
 import 'package:frontend/screens/categories/categories.dart';
 import 'package:frontend/screens/discussion/forum.dart';
+import 'package:frontend/screens/merchant/merchant_home.dart';
 import 'package:frontend/screens/orders/orderplaced.dart';
 import 'package:frontend/screens/orders/orders_screen.dart';
 import 'package:frontend/screens/product/product_detail_screen.dart';
@@ -44,6 +45,7 @@ class MyApp extends StatelessWidget {
         initialRoute: '/',
         routes: {
           '/home': (context) => const Home(),
+          '/merchant-home': (context) => const MerchantHome(),
           '/signin': (context) => const SignIn(),
           '/signup': (context) => const SignUp(),
           '/myaccount': (context) => const MyAccount(),

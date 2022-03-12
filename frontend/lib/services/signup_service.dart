@@ -1,0 +1,28 @@
+import 'dart:async';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+
+import '../models/user.dart';
+
+Future<List<User>> fetchUsers() async {
+  final response =
+      await http.get(Uri.parse('https://localhost:7067/api/user/User/'));
+
+  if (response.statusCode == 200) {
+    return User.fromListJson(jsonDecode(response.body));
+  } else {
+    throw Exception('Failed to get user data');
+  }
+}
+
+Future<User> createUser(String email, String password) async {
+  final response = await http.post(Uri.parse(
+    'https://localhost:7067/api/user/User/',
+  ));
+
+  if (response.statusCode == 200) {
+    return User.fromJson(jsonDecode(response.body));
+  } else {
+    throw Exception('Failed to get user data');
+  }
+}
