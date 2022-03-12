@@ -6,7 +6,7 @@ import '../models/product.dart';
 Future<List<Product>> fetchProducts() async {
   final response =
       await http.get(Uri.parse('https://localhost:7067/api/prod/Prod/'));
-  print(response.body);
+  // print(response.body);
   if (response.statusCode == 200) {
     // process the categories received in the response body
     return Product.fromListJson(jsonDecode(response.body));
@@ -18,7 +18,7 @@ Future<List<Product>> fetchProducts() async {
 Future<List<Product>> fetchProductsForOneCategory(String category) async {
   final response =
       await http.get(Uri.parse('https://localhost:7067/api/prod/Prod/'));
-  print(response.body);
+  // print(response.body);
   if (response.statusCode == 200) {
     // process the categories received in the response body
     return Product.fromListJsonOneCategory(jsonDecode(response.body), category);
