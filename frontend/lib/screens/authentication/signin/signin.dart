@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../models/user.dart';
-import '../signup/signup.dart';
 import '../../../services/signin_service.dart';
 
 class SignIn extends StatefulWidget {
@@ -12,12 +11,12 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
-  late Future<User> futureUser;
+  late Future<List<User>> futureUsers;
 
   @override
   void initState() {
     super.initState();
-    futureUser = fetchUser("ranjan@uottawa.ca"); //mocking up the login for now
+    futureUsers = fetchUsers(); //mocking up the login for now
   }
 
   bool showPassword = true;
@@ -60,7 +59,13 @@ class _SignInState extends State<SignIn> {
               mainAxisAlignment: MainAxisAlignment.center,
             ),
             const SizedBox(height: 30),
-            Text(error),
+            if (error.isEmpty == false)
+              Center(
+                  child: Text(
+                error,
+                style: const TextStyle(color: Colors.red),
+              )),
+            if (error.isEmpty == false) const SizedBox(height: 20),
             Center(
               child: SizedBox(
                 width: 320.0,
@@ -151,7 +156,8 @@ class _SignInState extends State<SignIn> {
                   onPressed: () async {
                     if (_formKey.currentState!.validate()) {
                       setState(() => loading = true);
-                      var result = await fetchUser(email);
+                      // var result = await fetchUser(email);
+                      var result = await fetchUsers();
                       // ignore: unnecessary_null_comparison
                       if (result == null) {
                         setState(() {
@@ -160,9 +166,18 @@ class _SignInState extends State<SignIn> {
                         });
                       } else {
                         // ignore: avoid_print
+                        var user = result
+                            .firstWhere((element) => element.email == email);
                         print("It is working: UID during sign in is : " +
-                            result.uid);
-                        Navigator.of(context).pushNamed('/home');
+                            user.uid);
+                        if (user.password == password) {
+                          Navigator.of(context).pushNamed('/home');
+                        } else {
+                          setState(() {
+                            error = 'Could not Sign In';
+                            loading = false;
+                          });
+                        }
                       }
                     }
                   },
@@ -180,11 +195,14 @@ class _SignInState extends State<SignIn> {
                     style: TextStyle(fontSize: 16),
                   ),
                   onPressed: () {
-                    //signup screen using material page route
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const SignUp()));
+                    //signup screen using material page route // replacing this as this is not preferred
+                    // Navigator.push(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //         builder: (context) => const SignUp()));
+
+                    // using named route
+                    Navigator.of(context).pushNamed('/signup');
                   },
                 )
               ],

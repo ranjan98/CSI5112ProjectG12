@@ -79,3 +79,8 @@ E:/01 uOttawa MCS/Winter 2022/Soft Eng/aspnet/obj/Debug/net6.0/ref/aspnet.dll
 /Users/ranjan/Desktop/github/CSI5112ProjectG12/aspnet/obj/Debug/net6.0/aspnet.csproj.CopyComplete
 /Users/ranjan/Desktop/github/CSI5112ProjectG12/aspnet/obj/Debug/net6.0/aspnet.genruntimeconfig.cache
 /Users/ranjan/Desktop/github/CSI5112ProjectG12/aspnet/obj/Debug/net6.0/ref/aspnet.dll
+/Users/ranjan/Desktop/github/CSI5112ProjectG12/aspnet/bin/Debug/net6.0/out/web.config
+/Users/ranjan/Desktop/github/CSI5112ProjectG12/aspnet/bin/Debug/net6.0/out/appsettings.Development.json
+/Users/ranjan/Desktop/github/CSI5112ProjectG12/aspnet/bin/Debug/net6.0/out/appsettings.json
+/Users/ranjan/Desktop/github/CSI5112ProjectG12/aspnet/bin/Debug/net6.0/out/aspnet.deps.json
+/Users/ranjan/Desktop/github/CSI5112ProjectG12/aspnet/bin/Debug/net6.0/out/aspnet.runtimeconfig.json

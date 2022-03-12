@@ -3,10 +3,10 @@ import 'package:frontend/providers/orders.dart';
 import 'package:frontend/screens/authentication/forgotpassword/emailsend.dart';
 import 'package:frontend/screens/authentication/forgotpassword/forgotpassword.dart';
 import 'package:frontend/screens/authentication/myaccount.dart';
+import 'package:frontend/screens/authentication/signup/signup.dart';
 import 'package:frontend/screens/cart/cart.dart';
 import 'package:frontend/screens/categories/categories.dart';
 import 'package:frontend/screens/discussion/forum.dart';
-// import 'package:frontend/screens/orders/orders.dart';
 import 'package:frontend/screens/orders/orderplaced.dart';
 import 'package:frontend/screens/orders/orders_screen.dart';
 import 'package:frontend/screens/product/product_detail_screen.dart';
@@ -45,8 +45,8 @@ class MyApp extends StatelessWidget {
         routes: {
           '/home': (context) => const Home(),
           '/signin': (context) => const SignIn(),
+          '/signup': (context) => const SignUp(),
           '/myaccount': (context) => const MyAccount(),
-          // '/orders': (context) => const Orders(),
           '/forgotpassword': (context) => const ForgotPassword(),
           '/emailsent': (context) => const EmailSent(),
           '/orderplaced': (context) => const OrderPlaced(),
