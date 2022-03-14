@@ -8,8 +8,8 @@ on:
 env:
   AWS_REGION: us-east-1
   ECR_REPOSITORY: 454831464910.dkr.ecr.us-east-1.amazonaws.com
-  ECS_SERVICE: Uomart-Service
-  ECS_CLUSTER: uomart-csi5112project
+  ECS_SERVICE: uomartservice
+  ECS_CLUSTER: uomart
 
 
 jobs:
