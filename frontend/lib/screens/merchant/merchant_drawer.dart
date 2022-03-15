@@ -26,14 +26,20 @@ class MerchantDrawer extends StatelessWidget {
           // show the basic details for the user via the header
           UserAccountsDrawerHeader(
             decoration: const BoxDecoration(color: Colors.orange),
-            accountName: Text(userProvider.users[0].name.toString()),
-            accountEmail: Text(userProvider.users[0].email.toString()),
+            accountName: Text(userProvider.users.isEmpty
+                ? "User Name"
+                : userProvider.users[0].name.toString()),
+            accountEmail: Text(userProvider.users.isEmpty
+                ? "User Email"
+                : userProvider.users[0].email.toString()),
             currentAccountPicture: CircleAvatar(
               // We can either put an image here or text like initials of user
               //backgroundImage: NetworkImage(''),
               backgroundColor: Colors.purple,
               child: Text(
-                userProvider.users[0].name.characters.first.toUpperCase(),
+                userProvider.users.isEmpty
+                    ? "A"
+                    : userProvider.users[0].name.characters.first.toUpperCase(),
                 style: const TextStyle(fontSize: 20),
               ),
             ),
