@@ -6,7 +6,7 @@ import '../models/user.dart';
 
 Future<List<User>> fetchUsers() async {
   final response =
-      await http.get(Uri.parse('https://localhost:7067/api/user/User/'));
+      await http.get(Uri.parse('https://localhost:7067/api/User/'));
 
   if (response.statusCode == 200) {
     return User.fromListJson(jsonDecode(response.body));
@@ -17,7 +17,7 @@ Future<List<User>> fetchUsers() async {
 
 Future<User> fetchUser(String email) async {
   final response = await http
-      .get(Uri.parse('https://localhost:7067/api/user/User/ranjan@uottawa.ca'));
+      .get(Uri.parse('https://localhost:7067/api/User/ranjan@uottawa.ca'));
 
   if (response.statusCode == 200) {
     return User.fromJson(jsonDecode(response.body));

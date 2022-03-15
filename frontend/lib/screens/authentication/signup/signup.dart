@@ -1,6 +1,7 @@
 // ignore_for_file: unnecessary_const
 import 'package:flutter/material.dart';
 
+import '../../../services/signup_service.dart';
 import '../../termsandconditions/termsconditions.dart';
 
 class SignUp extends StatefulWidget {
@@ -17,9 +18,12 @@ class _SignUpState extends State<SignUp> {
   IconData visibilityRe = Icons.visibility;
   bool loading = false;
   String email = "";
+  String name = "";
   String password = "";
   String rePassword = "";
   String error = "";
+  String role = "customer";
+  List<String> roles = ['Customer', 'Merchant'];
 
   final _formKey = GlobalKey<FormState>();
   bool isChecked = false;
@@ -55,6 +59,34 @@ class _SignUpState extends State<SignUp> {
                   mainAxisAlignment: MainAxisAlignment.center,
                 ),
                 const SizedBox(height: 30),
+                SizedBox(
+                  width: 320,
+                  child: TextFormField(
+                    keyboardType: TextInputType.name,
+                    onChanged: (value) {
+                      name = value.toString();
+                    },
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide(width: 2),
+                        borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                      ),
+                      suffixIcon: Icon(Icons.person),
+                      hintText: 'Enter your Name',
+                      labelText: 'Name',
+                    ),
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Please Enter your Name';
+                      } else if (RegExp(r'[!@#<>?":_`~;[\]\\|=+)(*&^%0-9-]')
+                          .hasMatch(name)) {
+                        return 'Please! Enter your Name';
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+                const SizedBox(height: 6),
                 SizedBox(
                   width: 320,
                   child: TextFormField(
@@ -179,6 +211,29 @@ class _SignUpState extends State<SignUp> {
                   ),
                 ),
                 const SizedBox(height: 6),
+                SizedBox(
+                  width: 320,
+                  child: DropdownButtonFormField(
+                    items: roles.map((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
+                    onChanged: (value) {
+                      role = value.toString().toLowerCase();
+                    },
+                    decoration: const InputDecoration(
+                        border: const OutlineInputBorder(
+                          borderSide: BorderSide(width: 2),
+                          borderRadius: const BorderRadius.all(
+                              const Radius.circular(20.0)),
+                        ),
+                        suffixIcon: Icon(Icons.person_outline),
+                        hintText: 'Choose Account Type'),
+                  ),
+                ),
+                const SizedBox(height: 6),
                 Row(
                   children: <Widget>[
                     Checkbox(
@@ -212,30 +267,34 @@ class _SignUpState extends State<SignUp> {
                       label: const Text('Sign Up'),
                       onPressed: () async {
                         if (_formKey.currentState!.validate()) {
-                          Navigator.of(context).popAndPushNamed('/home');
-                          // setState(() => loading = true);
-                          // var result = await createUser(email, password, "customer");
-                          // ignore: unnecessary_null_comparison
-                          // if (result == null) {
-                          //   setState(() {
-                          //     error = 'Could not Sign In';
-                          //     loading = false;
-                          //   });
-                          // } else {
-                          //   // ignore: avoid_print
-                          //   var user = result.firstWhere(
-                          //       (element) => element.email == email);
-                          //   print("It is working: UID during sign in is : " +
-                          //       user.uid);
-                          //   if (user.password == password) {
-                          //     Navigator.of(context).popAndPushNamed('/home');
-                          //   } else {
-                          //     setState(() {
-                          //       error = 'Could not Sign In';
-                          //       loading = false;
-                          //     });
-                          //   }
-                          // }
+                          if (isChecked) {
+                            Navigator.of(context).popAndPushNamed('/home');
+                            setState(() => loading = true);
+                            var result =
+                                await createUser(name, email, password, role);
+                            // ignore: unnecessary_null_comparison
+                            if (result == null) {
+                              setState(() {
+                                error = 'Could not Sign In';
+                                loading = false;
+                              });
+                            } else {
+                              // ignore: avoid_print
+                              print("It is working: UID during sign in is : " +
+                                  result.uid);
+                              if (role == roles[1].toLowerCase()) {
+                                Navigator.of(context)
+                                    .popAndPushNamed('/merchant-home');
+                              } else {
+                                Navigator.of(context).popAndPushNamed('/home');
+                              }
+                            }
+                          } else {
+                            setState(() {
+                              error =
+                                  "Please agree to the Terms and Conditions";
+                            });
+                          }
                         }
                       },
                     ),
@@ -243,6 +302,12 @@ class _SignUpState extends State<SignUp> {
                   mainAxisAlignment: MainAxisAlignment.center,
                 ),
                 const SizedBox(height: 30),
+                if (error.isEmpty == false)
+                  Center(
+                      child: Text(
+                    error,
+                    style: const TextStyle(color: Colors.red),
+                  )),
               ]),
             ),
           ),

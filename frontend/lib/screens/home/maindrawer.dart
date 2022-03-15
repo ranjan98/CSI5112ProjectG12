@@ -42,14 +42,13 @@ class MainDrawer extends StatelessWidget {
           // adding a divider line to separate items in the drawer
           const Divider(),
           buildDrawerItem('Orders', Icons.local_shipping, Colors.cyan, () {
-            Navigator.of(context).pop();
-            Navigator.of(context).pushNamed('/orders');
+            Navigator.of(context).popAndPushNamed('/orders');
           }),
           const Divider(),
           buildDrawerItem('Categories', Icons.category_outlined, Colors.green,
               () {
-            Navigator.of(context).pop();
-            Navigator.of(context).pushNamed('/categories');
+            // Navigator.of(context).pop();
+            Navigator.of(context).popAndPushNamed('/categories');
           }),
           // We will show categories first and then products for that category
           // const Divider(),
@@ -60,14 +59,14 @@ class MainDrawer extends StatelessWidget {
           // }),
           const Divider(),
           buildDrawerItem('Cart', Icons.shopping_cart, Colors.deepPurple, () {
-            Navigator.of(context).pop();
-            Navigator.of(context).pushNamed('/cart');
+            // Navigator.of(context).pop();
+            Navigator.of(context).popAndPushNamed('/cart');
           }),
           const Divider(),
           buildDrawerItem('Sign Out', Icons.person_outline, Colors.deepPurple,
               () {
-            Navigator.of(context).pop();
-            Navigator.of(context).pop();
+            Navigator.popUntil(context, ModalRoute.withName('/signin'));
+            Navigator.of(context).pushNamed('/signin');
           }),
           const Divider(),
           // just pops up the drawer

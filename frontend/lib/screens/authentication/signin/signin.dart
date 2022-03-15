@@ -70,6 +70,7 @@ class _SignInState extends State<SignIn> {
               child: SizedBox(
                 width: 320.0,
                 child: TextFormField(
+                  key: const Key("emailAdd"),
                   keyboardType: TextInputType.emailAddress,
                   onChanged: (value) {
                     email = value.toLowerCase();
@@ -101,6 +102,7 @@ class _SignInState extends State<SignIn> {
               child: SizedBox(
                 width: 320.0,
                 child: TextFormField(
+                  key: const Key("password"),
                   obscureText: showPassword,
                   onChanged: (value) {
                     password = value.toString();
@@ -137,6 +139,7 @@ class _SignInState extends State<SignIn> {
               child: SizedBox(
                 width: 320,
                 child: TextButton(
+                  key: const Key("signin"),
                   onPressed: () {
                     //forgot password screen
                     Navigator.of(context).pop();

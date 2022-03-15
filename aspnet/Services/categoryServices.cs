@@ -40,7 +40,7 @@ public class CatService
     //     return cat.Find(x => x.cmerchantid == mid);
     // }//getting all categories of merchant
 
-    async Task<bool> updateCat(string Cid, Category updatedCat)
+    public async Task<bool> updateCat(string Cid, Category updatedCat)
     {
         bool result = false;
         int index = cat.FindIndex(x => x.cid == Cid);
@@ -53,7 +53,7 @@ public class CatService
         return result;
     }
 
-    async Task<bool> deleteCat(string Cid)
+    public async Task<bool> deleteCat(string Cid)
     {
         bool deleted = false;
         int index = cat.FindIndex(x => x.cid == Cid);

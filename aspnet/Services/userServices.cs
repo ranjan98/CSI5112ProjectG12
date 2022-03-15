@@ -35,4 +35,29 @@ public class UserService
     {
         return user.Find(x => x.email == email);
     }
+
+    public async Task<bool> updateUser(string Id, User updatedUser)
+    {
+        bool result = false;
+        int index = user.FindIndex(x => x.uid == Id);
+        if (index != -1)
+        {
+            updatedUser.uid = Id;
+            user[index] = updatedUser;
+            result = true;
+        }
+        return result;
+    }
+
+    public async Task<bool> deleteUser(string Id)
+    {
+        bool deleted = false;
+        int index = user.FindIndex(x => x.uid == Id);
+        if (index != -1)
+        {
+            user.RemoveAt(index);
+            deleted = true;
+        }
+        return deleted;
+    }
 }

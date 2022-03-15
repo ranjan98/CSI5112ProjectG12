@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/models/category.dart';
-import '../home/maindrawer.dart';
 import '../../../services/categories_service.dart';
 
 class Categories extends StatefulWidget {
@@ -16,7 +15,8 @@ class _CategoriesState extends State<Categories> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const MainDrawer(),
+      // removing drawer from the screen
+      // drawer: const MainDrawer(),
       appBar: AppBar(
         title: const Text('Categories'),
         elevation: 5,

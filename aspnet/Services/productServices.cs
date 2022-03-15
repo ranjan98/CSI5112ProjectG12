@@ -35,10 +35,10 @@ public class ProdService
     {
         return prod.Find(x => x.id == id);
     }
-    public async Task<Product> getmProd(string mid)
-    {
-        return prod.Find(x => x.merchantid == mid);
-    }//getting all products of merchant
+    // public async Task<Product> getmProd(string mid)
+    // {
+    //     return prod.Find(x => x.merchantid == mid);
+    // }//getting all products of merchant
 
     public async Task<bool> updateProd(string Id, Product updatedProd)
     {

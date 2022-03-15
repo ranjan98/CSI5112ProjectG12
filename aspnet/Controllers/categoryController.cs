@@ -4,8 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace aspnet.controllers;
 
-// [ApiController]
-[Route("api/cat/[controller]")]
+[ApiController]
+[Route("api/[controller]")]
 public class CatController : ControllerBase
 {
     private readonly CatService catService;
@@ -38,24 +38,28 @@ public class CatController : ControllerBase
         return CreatedAtAction(nameof(Get), new { id = newCat.cid }, newCat);
     }
 
-    // [HttpPut("{cid}")]
-    // public async Task<ActionResult> Update(string Cid, Category updatedCat) {
-    //     bool updated = await catService.updateCat(Cid, updatedCat);
-    //     if (!updated) {
-    //         // this assumes that a failed update is always caused by the object 
-    //         // not being found. This needs to be changed if the cause may be different
-    //         return NotFound();
-    //     } 
-    //     return NoContent();
-    // }
+    [HttpPut("{cid}")]
+    public async Task<ActionResult> Update(string Cid, Category updatedCat)
+    {
+        bool updated = await catService.updateCat(Cid, updatedCat);
+        if (!updated)
+        {
+            // this assumes that a failed update is always caused by the object 
+            // not being found. This needs to be changed if the cause may be different
+            return NotFound();
+        }
+        return NoContent();
+    }
 
-    // [HttpDelete("{cid}")]
-    // public async Task<ActionResult> Delete(string Cid) {
-    //     var cat = await catService.getCat(Cid);
-    //     if (cat is null) {
-    //         return NotFound();
-    //     }
-    //     await catService.deleteCat(cat.cid);
-    //     return NoContent();
-    // }
+    [HttpDelete("{cid}")]
+    public async Task<ActionResult> Delete(string Cid)
+    {
+        var cat = await catService.getCat(Cid);
+        if (cat is null)
+        {
+            return NotFound();
+        }
+        await catService.deleteCat(cat.cid);
+        return NoContent();
+    }
 }

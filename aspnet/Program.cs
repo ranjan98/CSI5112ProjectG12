@@ -19,11 +19,11 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddTransient<ProdService>();
-builder.Services.AddTransient<MerchantService>();
-builder.Services.AddTransient<CustomerService>();
-builder.Services.AddTransient<CatService>();
-builder.Services.AddTransient<UserService>();
+builder.Services.AddSingleton<ProdService>();
+// builder.Services.AddSingleton<MerchantService>();
+// builder.Services.AddSingleton<CustomerService>();
+builder.Services.AddSingleton<CatService>();
+builder.Services.AddSingleton<UserService>();
 
 var app = builder.Build();
 

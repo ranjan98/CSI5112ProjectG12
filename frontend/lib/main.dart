@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:frontend/providers/orders.dart';
 import 'package:frontend/screens/authentication/forgotpassword/emailsend.dart';
@@ -18,7 +20,17 @@ import 'providers/products.dart';
 import 'screens/authentication/signin/signin.dart';
 import 'screens/home/home.dart';
 
+class MyHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext? context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+  }
+}
+
 void main() {
+  HttpOverrides.global = MyHttpOverrides();
   runApp(const MyApp());
 }
 
