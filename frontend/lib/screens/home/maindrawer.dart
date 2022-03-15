@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../providers/user_provider.dart';
 
 class MainDrawer extends StatelessWidget {
   // function to render out the items in the drawer
@@ -16,21 +19,22 @@ class MainDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final userProvider = Provider.of<UserProvider>(context);
     return Drawer(
       child: ListView(
         children: <Widget>[
           // show the basic details for the user via the header
-          const UserAccountsDrawerHeader(
-            decoration: BoxDecoration(color: Colors.orange),
-            accountName: Text('Ranjan Goyal'),
-            accountEmail: Text('rgoya021@uottawa.ca'),
+          UserAccountsDrawerHeader(
+            decoration: const BoxDecoration(color: Colors.orange),
+            accountName: Text(userProvider.users[0].name.toString()),
+            accountEmail: Text(userProvider.users[0].email.toString()),
             currentAccountPicture: CircleAvatar(
               // We can either put an image here or text like initials of user
               //backgroundImage: NetworkImage(''),
               backgroundColor: Colors.purple,
               child: Text(
-                'RG',
-                style: TextStyle(fontSize: 20),
+                userProvider.users[0].name.characters.first.toUpperCase(),
+                style: const TextStyle(fontSize: 20),
               ),
             ),
           ),
@@ -65,6 +69,7 @@ class MainDrawer extends StatelessWidget {
           const Divider(),
           buildDrawerItem('Sign Out', Icons.person_outline, Colors.deepPurple,
               () {
+            userProvider.signOut();
             Navigator.popUntil(context, ModalRoute.withName('/signin'));
             Navigator.of(context).pushNamed('/signin');
           }),

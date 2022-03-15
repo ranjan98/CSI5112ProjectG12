@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../providers/user_provider.dart';
 
 class MerchantDrawer extends StatelessWidget {
   // function to render out the items in the drawer
@@ -16,21 +19,22 @@ class MerchantDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final userProvider = Provider.of<UserProvider>(context);
     return Drawer(
       child: ListView(
         children: <Widget>[
           // show the basic details for the user via the header
-          const UserAccountsDrawerHeader(
-            decoration: BoxDecoration(color: Colors.orange),
-            accountName: Text('Ranjan Goyal'),
-            accountEmail: Text('rgoya021@uottawa.ca'),
+          UserAccountsDrawerHeader(
+            decoration: const BoxDecoration(color: Colors.orange),
+            accountName: Text(userProvider.users[0].name.toString()),
+            accountEmail: Text(userProvider.users[0].email.toString()),
             currentAccountPicture: CircleAvatar(
               // We can either put an image here or text like initials of user
               //backgroundImage: NetworkImage(''),
               backgroundColor: Colors.purple,
               child: Text(
-                'RG',
-                style: TextStyle(fontSize: 20),
+                userProvider.users[0].name.characters.first.toUpperCase(),
+                style: const TextStyle(fontSize: 20),
               ),
             ),
           ),
@@ -42,14 +46,13 @@ class MerchantDrawer extends StatelessWidget {
           // adding a divider line to separate items in the drawer
           const Divider(),
           buildDrawerItem('Orders', Icons.local_shipping, Colors.cyan, () {
-            Navigator.of(context).pop();
-            Navigator.of(context).pushNamed('/orders');
+            Navigator.of(context).popAndPushNamed('/orders');
           }),
           const Divider(),
           buildDrawerItem('Categories', Icons.category_outlined, Colors.green,
               () {
-            Navigator.of(context).pop();
-            Navigator.of(context).pushNamed('/categories');
+            // Navigator.of(context).pop();
+            Navigator.of(context).popAndPushNamed('/categories');
           }),
           // We will show categories first and then products for that category
           // const Divider(),
@@ -60,14 +63,15 @@ class MerchantDrawer extends StatelessWidget {
           // }),
           const Divider(),
           buildDrawerItem('Cart', Icons.shopping_cart, Colors.deepPurple, () {
-            Navigator.of(context).pop();
-            Navigator.of(context).pushNamed('/cart');
+            // Navigator.of(context).pop();
+            Navigator.of(context).popAndPushNamed('/cart');
           }),
           const Divider(),
           buildDrawerItem('Sign Out', Icons.person_outline, Colors.deepPurple,
               () {
-            Navigator.of(context).pop();
-            Navigator.of(context).pop();
+            userProvider.signOut();
+            Navigator.popUntil(context, ModalRoute.withName('/signin'));
+            Navigator.of(context).pushNamed('/signin');
           }),
           const Divider(),
           // just pops up the drawer

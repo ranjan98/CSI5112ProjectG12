@@ -2,8 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:frontend/providers/orders.dart';
-import 'package:frontend/screens/authentication/forgotpassword/emailsend.dart';
-import 'package:frontend/screens/authentication/forgotpassword/forgotpassword.dart';
 import 'package:frontend/screens/authentication/myaccount.dart';
 import 'package:frontend/screens/authentication/signup/signup.dart';
 import 'package:frontend/screens/cart/cart.dart';
@@ -17,6 +15,7 @@ import 'package:frontend/screens/product/products_overview.dart';
 import 'package:provider/provider.dart';
 import 'providers/cart.dart';
 import 'providers/products.dart';
+import 'providers/user_provider.dart';
 import 'screens/authentication/signin/signin.dart';
 import 'screens/home/home.dart';
 
@@ -42,6 +41,9 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider.value(
+          value: UserProvider(),
+        ),
+        ChangeNotifierProvider.value(
           value: Products(),
         ),
         ChangeNotifierProvider.value(
@@ -61,8 +63,6 @@ class MyApp extends StatelessWidget {
           '/signin': (context) => const SignIn(),
           '/signup': (context) => const SignUp(),
           '/myaccount': (context) => const MyAccount(),
-          '/forgotpassword': (context) => const ForgotPassword(),
-          '/emailsent': (context) => const EmailSent(),
           '/orderplaced': (context) => const OrderPlaced(),
           '/categories': (context) => const Categories(),
           '/cart': (context) => const CartScreen(),

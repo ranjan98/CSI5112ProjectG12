@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/providers/user_provider.dart';
+import 'package:provider/provider.dart';
 
 import '../../../models/user.dart';
 import '../../../services/signin_service.dart';
@@ -29,6 +31,7 @@ class _SignInState extends State<SignIn> {
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
+    final userProvider = Provider.of<UserProvider>(context);
     return Scaffold(
       // create an app bar for displaying the the name of the application
       // on successful sign in, it will also have a drawer and cart button (action button)
@@ -174,6 +177,7 @@ class _SignInState extends State<SignIn> {
                         print("It is working: UID during sign in is : " +
                             user.uid);
                         if (user.password == password) {
+                          userProvider.loginUser(user);
                           if (user.role == "merchant") {
                             Navigator.of(context).pushNamed('/merchant-home');
                           } else {
