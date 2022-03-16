@@ -1,8 +1,6 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:frontend/providers/orders.dart';
-import 'package:frontend/screens/authentication/myaccount.dart';
 import 'package:frontend/screens/authentication/signup/signup.dart';
 import 'package:frontend/screens/cart/cart.dart';
 import 'package:frontend/screens/categories/categories.dart';
@@ -49,9 +47,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider.value(
           value: Cart(),
         ),
-        ChangeNotifierProvider.value(
-          value: Orders(),
-        ),
+        // ChangeNotifierProvider.value(
+        //   value: Orders(),
+        // ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -62,7 +60,6 @@ class MyApp extends StatelessWidget {
           '/merchant-home': (context) => const MerchantHome(),
           '/signin': (context) => const SignIn(),
           '/signup': (context) => const SignUp(),
-          '/myaccount': (context) => const MyAccount(),
           '/orderplaced': (context) => const OrderPlaced(),
           '/categories': (context) => const Categories(),
           '/cart': (context) => const CartScreen(),

@@ -12,6 +12,23 @@ class CartItem {
     required this.quantity,
     required this.price,
   });
+  factory CartItem.fromJson(Map<String, dynamic> json) {
+    return CartItem(
+        id: json['id'],
+        price: json['price'],
+        quantity: json['quantity'],
+        title: json['title']);
+  }
+  static List<CartItem> fromListJson(List<dynamic> json) {
+    List<CartItem> result = <CartItem>[];
+    for (Map<String, dynamic> d in json) {
+      result.add(CartItem.fromJson(d));
+    }
+    return result;
+  }
+
+  Map<String, dynamic> toJson() =>
+      {"id": id, "price": price, "quantity": quantity, "title": title};
 }
 
 class Cart with ChangeNotifier {

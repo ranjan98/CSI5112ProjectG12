@@ -3,14 +3,15 @@ import 'package:provider/provider.dart';
 
 import '../../providers/cart.dart';
 
-class CartItem extends StatelessWidget {
+class CartItemComponent extends StatelessWidget {
   final String id;
   final String productId;
   final double price;
   final int quantity;
   final String title;
 
-  const CartItem(this.id, this.productId, this.price, this.quantity, this.title,
+  const CartItemComponent(
+      this.id, this.productId, this.price, this.quantity, this.title,
       {Key? key})
       : super(key: key);
 

@@ -9,8 +9,8 @@ public class OrderService
     };
 
     private static List<CartItem> items = new List<CartItem>(){
-        new CartItem("1", "p1", 29.99, 2, "Tommy Red T-Shirt"),
-        new CartItem("2", "p2", 59.99, 1, "Trousers")
+        new CartItem("p1", 29.99, 2, "Tommy Red T-Shirt"),
+        new CartItem("p2", 59.99, 1, "Trousers")
     };
 
     public OrderService()

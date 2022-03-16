@@ -138,23 +138,6 @@ class _SignInState extends State<SignIn> {
               ),
             ),
             const SizedBox(height: 10),
-            Center(
-              child: SizedBox(
-                width: 320,
-                child: TextButton(
-                  key: const Key("signin"),
-                  onPressed: () {
-                    //forgot password screen
-                    Navigator.of(context).pop();
-                    Navigator.of(context).pushNamed('/forgotpassword');
-                  },
-                  child: const Text(
-                    'Forgot Password?',
-                    textAlign: TextAlign.end,
-                  ),
-                ),
-              ),
-            ),
             Row(
               children: <Widget>[
                 FloatingActionButton.extended(
