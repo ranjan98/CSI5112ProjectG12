@@ -35,4 +35,4 @@ jobs:
         docker build -t uomart-csi5112project .
         docker tag uomart-csi5112project:latest 454831464910.dkr.ecr.us-east-1.amazonaws.com/uomart-csi5112project:latest
         docker push 454831464910.dkr.ecr.us-east-1.amazonaws.com/uomart-csi5112project:latest
-        aws ecs update-service --cluster $ECS_CLUSTER --service $ECS_SERVICE --force-new-deployment --region $AWS_REGION
+        ## aws ecs update-service --cluster $ECS_CLUSTER --service $ECS_SERVICE --force-new-deployment --region $AWS_REGION
