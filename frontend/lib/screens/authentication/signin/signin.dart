@@ -157,6 +157,7 @@ class _SignInState extends State<SignIn> {
                         // ignore: avoid_print
                         var user = result
                             .firstWhere((element) => element.email == email);
+                        // ignore: avoid_print
                         print("It is working: UID during sign in is : " +
                             user.uid);
                         if (user.password == password) {

@@ -60,6 +60,7 @@ class CartScreen extends StatelessWidget {
                             total,
                             order,
                             datetime.toString());
+                        // ignore: avoid_print
                         print(result.invoiceNumber);
                         // Provider.of<Orders>(context, listen: false).addOrder(
                         //   cart.items.values.toList(),

@@ -1,9 +1,12 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:frontend/services/products_service.dart';
 import 'package:provider/provider.dart';
 import '../../models/category.dart';
+import '../../models/product.dart';
 import '../../providers/cart.dart';
-import '../../providers/products.dart';
 import '../../shared/categories_data.dart';
 import 'maindrawer.dart';
 
@@ -15,17 +18,26 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  late Future<List<Product>> futureProducts;
+
   @override
   Widget build(BuildContext context) {
+    var rng = Random();
+    var randomProdIds = [];
+    while (randomProdIds.length < 4) {
+      int randomNumber = rng.nextInt(10) + 1;
+      if (randomProdIds.contains(randomNumber)) {
+        continue;
+      }
+      randomProdIds.add(randomNumber);
+    }
     return Scaffold(
       drawer: const MainDrawer(),
       appBar: AppBar(
         title: const Text('Home'),
         elevation: 5,
         actions: [
-          //search
-          // IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
-          // shopping cart
+          // adding cart button
           IconButton(
               onPressed: () {
                 Navigator.of(context).pushNamed('/cart');
@@ -91,11 +103,9 @@ class _HomeState extends State<Home> {
               padding: const EdgeInsets.all(5),
               child: Wrap(
                 children: [
-                  // mock up products list, will be replaced with dynamic data once connected with backend
-                  buildProductItem(context, "p1"),
-                  buildProductItem(context, "p3"),
-                  buildProductItem(context, "p5"),
-                  buildProductItem(context, "p2"),
+                  // getting random products from backend for home page
+                  for (int i = 0; i < randomProdIds.length; i++)
+                    buildProductItem(context, "p" + randomProdIds[i].toString())
                 ],
               ),
             ),
@@ -103,6 +113,108 @@ class _HomeState extends State<Home> {
         ),
       ),
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    futureProducts = fetchProducts(); // fetch all the products from backend
+  }
+
+  Widget buildProductItem(BuildContext context, var id) {
+    // replacing the mock data with backend data
+    // final productsData = Provider.of<Products>(context);
+    final cart = Provider.of<Cart>(context, listen: false);
+    // final products = productsData.items;
+    // products.removeWhere((element) => element.category != id);
+    // get only 1 product for now
+    // final product = products.firstWhere((element) => element.id == id);
+    return FutureBuilder(
+        future: futureProducts,
+        builder: (context, snapshot) {
+          if (snapshot.hasData == false) {
+            return const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Center(child: CircularProgressIndicator()),
+            );
+          }
+          var product = (snapshot.data as List<Product>)
+              .firstWhere((element) => element.id == id);
+          return Padding(
+            padding: const EdgeInsets.all(5.0),
+            child: InkWell(
+              onTap: () {
+                Navigator.of(context).pushNamed(
+                  '/product-detail',
+                  arguments: product.id,
+                );
+              },
+              child: Card(
+                elevation: 0,
+                // using a stack for positioned widgets
+                child: Stack(
+                  children: <Widget>[
+                    ClipRRect(
+                        borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(5),
+                            topRight: Radius.circular(5)),
+                        child: Image.network(product.imageUrl,
+                            fit: BoxFit.fill, width: 200, height: 150)),
+                    // position the text on the image
+
+                    Positioned(
+                      right: 0,
+                      top: 0,
+                      child: TextButton(
+                          child: const Icon(Icons.add_shopping_cart),
+                          onPressed: () {
+                            cart.addItem(product.id.toString(),
+                                double.parse(product.price), product.name);
+                            final snackBar = SnackBar(
+                              content: const Text(
+                                'Added item to cart!',
+                              ),
+                              duration: const Duration(seconds: 2),
+                              action: SnackBarAction(
+                                label: 'Undo',
+                                onPressed: () {
+                                  cart.removeSingleItem(product.id.toString());
+                                },
+                              ),
+                            );
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(snackBar);
+                          }),
+                    ),
+                    Positioned(
+                      left: 0,
+                      bottom: 0,
+                      width: 150,
+                      child: Text(
+                        product.name,
+                        style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            backgroundColor: Colors.black54),
+                      ),
+                    ),
+                    Positioned(
+                      right: 0,
+                      bottom: 0,
+                      child: Text(
+                        "\$" + double.parse(product.price).toStringAsFixed(0),
+                        style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            backgroundColor: Colors.black54),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          );
+        });
   }
 }
 
@@ -158,74 +270,6 @@ Widget buildCategoryItem(BuildContext context, Category category) {
               width: 200,
               child: Text(
                 category.cName,
-                style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                    backgroundColor: Colors.black54),
-              ),
-            ),
-          ],
-        ),
-      ),
-    ),
-  );
-}
-
-Widget buildProductItem(BuildContext context, var id) {
-  final productsData = Provider.of<Products>(context);
-  final cart = Provider.of<Cart>(context, listen: false);
-  final products = productsData.items;
-  // products.removeWhere((element) => element.category != id);
-  // get only 1 product for now
-  final product = products.firstWhere((element) => element.id == id);
-  return Padding(
-    padding: const EdgeInsets.all(5.0),
-    child: InkWell(
-      onTap: () {
-        Navigator.of(context).pushNamed(
-          '/product-detail',
-          arguments: product.id,
-        );
-      },
-      child: Card(
-        elevation: 0,
-        // using a stack for positioned widgets
-        child: Stack(
-          children: <Widget>[
-            ClipRRect(
-                borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(5), topRight: Radius.circular(5)),
-                child: Image.network(product.imageUrl,
-                    fit: BoxFit.fill, width: 200, height: 150)),
-            // position the text on the image
-
-            Positioned(
-              right: 0,
-              top: 0,
-              child: TextButton(
-                  child: const Icon(Icons.add_shopping_cart),
-                  onPressed: () {
-                    cart.addItem(product.id.toString(),
-                        product.price.toDouble(), product.title);
-                  }),
-            ),
-            Positioned(
-              left: 0,
-              bottom: 0,
-              width: 150,
-              child: Text(
-                product.title,
-                style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                    backgroundColor: Colors.black54),
-              ),
-            ),
-            Positioned(
-              right: 0,
-              bottom: 0,
-              child: Text(
-                "\$" + product.price.toInt().toString(),
                 style: const TextStyle(
                     color: Colors.white,
                     fontSize: 20,

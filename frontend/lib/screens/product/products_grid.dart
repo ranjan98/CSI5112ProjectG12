@@ -81,21 +81,19 @@ class _ProductsGridState extends State<ProductsGrid> {
             onPressed: () {
               cart.addItem(product.id.toString(), double.parse(product.price),
                   product.name);
-              Scaffold.of(context).hideCurrentSnackBar();
-              Scaffold.of(context).showSnackBar(
-                SnackBar(
-                  content: const Text(
-                    'Added item to cart!',
-                  ),
-                  duration: const Duration(seconds: 2),
-                  action: SnackBarAction(
-                    label: 'UNDO',
-                    onPressed: () {
-                      cart.removeSingleItem(product.id.toString());
-                    },
-                  ),
+              final snackBar = SnackBar(
+                content: const Text(
+                  'Added item to cart!',
+                ),
+                duration: const Duration(seconds: 2),
+                action: SnackBarAction(
+                  label: 'Undo',
+                  onPressed: () {
+                    cart.removeSingleItem(product.id.toString());
+                  },
                 ),
               );
+              ScaffoldMessenger.of(context).showSnackBar(snackBar);
             },
           ),
         ),
