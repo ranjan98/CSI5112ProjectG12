@@ -39,11 +39,17 @@ class CartScreen extends StatelessWidget {
                   TextButton(
                     child: const Text('Order Now'),
                     onPressed: () {
-                      Provider.of<Orders>(context, listen: false).addOrder(
-                        cart.items.values.toList(),
-                        cart.totalAmount,
-                      );
-                      cart.clear();
+                      if (cart.totalAmount > 0) {
+                        var order = cart.items.values.toList();
+                        var total = cart.totalAmount;
+                        Provider.of<Orders>(context, listen: false).addOrder(
+                          cart.items.values.toList(),
+                          cart.totalAmount,
+                        );
+                        cart.clear();
+                        Navigator.of(context).popAndPushNamed('/order-placed',
+                            arguments: [order, total]);
+                      }
                     },
                   )
                 ],

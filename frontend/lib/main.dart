@@ -68,6 +68,7 @@ class MyApp extends StatelessWidget {
           '/cart': (context) => const CartScreen(),
           '/products-overview': (context) => const ProductsOverviewScreen(),
           '/orders': (context) => const OrdersScreen(),
+          '/order-placed': (context) => const OrderPlaced(),
           '/forum': (context) => const Forum(),
           '/product-detail': (context) => const ProductDetailScreen()
         },
