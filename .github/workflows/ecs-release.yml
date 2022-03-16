@@ -4,6 +4,8 @@ on:
   workflow_dispatch:
   release: 
     types: created
+  push:
+    branches: [ main ]
 
 env:
   AWS_REGION: us-east-1
