@@ -31,8 +31,8 @@ jobs:
         
     - name: Docker build
       run: |
-        aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin 454831464910.dkr.ecr.us-east-1.amazonaws.com
-        docker build -t uomart-csi5112project .
-        docker tag uomart-csi5112project:latest 454831464910.dkr.ecr.us-east-1.amazonaws.com/uomart-csi5112project:latest
-        docker push 454831464910.dkr.ecr.us-east-1.amazonaws.com/uomart-csi5112project:latest
+        aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 454831464910.dkr.ecr.us-east-1.amazonaws.com
+        docker build -t csi5112project .
+        docker tag csi5112project:latest 454831464910.dkr.ecr.us-east-1.amazonaws.com/csi5112project:latest
+        docker push 454831464910.dkr.ecr.us-east-1.amazonaws.com/csi5112project:latest
         aws ecs update-service --cluster $ECS_CLUSTER --service $ECS_SERVICE --force-new-deployment --region $AWS_REGION
