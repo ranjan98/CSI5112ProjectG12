@@ -10,6 +10,7 @@ import 'package:frontend/screens/orders/orderplaced.dart';
 import 'package:frontend/screens/orders/orders_screen.dart';
 import 'package:frontend/screens/product/product_detail_screen.dart';
 import 'package:frontend/screens/product/products_overview.dart';
+import 'package:frontend/screens/termsandconditions/termsconditions.dart';
 import 'package:provider/provider.dart';
 import 'providers/cart.dart';
 import 'providers/products.dart';
@@ -60,6 +61,7 @@ class MyApp extends StatelessWidget {
           '/merchant-home': (context) => const MerchantHome(),
           '/signin': (context) => const SignIn(),
           '/signup': (context) => const SignUp(),
+          '/terms-and-conditions': (context) => const TermsConditions(),
           '/orderplaced': (context) => const OrderPlaced(),
           '/categories': (context) => const Categories(),
           '/cart': (context) => const CartScreen(),

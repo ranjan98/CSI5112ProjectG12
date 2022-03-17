@@ -2,8 +2,6 @@
 
 import 'package:flutter/material.dart';
 
-import '../authentication/signup/signup.dart';
-
 class TermsConditions extends StatefulWidget {
   const TermsConditions({Key? key}) : super(key: key);
 

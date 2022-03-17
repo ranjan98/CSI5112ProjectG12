@@ -5,7 +5,8 @@ import 'package:http/http.dart' as http;
 import '../models/category.dart';
 
 Future<List<Category>> fetchCategories() async {
-  final response = await http.get(Uri.parse('https://localhost:7067/api/Cat/'));
+  final response =
+      await http.get(Uri.parse('https://service.uomart.net/api/Cat/'));
 
   if (response.statusCode == 200) {
     // process the categories received in the response body

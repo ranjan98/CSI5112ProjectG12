@@ -1,8 +1,5 @@
-// ignore_for_file: unnecessary_const
 import 'package:flutter/material.dart';
-
 import '../../../services/signup_service.dart';
-import '../../termsandconditions/termsconditions.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -183,8 +180,7 @@ class _SignUpState extends State<SignUp> {
                     decoration: InputDecoration(
                         border: const OutlineInputBorder(
                           borderSide: BorderSide(width: 2),
-                          borderRadius: const BorderRadius.all(
-                              const Radius.circular(20.0)),
+                          borderRadius: BorderRadius.all(Radius.circular(20.0)),
                         ),
                         suffixIcon: InkWell(
                           onTap: () {
@@ -224,10 +220,9 @@ class _SignUpState extends State<SignUp> {
                       role = value.toString().toLowerCase();
                     },
                     decoration: const InputDecoration(
-                        border: const OutlineInputBorder(
+                        border: OutlineInputBorder(
                           borderSide: BorderSide(width: 2),
-                          borderRadius: const BorderRadius.all(
-                              const Radius.circular(20.0)),
+                          borderRadius: BorderRadius.all(Radius.circular(20.0)),
                         ),
                         suffixIcon: Icon(Icons.person_outline),
                         hintText: 'Choose Account Type'),
@@ -252,10 +247,8 @@ class _SignUpState extends State<SignUp> {
                       ),
                       onPressed: () {
                         //signup screen
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const TermsConditions()));
+                        Navigator.of(context)
+                            .pushNamed('/terms-and-conditions');
                       },
                     )
                   ],

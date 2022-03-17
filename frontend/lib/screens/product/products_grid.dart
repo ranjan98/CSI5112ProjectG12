@@ -60,7 +60,7 @@ class _ProductsGridState extends State<ProductsGrid> {
           onTap: () {
             Navigator.of(context).pushNamed(
               ProductDetailScreen.routeName,
-              arguments: product.id,
+              arguments: product,
             );
           },
           child: Image.network(
@@ -76,7 +76,7 @@ class _ProductsGridState extends State<ProductsGrid> {
           ),
           trailing: IconButton(
             icon: const Icon(
-              Icons.shopping_cart,
+              Icons.add_shopping_cart_outlined,
             ),
             onPressed: () {
               cart.addItem(product.id.toString(), double.parse(product.price),
