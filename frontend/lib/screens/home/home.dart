@@ -203,7 +203,7 @@ class _HomeState extends State<Home> {
                         borderRadius: const BorderRadius.only(
                             topLeft: Radius.circular(5),
                             topRight: Radius.circular(5)),
-                        child: Image.asset(category.imgUrl,
+                        child: Image.network(category.imgUrl,
                             fit: BoxFit.fill, width: 200, height: 150)),
                     // position the text on the image
                     Positioned(

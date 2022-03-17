@@ -6,12 +6,12 @@ public class CatService
 {
     // Data placeholder
     private List<Category> cat = new List<Category>() {
-        new Category("1", "Clothing and Shoes", "assets/categories/1.png"),
-        new Category("2", "Laptops and Mobiles", "assets/categories/2.png"),
-        new Category("3", "Books and Stationary", "assets/categories/3.png"),
-        new Category("4", "Electronics and Accessories", "assets/categories/4.png"),
-        new Category("5", "Home and Kitchen", "assets/categories/5.jpg"),
-        new Category("6", "Beauty and Essentials", "assets/categories/6.png"),
+        new Category("1", "Clothing and Shoes", "https://m.media-amazon.com/images/I/410-L0vF3+L._AC_UL640_QL65_.jpg"),
+        new Category("2", "Laptops and Mobiles", "https://m.media-amazon.com/images/I/71an9eiBxpL._AC_UL640_QL65_.jpg"),
+        new Category("3", "Books and Stationary", "https://m.media-amazon.com/images/I/61-Pt+1b+xL._AC_UL640_QL65_.jpg"),
+        new Category("4", "Electronics and Accessories", "https://m.media-amazon.com/images/I/71Hx8b6HGbL._AC_UL640_QL65_.jpg"),
+        new Category("5", "Home and Kitchen", "https://m.media-amazon.com/images/I/61wHFNgOxSL._AC_UL640_QL65_.jpg"),
+        new Category("6", "Beauty and Essentials", "https://m.media-amazon.com/images/I/81qII9PojkL._AC_UL640_QL65_.jpg"),
 
     };
 

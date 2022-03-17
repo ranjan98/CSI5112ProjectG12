@@ -79,7 +79,7 @@ class _CategoriesState extends State<Categories> {
             ClipRRect(
                 borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(5), topRight: Radius.circular(5)),
-                child: Image.asset(category.imgUrl,
+                child: Image.network(category.imgUrl,
                     fit: BoxFit.fill, width: 250, height: 250)),
             // position the text on the image
             Positioned(
