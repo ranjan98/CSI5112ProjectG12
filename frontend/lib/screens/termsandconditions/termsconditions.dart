@@ -17,7 +17,7 @@ class _TermsConditionsState extends State<TermsConditions> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Ameyroo',
+        title: const Text('UOMart',
             style: TextStyle(
               fontSize: 22,
               fontWeight: FontWeight.bold,
@@ -55,8 +55,7 @@ class _TermsConditionsState extends State<TermsConditions> {
               FloatingActionButton.extended(
                 label: const Text('Return back to Signup'),
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const SignUp()));
+                  Navigator.pop(context);
                 },
               ),
             ],
