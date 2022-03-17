@@ -5,7 +5,7 @@ import '../models/product.dart';
 
 Future<List<Product>> fetchProducts() async {
   final response =
-      await http.get(Uri.parse('https://localhost:7067/api/Prod/'));
+      await http.get(Uri.parse('https://service.uomart.net/api/Prod/'));
   // print(response.body);
   if (response.statusCode == 200) {
     // process the categories received in the response body
@@ -17,7 +17,7 @@ Future<List<Product>> fetchProducts() async {
 
 Future<List<Product>> fetchProductsForOneCategory(String category) async {
   final response =
-      await http.get(Uri.parse('https://localhost:7067/api/Prod/'));
+      await http.get(Uri.parse('https://service.uomart.net/api/Prod/'));
   // print(response.body);
   if (response.statusCode == 200) {
     // process the categories received in the response body
