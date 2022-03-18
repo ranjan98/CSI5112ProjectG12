@@ -7,10 +7,10 @@ public class UserService
     private List<User> user = new List<User>() {
         new User("1", "Ranjan", "ranjan@uottawa.ca", "ranjan12345@", "customer"),
         new User("2", "Ashish", "ashish@uottawa.ca", "ashish123452", "customer"),
-        new User("3", "Harish", "harish@uottawa.ca", "harish12345@", "merchant"),
+        new User("3", "Harish", "harish@uottawa.ca", "harish12345@", "customer"),
         new User("4", "John", "john@uottawa.ca", "john12345@", "merchant"),
         new User("5", "Hannah", "hannah@uottawa.ca", "hanna12345@", "merchant"),
-        new User("6", "Peter", "peter@uottawa.ca", "peter12345@", "merchant"),
+        new User("6", "Peter", "peter@uottawa.ca", "peter12345@", "customer"),
     };
 
     public UserService()

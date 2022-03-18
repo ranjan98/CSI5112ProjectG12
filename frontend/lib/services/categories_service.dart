@@ -64,3 +64,14 @@ Future<Category> editCategory(String cid, String name, String imageUrl) async {
     throw Exception('Failed to create product. Please try later');
   }
 }
+
+Future<Category> deleteCategory(Category category) async {
+  final response = await http.delete(Uri.parse(
+    'https://localhost:7067/api/Cat/' + category.cid,
+  ));
+  if (response.statusCode == 204) {
+    return category;
+  } else {
+    throw Exception('Failed to delete category. Please try later');
+  }
+}

@@ -58,7 +58,7 @@ class MerchantDrawer extends StatelessWidget {
           buildDrawerItem(
               'Customers Specific Orders', Icons.local_shipping, Colors.cyan,
               () {
-            Navigator.of(context).popAndPushNamed('/customers-orders');
+            Navigator.of(context).popAndPushNamed('/customers-screen');
           }),
           const Divider(),
           buildDrawerItem('Categories', Icons.category_outlined, Colors.green,

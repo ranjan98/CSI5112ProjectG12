@@ -39,9 +39,14 @@ class _OrdersScreenState extends State<OrdersScreen> {
               child: Center(child: CircularProgressIndicator()),
             );
           }
-          if (userProvider.users.first.role == "customer") {
-            (snapshot.data as List<Order>).removeWhere(
-                (element) => element.userId != userProvider.users.first.uid);
+          try {
+            if (userProvider.users.first.role == "customer") {
+              (snapshot.data as List<Order>).removeWhere(
+                  (element) => element.userId != userProvider.users.first.uid);
+            }
+          } catch (e) {
+            // ignore: avoid_print
+            print(e.toString());
           }
           return ListView.builder(
               itemCount: (snapshot.data as List<Order>).length,
@@ -60,7 +65,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
       child: Column(
         children: <Widget>[
           ListTile(
-            title: Text('\$${order.amount}'),
+            title: Text('\$${order.amount.toStringAsFixed(2)}'),
             subtitle: Text(order.datetime.toString()
                 // DateFormat('dd/MM/yyyy hh:mm').format(widget.order.dateTime),
                 ),

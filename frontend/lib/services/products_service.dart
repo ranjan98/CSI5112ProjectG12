@@ -93,6 +93,17 @@ Future<Product> editProduct(String id, String name, String merchantid,
       'imageurl': imageUrl
     });
   } else {
-    throw Exception('Failed to create product. Please try later');
+    throw Exception('Failed to modify product. Please try later');
+  }
+}
+
+Future<Product> deleteProduct(Product product) async {
+  final response = await http.delete(Uri.parse(
+    'https://localhost:7067/api/Prod/' + product.id,
+  ));
+  if (response.statusCode == 204) {
+    return product;
+  } else {
+    throw Exception('Failed to delete product. Please try later');
   }
 }

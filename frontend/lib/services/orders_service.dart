@@ -52,7 +52,7 @@ Future<Order> createOrder(String invoiceNumber, String userid, double amount,
 
 Future<List<Order>> fetchOrders() async {
   final response =
-      await http.get(Uri.parse('https://service.uomart.net/api/Orders/'));
+      await http.get(Uri.parse('https://localhost:7067/api/Orders/'));
 
   if (response.statusCode == 200) {
     return Order.fromListJson(jsonDecode(response.body));
@@ -63,7 +63,7 @@ Future<List<Order>> fetchOrders() async {
 
 Future<Order> fetchOrder(String id) async {
   final response =
-      await http.get(Uri.parse('https://service.uomart.net/api/Orders/' + id));
+      await http.get(Uri.parse('https://localhost:7067/api/Orders/' + id));
 
   if (response.statusCode == 200) {
     return Order.fromJson(jsonDecode(response.body));

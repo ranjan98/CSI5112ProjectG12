@@ -7,6 +7,8 @@ import 'package:frontend/screens/categories/categories.dart';
 import 'package:frontend/screens/discussion/forum.dart';
 import 'package:frontend/screens/merchant/add_category.dart';
 import 'package:frontend/screens/merchant/add_product.dart';
+import 'package:frontend/screens/merchant/customer_specific_orders.dart';
+import 'package:frontend/screens/merchant/customers_screen.dart';
 import 'package:frontend/screens/merchant/edit_category.dart';
 import 'package:frontend/screens/merchant/edit_product.dart';
 import 'package:frontend/screens/merchant/merchant_categories.dart';
@@ -78,10 +80,13 @@ class MyApp extends StatelessWidget {
           '/product-detail': (context) => const ProductDetailScreen(),
           '/merchant-categories': (context) => const MerchantCategories(),
           '/merchant-products': (context) => const MerchantProductsScreen(),
+          '/customers-screen': (context) => const CustomersScreen(),
           '/add-category': (context) => const AddCategory(),
           '/add-product': (context) => const AddProduct(),
           '/edit-category': (context) => const EditCategory(),
-          '/edit-product': (context) => const EditProduct()
+          '/edit-product': (context) => const EditProduct(),
+          '/customer-specific-orders': (context) =>
+              const CustomerSpecificOrdersScreen()
         },
         theme: ThemeData(
           primarySwatch: Colors.orange,

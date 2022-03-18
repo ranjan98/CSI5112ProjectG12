@@ -80,7 +80,12 @@ class _MerchantProductsGridState extends State<MerchantProductsGrid> {
             ),
             onPressed: () {
               Navigator.of(context)
-                  .pushNamed('/edit-product', arguments: product);
+                  .pushNamed('/edit-product', arguments: product)
+                  .then((value) {
+                setState(() {
+                  futureProducts = fetchProductsForOneCategory(widget.id);
+                });
+              });
             },
           ),
         ),

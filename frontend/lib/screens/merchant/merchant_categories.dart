@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/models/category.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 import '../../../services/categories_service.dart';
 
 class MerchantCategories extends StatefulWidget {
@@ -19,7 +20,11 @@ class _MerchantCategoriesState extends State<MerchantCategories> {
       // drawer: const MainDrawer(),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-          Navigator.of(context).pushNamed('/add-category');
+          Navigator.of(context).pushNamed('/add-category').then((value) {
+            setState(() {
+              futureCategories = fetchCategories();
+            });
+          });
         },
         label: const Text('Add Category'),
         icon: const Icon(
@@ -30,17 +35,17 @@ class _MerchantCategoriesState extends State<MerchantCategories> {
       appBar: AppBar(
         title: const Text('Categories'),
         elevation: 5,
-        actions: [
-          // shopping cart
-
-          IconButton(
-              onPressed: () {
-                setState(() {
-                  futureCategories = fetchCategories();
-                });
-              },
-              icon: const Icon(Icons.refresh)),
-        ],
+        // no actions buttons needed for merchant
+        // actions: [
+        //   // shopping cart
+        //   IconButton(
+        //       onPressed: () {
+        //         setState(() {
+        //           futureCategories = fetchCategories();
+        //         });
+        //       },
+        //       icon: const Icon(Icons.refresh)),
+        // ],
       ),
       body: SafeArea(
           child: FutureBuilder(
@@ -123,7 +128,62 @@ class _MerchantCategoriesState extends State<MerchantCategories> {
                   child: const Icon(Icons.edit),
                   onPressed: () {
                     Navigator.of(context)
-                        .pushNamed('/edit-category', arguments: category);
+                        .pushNamed('/edit-category', arguments: category)
+                        .then((value) {
+                      setState(() {
+                        futureCategories = fetchCategories();
+                      });
+                    });
+                  }),
+            ),
+            Positioned(
+              left: 0,
+              top: 0,
+              child: TextButton(
+                  child: const Icon(Icons.delete_outline),
+                  onPressed: () {
+                    // delete the category
+                    Alert(
+                      context: context,
+                      type: AlertType.warning,
+                      title: "Delete Category",
+                      desc: "Are you sure?",
+                      buttons: [
+                        DialogButton(
+                          child: const Text(
+                            "Yes",
+                            style: TextStyle(color: Colors.white, fontSize: 20),
+                          ),
+                          onPressed: () async {
+                            Navigator.of(context).pop();
+                            // Navigator.of(context).pop();
+                            var result = await deleteCategory(category);
+                            // ignore: unnecessary_null_comparison
+                            if (result == null) {
+                              // ignore: avoid_print
+                              print("unable to delete category");
+                            } else {
+                              // ignore: avoid_print
+                              print("Category deleted: PID is : " + result.cid);
+                              setState(() {
+                                futureCategories = fetchCategories();
+                              });
+                            }
+                          },
+                          width: 120,
+                        ),
+                        DialogButton(
+                          child: const Text(
+                            "No",
+                            style: TextStyle(color: Colors.white, fontSize: 20),
+                          ),
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          width: 120,
+                        )
+                      ],
+                    ).show();
                   }),
             ),
           ],
