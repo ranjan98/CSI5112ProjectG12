@@ -32,5 +32,6 @@ Frontend - Sign In and Signup Screens\
 Testing - Integration Testing
 
 ### Harish Shanmugam
-Backend - Categories Data model and service
+UI Designs\
+Backend - Data models and services - Categories\
 Cloud Deployment - Frontend on S3
