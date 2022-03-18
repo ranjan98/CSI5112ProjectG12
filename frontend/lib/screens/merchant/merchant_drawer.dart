@@ -51,27 +51,26 @@ class MerchantDrawer extends StatelessWidget {
           }),
           // adding a divider line to separate items in the drawer
           const Divider(),
-          buildDrawerItem('Orders', Icons.local_shipping, Colors.cyan, () {
+          buildDrawerItem('All Orders', Icons.local_shipping, Colors.cyan, () {
             Navigator.of(context).popAndPushNamed('/orders');
+          }),
+          const Divider(),
+          buildDrawerItem(
+              'Customers Specific Orders', Icons.local_shipping, Colors.cyan,
+              () {
+            Navigator.of(context).popAndPushNamed('/customers-orders');
           }),
           const Divider(),
           buildDrawerItem('Categories', Icons.category_outlined, Colors.green,
               () {
-            // Navigator.of(context).pop();
-            Navigator.of(context).popAndPushNamed('/categories');
+            Navigator.of(context).popAndPushNamed('/merchant-categories');
           }),
-          // We will show categories first and then products for that category
+          // No Cart option for Merchant
           // const Divider(),
-          // buildDrawerItem('Products', Icons.category_outlined, Colors.green,
-          //     () {
-          //   Navigator.of(context).pop();
-          //   Navigator.of(context).pushNamed('/products-overview');
+          // buildDrawerItem('Cart', Icons.shopping_cart, Colors.deepPurple, () {
+          //   // Navigator.of(context).pop();
+          //   Navigator.of(context).popAndPushNamed('/cart');
           // }),
-          const Divider(),
-          buildDrawerItem('Cart', Icons.shopping_cart, Colors.deepPurple, () {
-            // Navigator.of(context).pop();
-            Navigator.of(context).popAndPushNamed('/cart');
-          }),
           const Divider(),
           buildDrawerItem('Sign Out', Icons.person_outline, Colors.deepPurple,
               () {

@@ -51,7 +51,7 @@ class MainDrawer extends StatelessWidget {
           }),
           // adding a divider line to separate items in the drawer
           const Divider(),
-          buildDrawerItem('Orders', Icons.local_shipping, Colors.cyan, () {
+          buildDrawerItem('My Orders', Icons.local_shipping, Colors.cyan, () {
             Navigator.of(context).popAndPushNamed('/orders');
           }),
           const Divider(),

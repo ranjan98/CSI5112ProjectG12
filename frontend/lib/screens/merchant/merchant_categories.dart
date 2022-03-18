@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:frontend/models/category.dart';
 import '../../../services/categories_service.dart';
 
-class Categories extends StatefulWidget {
-  const Categories({Key? key}) : super(key: key);
+class MerchantCategories extends StatefulWidget {
+  const MerchantCategories({Key? key}) : super(key: key);
 
   @override
-  State<Categories> createState() => _CategoriesState();
+  State<MerchantCategories> createState() => _MerchantCategoriesState();
 }
 
-class _CategoriesState extends State<Categories> {
+class _MerchantCategoriesState extends State<MerchantCategories> {
   late Future<List<Category>> futureCategories;
 
   @override
@@ -17,16 +17,29 @@ class _CategoriesState extends State<Categories> {
     return Scaffold(
       // removing drawer from the screen
       // drawer: const MainDrawer(),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          Navigator.of(context).pushNamed('/add-category');
+        },
+        label: const Text('Add Category'),
+        icon: const Icon(
+          Icons.add_circle_outline,
+          color: Colors.black,
+        ),
+      ),
       appBar: AppBar(
         title: const Text('Categories'),
         elevation: 5,
         actions: [
           // shopping cart
+
           IconButton(
               onPressed: () {
-                Navigator.of(context).pushNamed('/cart');
+                setState(() {
+                  futureCategories = fetchCategories();
+                });
               },
-              icon: const Icon(Icons.shopping_cart))
+              icon: const Icon(Icons.refresh)),
         ],
       ),
       body: SafeArea(
@@ -62,7 +75,7 @@ class _CategoriesState extends State<Categories> {
     return InkWell(
       onTap: () {
         Navigator.of(context).pushNamed(
-          '/products-overview',
+          '/merchant-products',
           arguments: {
             'id': category.cid,
             'title': category.cName,
@@ -102,6 +115,16 @@ class _CategoriesState extends State<Categories> {
                   ),
                 ),
               ),
+            ),
+            Positioned(
+              right: 0,
+              top: 0,
+              child: TextButton(
+                  child: const Icon(Icons.edit),
+                  onPressed: () {
+                    Navigator.of(context)
+                        .pushNamed('/edit-category', arguments: category);
+                  }),
             ),
           ],
         ),

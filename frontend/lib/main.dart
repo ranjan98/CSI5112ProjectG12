@@ -5,7 +5,13 @@ import 'package:frontend/screens/authentication/signup/signup.dart';
 import 'package:frontend/screens/cart/cart.dart';
 import 'package:frontend/screens/categories/categories.dart';
 import 'package:frontend/screens/discussion/forum.dart';
+import 'package:frontend/screens/merchant/add_category.dart';
+import 'package:frontend/screens/merchant/add_product.dart';
+import 'package:frontend/screens/merchant/edit_category.dart';
+import 'package:frontend/screens/merchant/edit_product.dart';
+import 'package:frontend/screens/merchant/merchant_categories.dart';
 import 'package:frontend/screens/merchant/merchant_home.dart';
+import 'package:frontend/screens/merchant/merchant_products_screen.dart';
 import 'package:frontend/screens/orders/orderplaced.dart';
 import 'package:frontend/screens/orders/orders_screen.dart';
 import 'package:frontend/screens/product/product_detail_screen.dart';
@@ -69,7 +75,13 @@ class MyApp extends StatelessWidget {
           '/orders': (context) => const OrdersScreen(),
           '/order-placed': (context) => const OrderPlaced(),
           '/forum': (context) => const Forum(),
-          '/product-detail': (context) => const ProductDetailScreen()
+          '/product-detail': (context) => const ProductDetailScreen(),
+          '/merchant-categories': (context) => const MerchantCategories(),
+          '/merchant-products': (context) => const MerchantProductsScreen(),
+          '/add-category': (context) => const AddCategory(),
+          '/add-product': (context) => const AddProduct(),
+          '/edit-category': (context) => const EditCategory(),
+          '/edit-product': (context) => const EditProduct()
         },
         theme: ThemeData(
           primarySwatch: Colors.orange,
