@@ -11,7 +11,7 @@ Ranjan Goyal\
 Ashish V Muttumana\
 Harish Shanmugam\
 Hari Kishan\
-John Jegede\
+John Jegede
 
 ## Deployment
 Docker Repository - uomart/csi5112project \
