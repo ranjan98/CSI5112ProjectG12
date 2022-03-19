@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:frontend/screens/authentication/signup/signup.dart';
 import 'package:frontend/screens/cart/cart.dart';
 import 'package:frontend/screens/categories/categories.dart';
-import 'package:frontend/screens/discussion/forum.dart';
+import 'package:frontend/screens/discussion/add_question.dart';
+import 'package:frontend/screens/discussion/answers_screen.dart';
+import 'package:frontend/screens/discussion/questions_screen.dart';
 import 'package:frontend/screens/merchant/add_category.dart';
 import 'package:frontend/screens/merchant/add_product.dart';
 import 'package:frontend/screens/merchant/customer_specific_orders.dart';
@@ -76,7 +78,6 @@ class MyApp extends StatelessWidget {
           '/products-overview': (context) => const ProductsOverviewScreen(),
           '/orders': (context) => const OrdersScreen(),
           '/order-placed': (context) => const OrderPlaced(),
-          '/forum': (context) => const Forum(),
           '/product-detail': (context) => const ProductDetailScreen(),
           '/merchant-categories': (context) => const MerchantCategories(),
           '/merchant-products': (context) => const MerchantProductsScreen(),
@@ -86,7 +87,10 @@ class MyApp extends StatelessWidget {
           '/edit-category': (context) => const EditCategory(),
           '/edit-product': (context) => const EditProduct(),
           '/customer-specific-orders': (context) =>
-              const CustomerSpecificOrdersScreen()
+              const CustomerSpecificOrdersScreen(),
+          '/questions': (context) => const QuestionsScreen(),
+          '/answers': (context) => const AnswersScreen(),
+          '/add-question': (context) => const AddQuestion()
         },
         theme: ThemeData(
           primarySwatch: Colors.orange,

@@ -96,7 +96,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
             ),
             TextButton(
               onPressed: () {
-                Navigator.of(context).pushNamed('/forum');
+                Navigator.of(context).pushNamed('/questions');
               },
               child: const Text('Go to Discussion'),
             ),

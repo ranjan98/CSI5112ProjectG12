@@ -20,11 +20,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<ProdService>();
-// builder.Services.AddSingleton<MerchantService>();
-// builder.Services.AddSingleton<CustomerService>();
 builder.Services.AddSingleton<CatService>();
 builder.Services.AddSingleton<UserService>();
-builder.Services.AddSingleton<OrderService>();
+builder.Services.AddSingleton<QuestionsService>();
+builder.Services.AddSingleton<AnswersService>();
 
 var app = builder.Build();
 
