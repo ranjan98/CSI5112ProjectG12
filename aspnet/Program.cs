@@ -24,6 +24,7 @@ builder.Services.AddSingleton<CatService>();
 builder.Services.AddSingleton<UserService>();
 builder.Services.AddSingleton<QuestionsService>();
 builder.Services.AddSingleton<AnswersService>();
+builder.Services.AddSingleton<OrderService>();
 
 var app = builder.Build();
 
