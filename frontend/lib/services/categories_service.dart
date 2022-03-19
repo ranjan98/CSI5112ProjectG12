@@ -5,7 +5,8 @@ import 'package:http/http.dart' as http;
 import '../models/category.dart';
 
 Future<List<Category>> fetchCategories() async {
-  final response = await http.get(Uri.parse('https://localhost:7067/api/Cat/'));
+  final response =
+      await http.get(Uri.parse('https://service.uomart.net/api/Cat/'));
 
   if (response.statusCode == 200) {
     // process the categories received in the response body
@@ -17,14 +18,14 @@ Future<List<Category>> fetchCategories() async {
 
 Future<Category> addCategory(String name, String imageUrl) async {
   final responseGet =
-      await http.get(Uri.parse('https://localhost:7067/api/Cat/'));
+      await http.get(Uri.parse('https://service.uomart.net/api/Cat/'));
   var total = 0;
   if (responseGet.statusCode == 200) {
     var categories = Category.fromListJson(jsonDecode(responseGet.body));
     total = categories.length;
     final response = await http.post(
       Uri.parse(
-        'https://localhost:7067/api/Cat/',
+        'https://service.uomart.net/api/Cat/',
       ),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
@@ -49,7 +50,7 @@ Future<Category> addCategory(String name, String imageUrl) async {
 Future<Category> editCategory(String cid, String name, String imageUrl) async {
   final response = await http.put(
     Uri.parse(
-      'https://localhost:7067/api/Cat/' + cid,
+      'https://service.uomart.net/api/Cat/' + cid,
     ),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
@@ -67,7 +68,7 @@ Future<Category> editCategory(String cid, String name, String imageUrl) async {
 
 Future<Category> deleteCategory(Category category) async {
   final response = await http.delete(Uri.parse(
-    'https://localhost:7067/api/Cat/' + category.cid,
+    'https://service.uomart.net/api/Cat/' + category.cid,
   ));
   if (response.statusCode == 204) {
     return category;

@@ -5,7 +5,7 @@ import '../models/product.dart';
 
 Future<List<Product>> fetchProducts() async {
   final response =
-      await http.get(Uri.parse('https://localhost:7067/api/Prod/'));
+      await http.get(Uri.parse('https://service.uomart.net/api/Prod/'));
   // print(response.body);
   if (response.statusCode == 200) {
     // process the categories received in the response body
@@ -17,7 +17,7 @@ Future<List<Product>> fetchProducts() async {
 
 Future<List<Product>> fetchProductsForOneCategory(String category) async {
   final response =
-      await http.get(Uri.parse('https://localhost:7067/api/Prod/'));
+      await http.get(Uri.parse('https://service.uomart.net/api/Prod/'));
   // print(response.body);
   if (response.statusCode == 200) {
     // process the categories received in the response body
@@ -30,14 +30,14 @@ Future<List<Product>> fetchProductsForOneCategory(String category) async {
 Future<Product> addProduct(String name, String merchantid, String category,
     String description, String price, String imageUrl) async {
   final responseGet =
-      await http.get(Uri.parse('https://localhost:7067/api/Prod/'));
+      await http.get(Uri.parse('https://service.uomart.net/api/Prod/'));
   var total = 0;
   if (responseGet.statusCode == 200) {
     var products = Product.fromListJson(jsonDecode(responseGet.body));
     total = products.length;
     final response = await http.post(
       Uri.parse(
-        'https://localhost:7067/api/Prod/',
+        'https://service.uomart.net/api/Prod/',
       ),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
@@ -67,7 +67,7 @@ Future<Product> editProduct(String id, String name, String merchantid,
     String category, String description, String price, String imageUrl) async {
   final response = await http.put(
     Uri.parse(
-      'https://localhost:7067/api/Prod/' + id,
+      'https://service.uomart.net/api/Prod/' + id,
     ),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
@@ -99,7 +99,7 @@ Future<Product> editProduct(String id, String name, String merchantid,
 
 Future<Product> deleteProduct(Product product) async {
   final response = await http.delete(Uri.parse(
-    'https://localhost:7067/api/Prod/' + product.id,
+    'https://service.uomart.net/api/Prod/' + product.id,
   ));
   if (response.statusCode == 204) {
     return product;

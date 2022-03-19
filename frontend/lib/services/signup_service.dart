@@ -7,14 +7,14 @@ import '../models/user.dart';
 Future<User> createUser(
     String name, String email, String password, String role) async {
   final responseGet =
-      await http.get(Uri.parse('https://localhost:7067/api/User/'));
+      await http.get(Uri.parse('https://service.uomart.net/api/User/'));
   var total = 0;
   if (responseGet.statusCode == 200) {
     var user = User.fromListJson(jsonDecode(responseGet.body));
     total = user.length;
     final response = await http.post(
       Uri.parse(
-        'https://localhost:7067/api/User/',
+        'https://service.uomart.net/api/User/',
       ),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',

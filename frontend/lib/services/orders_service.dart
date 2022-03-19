@@ -7,7 +7,7 @@ import '../providers/cart.dart';
 Future<Order> createOrder(String invoiceNumber, String userid, double amount,
     List<CartItem> items, String datetime) async {
   final responseGet =
-      await http.get(Uri.parse('https://localhost:7067/api/Orders/'));
+      await http.get(Uri.parse('https://service.uomart.net/api/Orders/'));
   var total = 0;
   if (responseGet.statusCode == 200) {
     var order = Order.fromListJson(jsonDecode(responseGet.body));
@@ -25,7 +25,7 @@ Future<Order> createOrder(String invoiceNumber, String userid, double amount,
     // post the data to backend - send http post request
     final response = await http.post(
       Uri.parse(
-        'https://localhost:7067/api/Orders/',
+        'https://service.uomart.net/api/Orders/',
       ),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
@@ -52,7 +52,7 @@ Future<Order> createOrder(String invoiceNumber, String userid, double amount,
 
 Future<List<Order>> fetchOrders() async {
   final response =
-      await http.get(Uri.parse('https://localhost:7067/api/Orders/'));
+      await http.get(Uri.parse('https://service.uomart.net/api/Orders/'));
 
   if (response.statusCode == 200) {
     return Order.fromListJson(jsonDecode(response.body));
@@ -63,7 +63,7 @@ Future<List<Order>> fetchOrders() async {
 
 Future<Order> fetchOrder(String id) async {
   final response =
-      await http.get(Uri.parse('https://localhost:7067/api/Orders/' + id));
+      await http.get(Uri.parse('https://service.uomart.net/api/Orders/' + id));
 
   if (response.statusCode == 200) {
     return Order.fromJson(jsonDecode(response.body));
