@@ -13,6 +13,12 @@ Harish Shanmugam\
 Hari Kishan\
 John Jegede
 
+[Frontend README](https://github.com/ranjan98/CSI5112ProjectG12/blob/main/frontend/README.md)
+  
+[Backend README](https://github.com/ranjan98/CSI5112ProjectG12/blob/main/aspnet/README.md)
+
+[Postman Testing README](https://github.com/ranjan98/CSI5112ProjectG12/blob/main/aspnet/testing/README.md)
+
 ## Deployment
 Docker Repository - uomart/csi5112project \
 S3 (Frontend) - http://uomart-datafiles.s3-website-us-east-1.amazonaws.com \
