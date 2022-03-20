@@ -1,16 +1,22 @@
 # frontend
 
-A new Flutter project.
+Frontend of the Project - UOMart
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+Links to Access Frontend:\
+S3 (Frontend) - http://uomart-datafiles.s3-website-us-east-1.amazonaws.com\
+CloudFront - https://d1tkoe5inqma72.cloudfront.net\
+Public Link - https://web.uomart.net/
 
-A few resources to get you started if this is your first Flutter project:
+## Login/SignIn Instructions:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+For SignIn Screen - Enter Login using Either of the Users or Sign Up (or Check all the Available Mock Users from https://service.uomart.net/api/User)\
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Customer:\
+Email: ranjan@uottawa.ca\
+Password: ranjan12345@
+
+Merchant:\
+Email: hannah@uottawa.ca\
+Password: hanna12345@

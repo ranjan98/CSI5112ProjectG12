@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace aspnet.controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/[controller]")] // this way we name the controller as Prod for Products - route will be /api/Prod
 public class ProdController : ControllerBase
 {
     private readonly ProdService prodService;
@@ -17,7 +17,7 @@ public class ProdController : ControllerBase
     [HttpGet]
     public async Task<List<Product>> Get()
     {
-        return await prodService.getProd();
+        return await prodService.getProd(); // returns the list of products
     }
 
     [HttpGet("{id}")]
@@ -28,17 +28,8 @@ public class ProdController : ControllerBase
         {
             return NotFound();
         }
-        return prod;
+        return prod; // returns product with the provided id
     }
-
-    // [HttpGet("{merchantid}")]
-    // public async Task<ActionResult<Product>> Get(string Id) {
-    //     var prod = await prodService.getmProd(Id);
-    //     if (prod is null) {
-    //         return NotFound();
-    //     }
-    //     return prod;
-    // }
 
     [HttpPost]
     public async Task<ActionResult> Post(Product newProd)
@@ -57,7 +48,7 @@ public class ProdController : ControllerBase
             // not being found. This needs to be changed if the cause may be different
             return NotFound();
         }
-        return NoContent();
+        return NoContent(); // returns 204 no content which means it was successfully modified using http put request
     }
 
     [HttpDelete("{id}")]
@@ -69,6 +60,6 @@ public class ProdController : ControllerBase
             return NotFound();
         }
         await prodService.deleteProd(prod.id);
-        return NoContent();
+        return NoContent(); // returns 204 no content which means it was successfully deleted
     }
 }

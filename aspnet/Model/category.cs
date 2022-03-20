@@ -5,8 +5,6 @@ public class Category
     public string cid { get; set; }
     public string cName { get; set; }
     public string imgUrl { get; set; }
-    // public string cmerchantid { get; set; }
-
 
     public Category(string Cid, string CName, string ImgUrl)
     {

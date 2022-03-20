@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace aspnet.controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/[controller]")] // this way we name the controller as User for Users - route will be /api/User
 public class UserController : ControllerBase
 {
     private readonly UserService userService;
@@ -17,10 +17,9 @@ public class UserController : ControllerBase
     [HttpGet]
     public async Task<List<User>> Get()
     {
-        return await userService.getUser();
+        return await userService.getUser(); // returns the list of Users
     }
 
-    // commenting this as, instead of using id, using email to get the user 
     [HttpGet("{uid}")]
     public async Task<ActionResult<User>> Get(string Uid)
     {
@@ -29,7 +28,7 @@ public class UserController : ControllerBase
         {
             return NotFound();
         }
-        return user;
+        return user;  // returns the user with the provided id
     }
 
     // commenting this for now as we are fetching the user from uid
@@ -61,7 +60,7 @@ public class UserController : ControllerBase
             // not being found. This needs to be changed if the cause may be different
             return NotFound();
         }
-        return NoContent();
+        return NoContent(); // returns 204 no content which means it was successfully modified using http put request
     }
 
     [HttpDelete("{uid}")]
@@ -73,6 +72,6 @@ public class UserController : ControllerBase
             return NotFound();
         }
         await userService.deleteUser(user.uid);
-        return NoContent();
+        return NoContent(); // returns 204 no content which means it was successfully deleted
     }
 }

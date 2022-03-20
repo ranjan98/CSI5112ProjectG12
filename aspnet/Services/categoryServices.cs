@@ -34,12 +34,6 @@ public class CatService
         return cat.Find(x => x.cid == cid);
     }
 
-
-    // public async Task<Category> getmCat(string mid)
-    // {
-    //     return cat.Find(x => x.cmerchantid == mid);
-    // }//getting all categories of merchant
-
     public async Task<bool> updateCat(string Cid, Category updatedCat)
     {
         bool result = false;

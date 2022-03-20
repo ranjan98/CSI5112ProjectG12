@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace aspnet.controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/[controller]")] // this way we name the controller as Cat for Categories - route will be /api/Cat
 public class CatController : ControllerBase
 {
     private readonly CatService catService;
@@ -17,7 +17,7 @@ public class CatController : ControllerBase
     [HttpGet]
     public async Task<List<Category>> Get()
     {
-        return await catService.getCat();
+        return await catService.getCat(); // returns the list of all categories
     }
 
     [HttpGet("{cid}")]
@@ -28,7 +28,7 @@ public class CatController : ControllerBase
         {
             return NotFound();
         }
-        return cat;
+        return cat;  // returns category with the provided id
     }
 
     [HttpPost]
@@ -48,7 +48,7 @@ public class CatController : ControllerBase
             // not being found. This needs to be changed if the cause may be different
             return NotFound();
         }
-        return NoContent();
+        return NoContent();  // returns 204 no content which means it was successfully modified using http put request
     }
 
     [HttpDelete("{cid}")]
@@ -60,6 +60,6 @@ public class CatController : ControllerBase
             return NotFound();
         }
         await catService.deleteCat(cat.cid);
-        return NoContent();
+        return NoContent();  // returns 204 no content which means it was successfully deleted
     }
 }

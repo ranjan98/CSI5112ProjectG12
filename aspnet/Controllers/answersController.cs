@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace aspnet.controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/[controller]")] // this way we name the controller as Answers - route will be /api/Answers
 public class AnswersController : ControllerBase
 {
     private readonly AnswersService answersService;
@@ -17,7 +17,7 @@ public class AnswersController : ControllerBase
     [HttpGet]
     public async Task<List<Answer>> Get()
     {
-        return await answersService.getAnswer();
+        return await answersService.getAnswer(); // returns the list of all answers
     }
 
     [HttpGet("{id}")]
@@ -28,7 +28,7 @@ public class AnswersController : ControllerBase
         {
             return NotFound();
         }
-        return answer;
+        return answer; // returns answer with the provided id
     }
 
     [HttpPost]
@@ -48,7 +48,7 @@ public class AnswersController : ControllerBase
             // not being found. This needs to be changed if the cause may be different
             return NotFound();
         }
-        return NoContent();
+        return NoContent(); // returns 204 no content which means it was successfully modified using http put request
     }
 
     [HttpDelete("{id}")]
@@ -60,6 +60,6 @@ public class AnswersController : ControllerBase
             return NotFound();
         }
         await answersService.deleteAnswer(answer.id);
-        return NoContent();
+        return NoContent(); // returns 204 no content which means it was successfully deleted
     }
 }
