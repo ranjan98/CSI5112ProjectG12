@@ -34,7 +34,7 @@ Link for Backend - https://service.uomart.net/api/
 Frontend - Merchant Portal - Add/Modify/Remove Categories, Add/Modify/Remove Products, View All Orders, View Orders for a Specific Customers\
 Frontend - Client Portal - View Categories/Products, Add to Cart, Submit Order and View Orders, Print Invoice, Validations for Sign In and Signup, Ask and Answer (Discussion) \
 Backend - Data Models and Services - Users, Orders, Cart, Questions, Answers\
-Deployment - Backend and CloudFront\
+Deployment - Backend and CloudFront
 
 ### Ashish V Muttumana
 Backend - Data Models and Services - Product
