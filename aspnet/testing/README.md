@@ -7,4 +7,4 @@
 3. Enter Delay value **'2000'** ms.
 4. Select **'Export Results'** once the tests are executed.
 
-![postmanTesting](./postmanTesting.mov)
+[Postman Testing Video](./postmanTesting.mov)
