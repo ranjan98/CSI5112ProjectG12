@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "ba2eef3e-d775-48c9-a15e-4697d88a585f",
+		"_postman_id": "7d79174b-f7e4-4a41-b578-75c9e03e449a",
 		"name": "CSI5112_Group12",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -586,7 +586,7 @@
 									"listen": "prerequest",
 									"script": {
 										"exec": [
-											"pm.collectionVariables.set(\"Id\", \"3\");"
+											"pm.collectionVariables.set(\"Id\", \"1\");"
 										],
 										"type": "text/javascript"
 									}
@@ -1712,7 +1712,7 @@
 									"listen": "prerequest",
 									"script": {
 										"exec": [
-											"pm.collectionVariables.set(\"id\", \"10\");"
+											"pm.collectionVariables.set(\"id\", \"6\");"
 										],
 										"type": "text/javascript"
 									}
@@ -1726,7 +1726,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"uid\":\"10\",\n    \"name\":\"harikishan\",\n    \"email\":\"hari@uottawa.ca\",\n    \"password\":\"hari12345@\",\n    \"role\":\"customer\"\n}",
+									"raw": "{\n    \"uid\":\"6\",\n    \"name\":\"Hari Kishan\",\n    \"email\":\"hari@uottawa.ca\",\n    \"password\":\"hari12345@\",\n    \"role\":\"customer\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -2142,7 +2142,7 @@
 									"listen": "prerequest",
 									"script": {
 										"exec": [
-											"pm.collectionVariables.set(\"Id\", \"3\");"
+											"pm.collectionVariables.set(\"Id\", \"1\");"
 										],
 										"type": "text/javascript"
 									}
@@ -2244,7 +2244,7 @@
 									"listen": "prerequest",
 									"script": {
 										"exec": [
-											"pm.collectionVariables.set(\"Id\", \"2\");"
+											"pm.collectionVariables.set(\"Id\", \"1\");"
 										],
 										"type": "text/javascript"
 									}
@@ -2258,7 +2258,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"id\": \"2\",\n    \"title\": \"Features of home refrigerator\",\n    \"description\": \"Is there any lock?\",\n    \"uid\": \"1\",\n    \"answers\": [\n        \"1\",\n        \"2\",\n        \"3\"\n    ],\n    \"datetime\": \"2021-04-15 08:37:44\"\n}",
+									"raw": "{\n    \"id\": \"1\",\n    \"title\": \"Features in Portable Heater\",\n    \"description\": \"Does it comes with a thermostat to check the temperature? Or is there anyway it can automatically turn off during night?\",\n    \"uid\": \"1\",\n    \"answers\": [\n        \"1\",\n        \"2\",\n        \"3\"\n    ],\n    \"datetime\": \"2022-03-15 08:37:44\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -2503,7 +2503,7 @@
 									"listen": "prerequest",
 									"script": {
 										"exec": [
-											"pm.collectionVariables.set(\"Id\", \"10\");"
+											"pm.collectionVariables.set(\"Id\", \"1\");"
 										],
 										"type": "text/javascript"
 									}
@@ -2517,7 +2517,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"id\": \"10\",\n    \"invoicenumber\": \"1647391064239\",\n    \"userid\": \"1\",\n    \"amount\": 369.94,\n    \"items\": [\n        {\n            \"id\": \"p1\",\n            \"price\": 29.99,\n            \"quantity\": 2,\n            \"title\": \"Tommy Red T-Shirt\"\n        },\n        {\n            \"id\": \"p2\",\n            \"price\": 59.99,\n            \"quantity\": 1,\n            \"title\": \"Trousers\"\n        }\n    ],\n    \"datetime\": \"2022-03-15 08:37:44\"\n}",
+									"raw": "{\n    \"id\": \"1\",\n    \"invoicenumber\": \"1647391064239\",\n    \"userid\": \"1\",\n    \"amount\": 269.94,\n    \"items\": [\n        {\n            \"id\": \"p1\",\n            \"price\": 29.99,\n            \"quantity\": 2,\n            \"title\": \"Tommy Red T-Shirt\"\n        },\n        {\n            \"id\": \"p2\",\n            \"price\": 59.99,\n            \"quantity\": 1,\n            \"title\": \"Trousers\"\n        }\n    ],\n    \"datetime\": \"2022-03-15 08:37:44\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -2660,7 +2660,7 @@
 									"listen": "prerequest",
 									"script": {
 										"exec": [
-											"pm.collectionVariables.set(\"Id\", \"211\");"
+											"pm.collectionVariables.set(\"Id\", \"3\");"
 										],
 										"type": "text/javascript"
 									}
@@ -2751,7 +2751,7 @@
 									"listen": "prerequest",
 									"script": {
 										"exec": [
-											"pm.collectionVariables.set(\"Id\", \"4\");"
+											"pm.collectionVariables.set(\"Id\", \"3\");"
 										],
 										"type": "text/javascript"
 									}
@@ -2765,7 +2765,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"id\": \"4\",\n    \"reply\": \"No, it dee does not have a thermostat\",\n    \"uid\": \"1\",\n    \"datetime\": \"2022-03-15 08:37:44\",\n    \"qid\": \"1\"\n}",
+									"raw": "{\n    \"id\": \"3\",\n    \"reply\": \"Just buy this, you won't regret it\",\n    \"uid\": \"1\",\n    \"datetime\": \"2022-04-15 08:37:44\",\n    \"qid\": \"1\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3013,7 +3013,7 @@
 									"listen": "prerequest",
 									"script": {
 										"exec": [
-											"pm.collectionVariables.set(\"Id\", \"10\");"
+											"pm.collectionVariables.set(\"Id\", \"6\");"
 										],
 										"type": "text/javascript"
 									}
@@ -3027,7 +3027,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"cid\": \"10\",\n    \"cName\": \"Clothing and Shoes accessories\",\n    \"imgUrl\": \"https://m.media-amazon.com/images/I/410-L0vF3+L._AC_UL640_QL65_.jpg\"\n}",
+									"raw": "{\n    \"cid\": \"6\",\n    \"cName\": \"Beauty and Essentials\",\n    \"imgUrl\": \"https://m.media-amazon.com/images/I/81qII9PojkL._AC_UL640_QL65_.jpg\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
