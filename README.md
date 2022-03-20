@@ -42,7 +42,7 @@ Backend - Data Models and Services - Product
 
 ### Hari Kishan
 Frontend - Sign In and Signup Screens\
-Testing - Integration Testing
+Testing - Postman Testing
 
 ### Harish Shanmugam
 UI Designs\
