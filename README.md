@@ -35,7 +35,6 @@ Frontend - Merchant Portal - Add/Modify/Remove Categories, Add/Modify/Remove Pro
 Frontend - Client Portal - View Categories/Products, Add to Cart, Submit Order and View Orders, Print Invoice, Validations for Sign In and Signup, Ask and Answer (Discussion) \
 Backend - Data Models and Services - Users, Orders, Cart, Questions, Answers\
 Deployment - Backend and CloudFront\
-Improved Code Readability, Usability, Navigability
 
 ### Ashish V Muttumana
 Backend - Data Models and Services - Product
