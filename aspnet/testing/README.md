@@ -1,4 +1,4 @@
-# Service Side Testing
+# Testing
 
 ####  Perform the below steps for service side testing
 
