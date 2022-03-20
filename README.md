@@ -13,11 +13,11 @@ Harish Shanmugam\
 Hari Kishan\
 John Jegede
 
-[Frontend README](https://github.com/ranjan98/CSI5112ProjectG12/blob/main/frontend/README.md)
+## [Frontend README](https://github.com/ranjan98/CSI5112ProjectG12/blob/main/frontend/README.md)
   
-[Backend README](https://github.com/ranjan98/CSI5112ProjectG12/blob/main/aspnet/README.md)
+## [Backend README](https://github.com/ranjan98/CSI5112ProjectG12/blob/main/aspnet/README.md)
 
-[Postman Testing README](https://github.com/ranjan98/CSI5112ProjectG12/blob/main/aspnet/testing/README.md)
+## [Postman Testing README](https://github.com/ranjan98/CSI5112ProjectG12/blob/main/aspnet/testing/README.md)
 
 ## Deployment
 Docker Repository - uomart/csi5112project \
