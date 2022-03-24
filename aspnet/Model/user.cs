@@ -7,6 +7,9 @@ public class User
     {
 
     [BsonId][BsonRepresentation(BsonType.ObjectId)]  
+    public string? id { get; set; }
+    
+    [BsonElement]
     public string? uid { get; set; }
 
     [BsonElement(elementName: "username")]
@@ -18,8 +21,9 @@ public class User
     [BsonElement]
     public string role { get; set; }
     
-    public User(string Uid, string Name, string Email, string Password, string Role)
+    public User(string Id, string Uid, string Name, string Email, string Password, string Role)
     {
+        this.id = id;
         this.uid = Uid;
         this.name = Name;
         this.email = Email;

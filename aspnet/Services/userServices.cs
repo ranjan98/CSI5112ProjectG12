@@ -28,7 +28,7 @@ public class UserService
 
     public async Task createUser(User newUser)
     {
-        newUser.uid = null; // ID will be set by MongoDB
+        newUser.id = null; // ID will be set by MongoDB
         await userCollection.InsertOneAsync(newUser);
         //user.Add(newUser);//changine in database
     }

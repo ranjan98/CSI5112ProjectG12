@@ -8,10 +8,10 @@ Future<User> createUser(
     String name, String email, String password, String role) async {
   final responseGet =
       await http.get(Uri.parse('https://service.uomart.net/api/User/'));
-  // var total = 0;
+  var total = 0;
   if (responseGet.statusCode == 200) {
-    // var user = User.fromListJson(jsonDecode(responseGet.body));
-    //total = user.length;
+    var user = User.fromListJson(jsonDecode(responseGet.body));
+    total = user.length;
     final response = await http.post(
       // Uri.parse(
       //   'https://service.uomart.net/api/User/',
@@ -23,7 +23,7 @@ Future<User> createUser(
         'Content-Type': 'application/json; charset=UTF-8',
       },
       body: jsonEncode(<String, String>{
-        //'uid': (total + 1).toString(),
+        'uid': (total + 1).toString(),
         'name': name,
         'email': email,
         'password': password,
