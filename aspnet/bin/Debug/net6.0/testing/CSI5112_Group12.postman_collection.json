@@ -1,0 +1,3148 @@
+{
+	"info": {
+		"_postman_id": "7d79174b-f7e4-4a41-b578-75c9e03e449a",
+		"name": "CSI5112_Group12",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost-api",
+			"item": [
+				{
+					"name": "user",
+					"item": [
+						{
+							"name": "getAllUsers",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Retrieved Data Successfully\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:7067/api/user",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7067",
+									"path": [
+										"api",
+										"user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getUser",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.collectionVariables.set(\"id\", \"2\");"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Retrieved Data Successfully\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true,
+								"strictSSL": false
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "https://localhost:7067/api/user/{{id}}",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7067",
+									"path": [
+										"api",
+										"user",
+										"{{id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "addUser",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"",
+											"pm.test(\"Successful POST request\", function () {",
+											"    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"uid\":\"10\",\n    \"name\":\"harikishan\",\n    \"email\":\"hari@uottawa.ca\",\n    \"password\":\"hari12345@\",\n    \"role\":\"customer\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:7067/api/user",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7067",
+									"path": [
+										"api",
+										"user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateUser",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"",
+											"pm.test(\"User Updated Successfully\", function () {",
+											"    pm.response.to.have.status(\"No Content\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.collectionVariables.set(\"id\", \"10\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"uid\":\"10\",\n    \"name\":\"harikishanreddy\",\n    \"email\":\"hari@uottawa.ca\",\n    \"password\":\"hari12345@\",\n    \"role\":\"customer\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:7067/api/user/{{id}}",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7067",
+									"path": [
+										"api",
+										"user",
+										"{{id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteUser",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code name has string\", function () {",
+											"    pm.response.to.have.status(\"No Content\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.collectionVariables.set(\"id\", \"10\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:7067/api/user/{{id}}",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7067",
+									"path": [
+										"api",
+										"user",
+										"{{id}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"auth": {
+						"type": "noauth"
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "products",
+					"item": [
+						{
+							"name": "getAllProducts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Data Retrieved Successfully\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:7067/api/prod",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7067",
+									"path": [
+										"api",
+										"prod"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getProduct",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.collectionVariables.set(\"pid\", \"p2\");"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Data Retrieved Successfully\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true,
+								"strictSSL": false
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "https://localhost:7067/api/prod/{{pid}}",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7067",
+									"path": [
+										"api",
+										"prod",
+										"{{pid}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "addProduct",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Data posted Successfully\", function () {",
+											"    pm.response.to.have.status(\"Created\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"p10\",\n    \"name\": \"Trousers_Jeans\",\n    \"merchantid\": \"2\",\n    \"category\": \"1\",\n    \"imageurl\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Trousers%2C_dress_%28AM_1960.022-8%29.jpg/512px-Trousers%2C_dress_%28AM_1960.022-8%29.jpg\",\n    \"description\": \"A nice pair of trousers.\",\n    \"price\": \"69.99\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:7067/api/prod",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7067",
+									"path": [
+										"api",
+										"prod"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateProduct",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Product Updated Successfully\", function () {",
+											"    pm.response.to.have.status(\"No Content\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.collectionVariables.set(\"pid\", \"p10\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"p10\",\n    \"name\": \"Trousers\",\n    \"merchantid\": \"2\",\n    \"category\": \"1\",\n    \"imageurl\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Trousers%2C_dress_%28AM_1960.022-8%29.jpg/512px-Trousers%2C_dress_%28AM_1960.022-8%29.jpg\",\n    \"description\": \"A nice pair of trousers.\",\n    \"price\": \"59.99\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:7067/api/prod/{{pid}}",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7067",
+									"path": [
+										"api",
+										"prod",
+										"{{pid}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteProduct",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"",
+											"pm.test(\"Product Deleted Successfully\", function () {",
+											"    pm.response.to.have.status(\"No Content\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.collectionVariables.set(\"pid\", \"p10\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:7067/api/prod/{{pid}}",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7067",
+									"path": [
+										"api",
+										"prod",
+										"{{pid}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"auth": {
+						"type": "noauth"
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "questions",
+					"item": [
+						{
+							"name": "getAllQuestions",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Data Retrieved Successfully\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"strictSSL": false
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:7067/api/questions",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7067",
+									"path": [
+										"api",
+										"questions"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getQuestion",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.collectionVariables.set(\"Id\", \"1\");"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Data Retrieved Successfully\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:7067/api/questions/{{Id}}",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7067",
+									"path": [
+										"api",
+										"questions",
+										"{{Id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "addQuestion",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Posted Question Successfully\", function () {",
+											"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"4\",\n    \"title\": \"Features of home refrigerator\",\n    \"description\": \"Is there any lock?\",\n    \"uid\": \"1\",\n    \"answers\": [\n        \"1\",\n        \"2\",\n        \"3\"\n    ],\n    \"datetime\": \"2021-04-15 08:37:44\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:7067/api/questions",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7067",
+									"path": [
+										"api",
+										"questions"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateQuestion",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Question updated successfully\", function () {",
+											"    pm.response.to.have.status(\"No Content\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.collectionVariables.set(\"Id\", \"4\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"4\",\n    \"title\": \"Features of a home refrigerator\",\n    \"description\": \"Is there any lock?\",\n    \"uid\": \"1\",\n    \"answers\": [\n        \"1\",\n        \"2\",\n        \"3\"\n    ],\n    \"datetime\": \"2021-04-15 08:37:44\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:7067/api/questions/{{Id}}",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7067",
+									"path": [
+										"api",
+										"questions",
+										"{{Id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteQuestion",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.collectionVariables.set(\"Id\", \"4\");"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Question Deleted Successfully\", function () {",
+											"    pm.response.to.have.status(\"No Content\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:7067/api/questions/{{Id}}",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7067",
+									"path": [
+										"api",
+										"questions",
+										"{{Id}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"auth": {
+						"type": "noauth"
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "orders",
+					"item": [
+						{
+							"name": "getAllOrders",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Data Retrieved Successfully\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"strictSSL": false
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:7067/api/orders",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7067",
+									"path": [
+										"api",
+										"orders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getOrder",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.collectionVariables.set(\"Id\", \"1\");"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Data Retrieved Successfully\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:7067/api/orders/{{Id}}",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7067",
+									"path": [
+										"api",
+										"orders",
+										"{{Id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "createOrder",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Posted Order Successfully\", function () {",
+											"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"4\",\n    \"invoicenumber\": \"1647391364239\",\n    \"userid\": \"1\",\n    \"amount\": 260.94,\n    \"items\": [\n        {\n            \"id\": \"p1\",\n            \"price\": 29.99,\n            \"quantity\": 2,\n            \"title\": \"Tommy Red T-Shirt\"\n        }\n    ],\n    \"datetime\": \"2022-04-15 08:37:44\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:7067/api/orders",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7067",
+									"path": [
+										"api",
+										"orders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateOrder",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Order updated successfully\", function () {",
+											"    pm.response.to.have.status(\"No Content\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.collectionVariables.set(\"Id\", \"4\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"4\",\n    \"invoicenumber\": \"1647391364239\",\n    \"userid\": \"1\",\n    \"amount\": 261.94,\n    \"items\": [\n        {\n            \"id\": \"p1\",\n            \"price\": 29.99,\n            \"quantity\": 2,\n            \"title\": \"Tommy Red T-Shirt\"\n        }\n    ],\n    \"datetime\": \"2022-04-15 08:37:44\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:7067/api/orders/{{Id}}",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7067",
+									"path": [
+										"api",
+										"orders",
+										"{{Id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteOrder",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.collectionVariables.set(\"Id\", \"4\");"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Order Deleted successfully\", function () {",
+											"    pm.response.to.have.status(\"No Content\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:7067/api/orders/{{Id}}",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7067",
+									"path": [
+										"api",
+										"orders",
+										"{{Id}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"auth": {
+						"type": "noauth"
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "answers",
+					"item": [
+						{
+							"name": "getAllAnswers",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"strictSSL": false
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:7067/api/answers",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7067",
+									"path": [
+										"api",
+										"answers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getAnswer",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.collectionVariables.set(\"Id\", \"1\");"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Data Retrieved Successfully\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:7067/api/answers/{{Id}}",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7067",
+									"path": [
+										"api",
+										"answers",
+										"{{Id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "createAnswer",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Answer posted Succesfully\", function () {",
+											"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n        \"id\": \"4\",\n        \"reply\": \"No, it does not have a thermostat\",\n        \"uid\": \"1\",\n        \"datetime\": \"2022-03-15 08:37:44\",\n        \"qid\": \"2\"\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:7067/api/answers",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7067",
+									"path": [
+										"api",
+										"answers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateAnswer",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Answer updated successfully\", function () {",
+											"    pm.response.to.have.status(\"No Content\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.collectionVariables.set(\"Id\", \"4\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n        \"id\": \"4\",\n        \"reply\": \"No, it does not have thermostat\",\n        \"uid\": \"1\",\n        \"datetime\": \"2022-03-15 08:37:44\",\n        \"qid\": \"2\"\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:7067/api/answers/{{Id}}",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7067",
+									"path": [
+										"api",
+										"answers",
+										"{{Id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteAnswer",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.collectionVariables.set(\"Id\", \"4\");"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Answer Deleted successfully\", function () {",
+											"    pm.response.to.have.status(\"No Content\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:7067/api/answers/{{Id}}",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7067",
+									"path": [
+										"api",
+										"answers",
+										"{{Id}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"auth": {
+						"type": "noauth"
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "categories",
+					"item": [
+						{
+							"name": "getAllCategories",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Data Retrieved Successfully\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"strictSSL": false
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:7067/api/cat",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7067",
+									"path": [
+										"api",
+										"cat"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getCategory",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.collectionVariables.set(\"Id\", \"2\");"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Data Retrieved Successfully\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:7067/api/cat/{{Id}}",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7067",
+									"path": [
+										"api",
+										"cat",
+										"{{Id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "createCategory",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Categories Posted Successfully\", function () {",
+											"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"cid\": \"10\",\n    \"cName\": \"Laptops and Mobiles accessories\",\n    \"imgUrl\": \"https://m.media-amazon.com/images/I/71an9eiBxpL._AC_UL640_QL65_.jpg\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:7067/api/cat",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7067",
+									"path": [
+										"api",
+										"cat"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateCategory",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Category updated successfully\", function () {",
+											"    pm.response.to.have.status(\"No Content\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.collectionVariables.set(\"Id\", \"10\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"cid\": \"10\",\n    \"cName\": \"Laptops and Mobiles accessoriess\",\n    \"imgUrl\": \"https://m.media-amazon.com/images/I/71an9eiBxpL._AC_UL640_QL65_.jpg\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:7067/api/cat/{{Id}}",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7067",
+									"path": [
+										"api",
+										"cat",
+										"{{Id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteCategory",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.collectionVariables.set(\"Id\", \"10\");"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Deleted data successfully\", function () {",
+											"    pm.response.to.have.status(\"No Content\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:7067/api/cat/{{Id}}",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7067",
+									"path": [
+										"api",
+										"cat",
+										"{{Id}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"auth": {
+						"type": "noauth"
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "hosted-api",
+			"item": [
+				{
+					"name": "user",
+					"item": [
+						{
+							"name": "getAllUsers",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Data Retrieved Successfully\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://service.uomart.net/api/user",
+									"protocol": "https",
+									"host": [
+										"service",
+										"uomart",
+										"net"
+									],
+									"path": [
+										"api",
+										"user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getUser",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.collectionVariables.set(\"id\", \"2\");"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Data Retrieved Successfully\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true,
+								"strictSSL": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "https://service.uomart.net/api/user/{{id}}",
+									"protocol": "https",
+									"host": [
+										"service",
+										"uomart",
+										"net"
+									],
+									"path": [
+										"api",
+										"user",
+										"{{id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "addUser",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"User Added Successfully\", function () {",
+											"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"uid\":\"10\",\n    \"name\":\"hari\",\n    \"email\":\"hari@uottawa.ca\",\n    \"password\":\"hari12345@\",\n    \"role\":\"customer\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://service.uomart.net/api/user",
+									"protocol": "https",
+									"host": [
+										"service",
+										"uomart",
+										"net"
+									],
+									"path": [
+										"api",
+										"user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateUser",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"User Updated Successfully\", function () {",
+											"    pm.response.to.have.status(\"No Content\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.collectionVariables.set(\"id\", \"6\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"uid\":\"6\",\n    \"name\":\"Hari Kishan\",\n    \"email\":\"hari@uottawa.ca\",\n    \"password\":\"hari12345@\",\n    \"role\":\"customer\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://service.uomart.net/api/user/{{id}}",
+									"protocol": "https",
+									"host": [
+										"service",
+										"uomart",
+										"net"
+									],
+									"path": [
+										"api",
+										"user",
+										"{{id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteUser",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"User Deleted Successfully\", function () {",
+											"    pm.response.to.have.status(\"No Content\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.collectionVariables.set(\"id\", \"10\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://service.uomart.net/api/user/{{id}}",
+									"protocol": "https",
+									"host": [
+										"service",
+										"uomart",
+										"net"
+									],
+									"path": [
+										"api",
+										"user",
+										"{{id}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"auth": {
+						"type": "noauth"
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "products",
+					"item": [
+						{
+							"name": "getAllProducts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Data Retrieved Successfully\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://service.uomart.net/api/prod",
+									"protocol": "https",
+									"host": [
+										"service",
+										"uomart",
+										"net"
+									],
+									"path": [
+										"api",
+										"prod"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getProduct",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.collectionVariables.set(\"pid\", \"p2\");"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Data Retrieved Successfully\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true,
+								"strictSSL": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "https://service.uomart.net/api/prod/{{pid}}",
+									"protocol": "https",
+									"host": [
+										"service",
+										"uomart",
+										"net"
+									],
+									"path": [
+										"api",
+										"prod",
+										"{{pid}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "addProduct",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Product posted Successfully\", function () {",
+											"    pm.response.to.have.status(\"Created\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"p10\",\n    \"name\": \"Trousers_Jeans\",\n    \"merchantid\": \"2\",\n    \"category\": \"1\",\n    \"imageurl\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Trousers%2C_dress_%28AM_1960.022-8%29.jpg/512px-Trousers%2C_dress_%28AM_1960.022-8%29.jpg\",\n    \"description\": \"A nice pair of trousers.\",\n    \"price\": \"69.99\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://service.uomart.net/api/prod",
+									"protocol": "https",
+									"host": [
+										"service",
+										"uomart",
+										"net"
+									],
+									"path": [
+										"api",
+										"prod"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateProduct",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Product Updated Successfully\", function () {",
+											"    pm.response.to.have.status(\"No Content\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.collectionVariables.set(\"pid\", \"p10\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"p10\",\n    \"name\": \"Trousers\",\n    \"merchantid\": \"2\",\n    \"category\": \"1\",\n    \"imageurl\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Trousers%2C_dress_%28AM_1960.022-8%29.jpg/512px-Trousers%2C_dress_%28AM_1960.022-8%29.jpg\",\n    \"description\": \"A nice pair of trousers.\",\n    \"price\": \"69.99\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://service.uomart.net/api/prod/{{pid}}",
+									"protocol": "https",
+									"host": [
+										"service",
+										"uomart",
+										"net"
+									],
+									"path": [
+										"api",
+										"prod",
+										"{{pid}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteProduct",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"",
+											"pm.test(\"Product Deleted Successfully\", function () {",
+											"    pm.response.to.have.status(\"No Content\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.collectionVariables.set(\"pid\", \"p10\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://service.uomart.net/api/prod/{{pid}}",
+									"protocol": "https",
+									"host": [
+										"service",
+										"uomart",
+										"net"
+									],
+									"path": [
+										"api",
+										"prod",
+										"{{pid}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"auth": {
+						"type": "noauth"
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "questions",
+					"item": [
+						{
+							"name": "getAllQuestions",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Data Retrieved Successfully\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"strictSSL": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://service.uomart.net/api/questions",
+									"protocol": "https",
+									"host": [
+										"service",
+										"uomart",
+										"net"
+									],
+									"path": [
+										"api",
+										"questions"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getQuestion",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.collectionVariables.set(\"Id\", \"1\");"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Data Retrieved Successfully\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://service.uomart.net/api/questions/{{Id}}",
+									"protocol": "https",
+									"host": [
+										"service",
+										"uomart",
+										"net"
+									],
+									"path": [
+										"api",
+										"questions",
+										"{{Id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "addQuestion",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Question POsted Successfully\", function () {",
+											"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"2\",\n    \"title\": \"Features of refrigerator\",\n    \"description\": \"Is there any lock?\",\n    \"uid\": \"1\",\n    \"answers\": [\n        \"1\",\n        \"2\",\n        \"3\"\n    ],\n    \"datetime\": \"2021-04-15 08:37:44\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://service.uomart.net/api/questions",
+									"protocol": "https",
+									"host": [
+										"service",
+										"uomart",
+										"net"
+									],
+									"path": [
+										"api",
+										"questions"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateQuestion",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Question updated successfully\", function () {",
+											"    pm.response.to.have.status(\"No Content\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.collectionVariables.set(\"Id\", \"1\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"1\",\n    \"title\": \"Features in Portable Heater\",\n    \"description\": \"Does it comes with a thermostat to check the temperature? Or is there anyway it can automatically turn off during night?\",\n    \"uid\": \"1\",\n    \"answers\": [\n        \"1\",\n        \"2\",\n        \"3\"\n    ],\n    \"datetime\": \"2022-03-15 08:37:44\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://service.uomart.net/api/questions/{{Id}}",
+									"protocol": "https",
+									"host": [
+										"service",
+										"uomart",
+										"net"
+									],
+									"path": [
+										"api",
+										"questions",
+										"{{Id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteQuestion",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.collectionVariables.set(\"Id\", \"2\");"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Question Deleted Successfully\", function () {",
+											"    pm.response.to.have.status(\"No Content\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://service.uomart.net/api/questions/{{Id}}",
+									"protocol": "https",
+									"host": [
+										"service",
+										"uomart",
+										"net"
+									],
+									"path": [
+										"api",
+										"questions",
+										"{{Id}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"auth": {
+						"type": "noauth"
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "orders",
+					"item": [
+						{
+							"name": "getAllOrders",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Data Retrieved Successfully\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"strictSSL": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://service.uomart.net/api/orders",
+									"protocol": "https",
+									"host": [
+										"service",
+										"uomart",
+										"net"
+									],
+									"path": [
+										"api",
+										"orders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getOrder",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.collectionVariables.set(\"Id\", \"1\");"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Data Retrieved Successfully\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://service.uomart.net/api/orders/{{Id}}",
+									"protocol": "https",
+									"host": [
+										"service",
+										"uomart",
+										"net"
+									],
+									"path": [
+										"api",
+										"orders",
+										"{{Id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "createOrder",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Order posted Successfully\", function () {",
+											"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"10\",\n    \"invoicenumber\": \"1647391064239\",\n    \"userid\": \"1\",\n    \"amount\": 369.94,\n    \"items\": [\n        {\n            \"id\": \"p1\",\n            \"price\": 29.99,\n            \"quantity\": 2,\n            \"title\": \"Tommy Red T-Shirt\"\n        },\n        {\n            \"id\": \"p2\",\n            \"price\": 59.99,\n            \"quantity\": 1,\n            \"title\": \"Trousers\"\n        }\n    ],\n    \"datetime\": \"2022-03-15 08:37:44\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://service.uomart.net/api/orders",
+									"protocol": "https",
+									"host": [
+										"service",
+										"uomart",
+										"net"
+									],
+									"path": [
+										"api",
+										"orders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateOrder",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Order updated successfully\", function () {",
+											"    pm.response.to.have.status(\"No Content\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.collectionVariables.set(\"Id\", \"1\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"1\",\n    \"invoicenumber\": \"1647391064239\",\n    \"userid\": \"1\",\n    \"amount\": 269.94,\n    \"items\": [\n        {\n            \"id\": \"p1\",\n            \"price\": 29.99,\n            \"quantity\": 2,\n            \"title\": \"Tommy Red T-Shirt\"\n        },\n        {\n            \"id\": \"p2\",\n            \"price\": 59.99,\n            \"quantity\": 1,\n            \"title\": \"Trousers\"\n        }\n    ],\n    \"datetime\": \"2022-03-15 08:37:44\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://service.uomart.net/api/orders/{{Id}}",
+									"protocol": "https",
+									"host": [
+										"service",
+										"uomart",
+										"net"
+									],
+									"path": [
+										"api",
+										"orders",
+										"{{Id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteOrder",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.collectionVariables.set(\"Id\", \"10\");"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Order data successfully\", function () {",
+											"    pm.response.to.have.status(\"No Content\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://service.uomart.net/api/orders/{{Id}}",
+									"protocol": "https",
+									"host": [
+										"service",
+										"uomart",
+										"net"
+									],
+									"path": [
+										"api",
+										"orders",
+										"{{Id}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"auth": {
+						"type": "noauth"
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "answers",
+					"item": [
+						{
+							"name": "getAllAnswers",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Data Retrieved Successfully\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"strictSSL": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://service.uomart.net/api/answers",
+									"protocol": "https",
+									"host": [
+										"service",
+										"uomart",
+										"net"
+									],
+									"path": [
+										"api",
+										"answers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getAnswer",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.collectionVariables.set(\"Id\", \"3\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://service.uomart.net/api/answers/{{Id}}",
+									"protocol": "https",
+									"host": [
+										"service",
+										"uomart",
+										"net"
+									],
+									"path": [
+										"api",
+										"answers",
+										"{{Id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "createAnswer",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Answer Posted Successfully\", function () {",
+											"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n        \"id\": \"4\",\n        \"reply\": \"No, it does not have a thermostat\",\n        \"uid\": \"1\",\n        \"datetime\": \"2022-03-15 08:37:44\",\n        \"qid\": \"1\"\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://service.uomart.net/api/answers",
+									"protocol": "https",
+									"host": [
+										"service",
+										"uomart",
+										"net"
+									],
+									"path": [
+										"api",
+										"answers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateAnswer",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Answer updated successfully\", function () {",
+											"    pm.response.to.have.status(\"No Content\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.collectionVariables.set(\"Id\", \"3\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"3\",\n    \"reply\": \"Just buy this, you won't regret it\",\n    \"uid\": \"1\",\n    \"datetime\": \"2022-04-15 08:37:44\",\n    \"qid\": \"1\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://service.uomart.net/api/answers/{{Id}}",
+									"protocol": "https",
+									"host": [
+										"service",
+										"uomart",
+										"net"
+									],
+									"path": [
+										"api",
+										"answers",
+										"{{Id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteAnswer",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.collectionVariables.set(\"Id\", \"4\");"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Answer deleted successfully\", function () {",
+											"    pm.response.to.have.status(\"No Content\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://service.uomart.net/api/answers/{{Id}}",
+									"protocol": "https",
+									"host": [
+										"service",
+										"uomart",
+										"net"
+									],
+									"path": [
+										"api",
+										"answers",
+										"{{Id}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"auth": {
+						"type": "noauth"
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "categories",
+					"item": [
+						{
+							"name": "getAllCategories",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Data Retrieved Successfully\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"strictSSL": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://service.uomart.net/api/cat",
+									"protocol": "https",
+									"host": [
+										"service",
+										"uomart",
+										"net"
+									],
+									"path": [
+										"api",
+										"cat"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getCategory",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.collectionVariables.set(\"Id\", \"1\");"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Data Retrieved Successfully\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://service.uomart.net/api/cat/{{Id}}",
+									"protocol": "https",
+									"host": [
+										"service",
+										"uomart",
+										"net"
+									],
+									"path": [
+										"api",
+										"cat",
+										"{{Id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "createCategory",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Category posted successfully\", function () {",
+											"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"cid\": \"10\",\n    \"cName\": \"Clothing and Shoes accessories\",\n    \"imgUrl\": \"https://m.media-amazon.com/images/I/410-L0vF3+L._AC_UL640_QL65_.jpg\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://service.uomart.net/api/cat",
+									"protocol": "https",
+									"host": [
+										"service",
+										"uomart",
+										"net"
+									],
+									"path": [
+										"api",
+										"cat"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateCategory",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Category updated successfully\", function () {",
+											"    pm.response.to.have.status(\"No Content\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.collectionVariables.set(\"Id\", \"6\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"cid\": \"6\",\n    \"cName\": \"Beauty and Essentials\",\n    \"imgUrl\": \"https://m.media-amazon.com/images/I/81qII9PojkL._AC_UL640_QL65_.jpg\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://service.uomart.net/api/cat/{{Id}}",
+									"protocol": "https",
+									"host": [
+										"service",
+										"uomart",
+										"net"
+									],
+									"path": [
+										"api",
+										"cat",
+										"{{Id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteCategory",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.collectionVariables.set(\"Id\", \"10\");"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Category deleted successfully\", function () {",
+											"    pm.response.to.have.status(\"No Content\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://service.uomart.net/api/cat/{{Id}}",
+									"protocol": "https",
+									"host": [
+										"service",
+										"uomart",
+										"net"
+									],
+									"path": [
+										"api",
+										"cat",
+										"{{Id}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"auth": {
+						"type": "noauth"
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "Id",
+			"value": "1"
+		},
+		{
+			"key": "Id",
+			"value": ""
+		},
+		{
+			"key": "id",
+			"value": ""
+		},
+		{
+			"key": "pid",
+			"value": "pid"
+		},
+		{
+			"key": "pid",
+			"value": ""
+		}
+	]
+}

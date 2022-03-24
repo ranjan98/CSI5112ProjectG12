@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/ranjan/Desktop/github/CSI5112ProjectG12/aspnet/aspnet.csproj": {}
+    "/Users/harikishanreddygottam/Desktop/courses/CSI5112/CSI5112ProjectG12/aspnet/aspnet.csproj": {}
   },
   "projects": {
-    "/Users/ranjan/Desktop/github/CSI5112ProjectG12/aspnet/aspnet.csproj": {
+    "/Users/harikishanreddygottam/Desktop/courses/CSI5112/CSI5112ProjectG12/aspnet/aspnet.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/ranjan/Desktop/github/CSI5112ProjectG12/aspnet/aspnet.csproj",
+        "projectUniqueName": "/Users/harikishanreddygottam/Desktop/courses/CSI5112/CSI5112ProjectG12/aspnet/aspnet.csproj",
         "projectName": "aspnet",
-        "projectPath": "/Users/ranjan/Desktop/github/CSI5112ProjectG12/aspnet/aspnet.csproj",
-        "packagesPath": "/Users/ranjan/.nuget/packages/",
-        "outputPath": "/Users/ranjan/Desktop/github/CSI5112ProjectG12/aspnet/obj/",
+        "projectPath": "/Users/harikishanreddygottam/Desktop/courses/CSI5112/CSI5112ProjectG12/aspnet/aspnet.csproj",
+        "packagesPath": "/Users/harikishanreddygottam/.nuget/packages/",
+        "outputPath": "/Users/harikishanreddygottam/Desktop/courses/CSI5112/CSI5112ProjectG12/aspnet/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/ranjan/.nuget/NuGet/NuGet.Config"
+          "/Users/harikishanreddygottam/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -38,6 +38,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.14.1, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"
@@ -61,7 +65,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.200/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/x64/sdk/6.0.201/RuntimeIdentifierGraph.json"
         }
       }
     }
