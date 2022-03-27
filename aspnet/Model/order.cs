@@ -1,9 +1,15 @@
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+
 namespace aspnet.models;
 
 public class Order
 {
     [BsonId][BsonRepresentation(BsonType.ObjectId)]  
     public string id { get; set; }
+
+    [BsonElement]
+    public string? uid { get; set; }
 
     [BsonElement]
     public string invoicenumber { get; set; }
@@ -20,9 +26,10 @@ public class Order
     [BsonElement]
     public string datetime { get; set; }
 
-    public Order(string Id, string Invoicenumber, string Userid, double Amount, List<CartItem> Items, string Datetime)
+    public Order(string Id, string Uid, string Invoicenumber, string Userid, double Amount, List<CartItem> Items, string Datetime)
     {
         this.id = Id;
+        this.uid = Uid;
         this.invoicenumber = Invoicenumber;
         this.userid = Userid;
         this.amount = Amount;
