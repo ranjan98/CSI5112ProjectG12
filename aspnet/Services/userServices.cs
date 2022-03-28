@@ -23,12 +23,12 @@ public class UserService
         settings.ServerApi = new ServerApi(ServerApiVersion.V1);
         var client = new MongoClient(settings);
         var database = client.GetDatabase(uomartDatabaseSettings.Value.DatabaseName);
-        userCollection = database.GetCollection<User>(uomartDatabaseSettings.Value.CollectionName);
+        userCollection = database.GetCollection<User>("user");
     }
 
     public async Task createUser(User newUser)
     {
-        newUser.id = null; // ID will be set by MongoDB
+        newUser.uid = null; // ID will be set by MongoDB
         await userCollection.InsertOneAsync(newUser);
         //user.Add(newUser);//changine in database
     }

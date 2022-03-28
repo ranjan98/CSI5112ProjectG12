@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/harikishanreddygottam/Desktop/courses/CSI5112/CSI5112ProjectG12/aspnet/aspnet.csproj": {}
+    "/Users/harikishanreddygottam/Desktop/courses/cse_db/CSI5112ProjectG12/aspnet/aspnet.csproj": {}
   },
   "projects": {
-    "/Users/harikishanreddygottam/Desktop/courses/CSI5112/CSI5112ProjectG12/aspnet/aspnet.csproj": {
+    "/Users/harikishanreddygottam/Desktop/courses/cse_db/CSI5112ProjectG12/aspnet/aspnet.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/harikishanreddygottam/Desktop/courses/CSI5112/CSI5112ProjectG12/aspnet/aspnet.csproj",
+        "projectUniqueName": "/Users/harikishanreddygottam/Desktop/courses/cse_db/CSI5112ProjectG12/aspnet/aspnet.csproj",
         "projectName": "aspnet",
-        "projectPath": "/Users/harikishanreddygottam/Desktop/courses/CSI5112/CSI5112ProjectG12/aspnet/aspnet.csproj",
+        "projectPath": "/Users/harikishanreddygottam/Desktop/courses/cse_db/CSI5112ProjectG12/aspnet/aspnet.csproj",
         "packagesPath": "/Users/harikishanreddygottam/.nuget/packages/",
-        "outputPath": "/Users/harikishanreddygottam/Desktop/courses/CSI5112/CSI5112ProjectG12/aspnet/obj/",
+        "outputPath": "/Users/harikishanreddygottam/Desktop/courses/cse_db/CSI5112ProjectG12/aspnet/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/harikishanreddygottam/.nuget/NuGet/NuGet.Config"
