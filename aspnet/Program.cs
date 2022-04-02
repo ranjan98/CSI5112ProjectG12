@@ -1,4 +1,6 @@
 using aspnet.services;
+using aspnet.models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add CORS
@@ -15,7 +17,10 @@ builder.Services.AddCors(options =>
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(
+        options => options.JsonSerializerOptions.PropertyNamingPolicy = null);
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -25,6 +30,15 @@ builder.Services.AddSingleton<UserService>();
 builder.Services.AddSingleton<QuestionsService>();
 builder.Services.AddSingleton<AnswersService>();
 builder.Services.AddSingleton<OrderService>();
+
+builder.Services.Configure<uomartDatabaseSettings>(
+    builder.Configuration.GetSection(nameof(uomartDatabaseSettings))
+);
+
+// Adding services for Direct Injection
+
+var options = builder.Configuration.GetSection(nameof(uomartDatabaseSettings)).Get<uomartDatabaseSettings>();
+builder.Services.AddSingleton<uomartDatabaseSettings>(options);
 
 var app = builder.Build();
 

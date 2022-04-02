@@ -1,13 +1,23 @@
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 namespace aspnet.models;
+
 
 public class Product
 {
-    public string id { get; set; }
+    [BsonId][BsonRepresentation(BsonType.ObjectId)]  
+    public string? id { get; set; }
+    [BsonElement]
     public string name { get; set; }
+    [BsonElement]
     public string merchantid { get; set; }
+    [BsonElement]
     public string category { get; set; }
+    [BsonElement]
     public string imageurl { get; set; }
+    [BsonElement]
     public string description { get; set; }
+    [BsonElement]
     public string price { get; set; }
 
     public Product(string Id, string Name, string Merchantid, string Category, string imageurl, string Description, string Price)
