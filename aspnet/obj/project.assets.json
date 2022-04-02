@@ -586,19 +586,19 @@
     ]
   },
   "packageFolders": {
-    "/Users/harikishanreddygottam/.nuget/packages/": {}
+    "/Users/ranjan/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/harikishanreddygottam/Desktop/courses/cse_db/CSI5112ProjectG12/aspnet/aspnet.csproj",
+      "projectUniqueName": "/Users/ranjan/Desktop/github/CSI5112ProjectG12/aspnet/aspnet.csproj",
       "projectName": "aspnet",
-      "projectPath": "/Users/harikishanreddygottam/Desktop/courses/cse_db/CSI5112ProjectG12/aspnet/aspnet.csproj",
-      "packagesPath": "/Users/harikishanreddygottam/.nuget/packages/",
-      "outputPath": "/Users/harikishanreddygottam/Desktop/courses/cse_db/CSI5112ProjectG12/aspnet/obj/",
+      "projectPath": "/Users/ranjan/Desktop/github/CSI5112ProjectG12/aspnet/aspnet.csproj",
+      "packagesPath": "/Users/ranjan/.nuget/packages/",
+      "outputPath": "/Users/ranjan/Desktop/github/CSI5112ProjectG12/aspnet/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/harikishanreddygottam/.nuget/NuGet/NuGet.Config"
+        "/Users/ranjan/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -649,7 +649,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/x64/sdk/6.0.201/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.200/RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -23,7 +23,6 @@ Future<User> createUser(
         'Content-Type': 'application/json; charset=UTF-8',
       },
       body: jsonEncode(<String, String>{
-        'uid': (total + 1).toString(),
         'name': name,
         'email': email,
         'password': password,

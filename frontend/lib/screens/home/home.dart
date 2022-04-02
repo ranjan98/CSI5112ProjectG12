@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:frontend/services/categories_service.dart';
@@ -23,27 +21,7 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    // generating random products
-    var rng = Random();
-    var randomProdIds = [];
-    while (randomProdIds.length < 4) {
-      int randomNumber = rng.nextInt(10) + 1;
-      if (randomProdIds.contains(randomNumber)) {
-        continue;
-      }
-      randomProdIds.add(randomNumber);
-    }
-
-    // generating random categories
-    var rngcat = Random();
-    var randomCatIds = [];
-    while (randomCatIds.length < 4) {
-      int randomNumber = rngcat.nextInt(5) + 1;
-      if (randomCatIds.contains(randomNumber)) {
-        continue;
-      }
-      randomCatIds.add(randomNumber);
-    }
+    // setting up aspect ratio for different screen sizes
     double aspectRatio = 5 / 2;
     if (MediaQuery.of(context).size.width > 1000) {
       aspectRatio = 7 / 2;
@@ -133,8 +111,7 @@ class _HomeState extends State<Home> {
               child: Wrap(
                 children: [
                   // getting random categories from backend for home page
-                  for (int i = 0; i < randomCatIds.length; i++)
-                    buildCatItem(context, randomCatIds[i].toString())
+                  for (int i = 0; i < 4; i++) buildCatItem(context, i)
                 ],
               ),
             ),
@@ -152,8 +129,7 @@ class _HomeState extends State<Home> {
               child: Wrap(
                 children: [
                   // getting random products from backend for home page
-                  for (int i = 0; i < randomProdIds.length; i++)
-                    buildProductItem(context, "p" + randomProdIds[i].toString())
+                  for (int i = 0; i < 4; i++) buildProductItem(context, i)
                 ],
               ),
             ),
@@ -170,7 +146,7 @@ class _HomeState extends State<Home> {
     futureCategories = fetchCategories(); // fetch all categories from backend
   }
 
-  Widget buildCatItem(BuildContext context, var id) {
+  Widget buildCatItem(BuildContext context, var index) {
     return Padding(
       padding: const EdgeInsets.all(5.0),
       child: FutureBuilder(
@@ -182,8 +158,7 @@ class _HomeState extends State<Home> {
                 child: Center(child: CircularProgressIndicator()),
               );
             }
-            var category = (snapshot.data as List<Category>)
-                .firstWhere((element) => element.cid == id);
+            var category = (snapshot.data as List<Category>).elementAt(index);
             return InkWell(
               onTap: () {
                 Navigator.of(context).pushNamed(
@@ -226,7 +201,7 @@ class _HomeState extends State<Home> {
     );
   }
 
-  Widget buildProductItem(BuildContext context, var id) {
+  Widget buildProductItem(BuildContext context, var index) {
     // replacing the mock data with backend data
     // final productsData = Provider.of<Products>(context);
     final cart = Provider.of<Cart>(context, listen: false);
@@ -243,8 +218,7 @@ class _HomeState extends State<Home> {
               child: Center(child: CircularProgressIndicator()),
             );
           }
-          var product = (snapshot.data as List<Product>)
-              .firstWhere((element) => element.id == id);
+          var product = (snapshot.data as List<Product>).elementAt(index);
           return Padding(
             padding: const EdgeInsets.all(5.0),
             child: InkWell(

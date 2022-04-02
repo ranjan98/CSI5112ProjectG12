@@ -43,7 +43,6 @@ Future<Product> addProduct(String name, String merchantid, String category,
         'Content-Type': 'application/json; charset=UTF-8',
       },
       body: jsonEncode(<String, String>{
-        'id': "p" + (total + 1).toString(),
         'name': name,
         'merchantid': merchantid,
         'category': category,
@@ -73,7 +72,6 @@ Future<Product> editProduct(String id, String name, String merchantid,
       'Content-Type': 'application/json; charset=UTF-8',
     },
     body: jsonEncode(<String, String>{
-      'id': "p" + id.toString(),
       'name': name,
       'merchantid': merchantid,
       'category': category,
@@ -84,7 +82,6 @@ Future<Product> editProduct(String id, String name, String merchantid,
   );
   if (response.statusCode == 204) {
     return Product.fromJson(<String, String>{
-      'id': "p" + id.toString(),
       'name': name,
       'merchantid': merchantid,
       'category': category,

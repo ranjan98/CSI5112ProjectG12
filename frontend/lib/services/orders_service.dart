@@ -31,7 +31,6 @@ Future<Order> createOrder(String invoiceNumber, String userid, double amount,
         'Content-Type': 'application/json; charset=UTF-8',
       },
       body: jsonEncode(<String, dynamic>{
-        'id': (total + 1).toString(),
         'invoicenumber': invoiceNumber,
         'userid': userid,
         'amount': amount,

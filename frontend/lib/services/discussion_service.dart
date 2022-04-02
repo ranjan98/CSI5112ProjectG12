@@ -21,7 +21,6 @@ Future<Question> createQuestion(
         'Content-Type': 'application/json; charset=UTF-8',
       },
       body: jsonEncode(<String, dynamic>{
-        'id': (total + 1).toString(),
         'title': title,
         'description': description,
         'uid': uid,
@@ -79,7 +78,6 @@ Future<Answer> createAnswer(
         'Content-Type': 'application/json; charset=UTF-8',
       },
       body: jsonEncode(<String, dynamic>{
-        'id': (total + 1).toString(),
         'reply': reply,
         'uid': uid,
         'datetime': datetime,
