@@ -27,11 +27,13 @@ Backend - https://uomart-499408899.us-east-1.elb.amazonaws.com/api/ \
 Link For Frontend - https://web.uomart.net/ \
 Link for Backend - https://service.uomart.net/api/  
 
+### API Documentation
+https://documenter.getpostman.com/view/11041377/UVyn2Jnk
 
 ## Contributions
 
 ### Ranjan Goyal
-Frontend - Merchant Portal - Add/Modify/Remove Categories, Add/Modify/Remove Products, View All Orders, View Orders for a Specific Customers\
+Frontend - Merchant Portal - Add/Modify/Remove Categories, Add/Modify/Remove Products, View All Orders, View Orders for a Specific Customer\
 Frontend - Client Portal - View Categories/Products, Add to Cart, Submit Order and View Orders, Print Invoice, Validations for Sign In and Signup, Ask and Answer (Discussion) \
 Backend - Data Models and Services - Users, Orders, Cart, Questions, Answers\
 Deployment - Backend and CloudFront
@@ -41,9 +43,13 @@ Backend - Data Models and Services - Product
 
 ### Hari Kishan
 Frontend - Sign In and Signup Screens\
-Testing - Postman Testing
+Testing - Postman Testing\
+MongoDB
 
 ### Harish Shanmugam
 UI Designs\
 Backend - Data models and services - Categories\
 Cloud Deployment - Frontend on S3
+
+### John Jegede
+MongoDB
