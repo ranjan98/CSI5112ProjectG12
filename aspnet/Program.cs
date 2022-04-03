@@ -21,6 +21,16 @@ builder.Services.AddControllers()
     .AddJsonOptions(
         options => options.JsonSerializerOptions.PropertyNamingPolicy = null);
 
+
+builder.Services.Configure<uomartDatabaseSettings>(
+    builder.Configuration.GetSection(nameof(uomartDatabaseSettings))
+);
+
+// Adding services for Direct Injection
+
+var options = builder.Configuration.GetSection(nameof(uomartDatabaseSettings)).Get<uomartDatabaseSettings>();
+builder.Services.AddSingleton<uomartDatabaseSettings>(options);
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -31,23 +41,17 @@ builder.Services.AddSingleton<QuestionsService>();
 builder.Services.AddSingleton<AnswersService>();
 builder.Services.AddSingleton<OrderService>();
 
-builder.Services.Configure<uomartDatabaseSettings>(
-    builder.Configuration.GetSection(nameof(uomartDatabaseSettings))
-);
-
-// Adding services for Direct Injection
-
-var options = builder.Configuration.GetSection(nameof(uomartDatabaseSettings)).Get<uomartDatabaseSettings>();
-builder.Services.AddSingleton<uomartDatabaseSettings>();
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+// if (app.Environment.IsDevelopment())
+// {
+//     app.UseSwagger();
+//     app.UseSwaggerUI();
+// }
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 app.UseRouting();
