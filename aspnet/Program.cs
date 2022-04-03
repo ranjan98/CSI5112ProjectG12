@@ -24,12 +24,12 @@ builder.Services.AddControllers()
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddSingleton<ProdService>();
-builder.Services.AddSingleton<CatService>();
-builder.Services.AddSingleton<UserService>();
-builder.Services.AddSingleton<QuestionsService>();
-builder.Services.AddSingleton<AnswersService>();
-builder.Services.AddSingleton<OrderService>();
+builder.Services.AddTransient<ProdService>();
+builder.Services.AddTransient<CatService>();
+builder.Services.AddTransient<UserService>();
+builder.Services.AddTransient<QuestionsService>();
+builder.Services.AddTransient<AnswersService>();
+builder.Services.AddTransient<OrderService>();
 
 builder.Services.Configure<uomartDatabaseSettings>(
     builder.Configuration.GetSection(nameof(uomartDatabaseSettings))
