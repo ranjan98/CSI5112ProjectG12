@@ -31,6 +31,18 @@ public class AnswersController : ControllerBase
         return answer; // returns answer with the provided id
     }
 
+
+    [HttpGet("question/{qid}")]
+    public async Task<ActionResult<List<Answer>>> GetByQuestionId(string Qid)
+    {
+        var answer = await answersService.getAnswerByQuestionId(Qid);
+        if (answer is null)
+        {
+            return NotFound();
+        }
+        return answer; // returns answer with the provided id
+    }
+
     [HttpPost]
     public async Task<ActionResult> Post(Answer newAnswer)
     {

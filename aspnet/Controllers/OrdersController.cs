@@ -31,6 +31,17 @@ public class OrdersController : ControllerBase
         return order; // returns order with the provided id
     }
 
+    [HttpGet("userorders/{userid}")]
+    public async Task<ActionResult<List<Order>>> GetByUser(string Userid)
+    {
+        var order = await orderService.getOrderByUser(Userid);
+        if (order is null)
+        {
+            return NotFound();
+        }
+        return order; // returns order with the provided id
+    }
+
     [HttpPost]
     public async Task<ActionResult> Post(Order newOrder)
     {

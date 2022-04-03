@@ -20,7 +20,7 @@ public class CatController : ControllerBase
         return await catService.getCat(); // returns the list of all categories
     }
 
-    [HttpGet("{cid}")]
+    [HttpGet("{Cid}")]
     public async Task<ActionResult<Category>> Get(string Cid)
     {
         var cat = await catService.getCat(Cid);

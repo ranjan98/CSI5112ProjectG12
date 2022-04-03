@@ -23,6 +23,18 @@ public class OrderService
         var client = new MongoClient(settings);
         var database = client.GetDatabase("uomart");
         orderCollection = database.GetCollection<Order>("orders");
+
+        var indexOptions = new CreateIndexOptions();
+        var indexKeys = Builders<Order>.IndexKeys.Ascending(orders => orders.userid);
+        var indexModel = new CreateIndexModel<Order>(indexKeys, indexOptions);
+        orderCollection.Indexes.CreateOneAsync(indexModel);
+        
+        var indexes = database.GetCollection<Order>("orders").Indexes.List().ToList();
+
+        foreach (var index in indexes)
+        {
+            Console.WriteLine(index);
+        }
     }
 
 
@@ -45,17 +57,15 @@ public class OrderService
         //return order.Find(x => x.id == Id);
     }
 
+
+    public async Task<List<Order>> getOrderByUser(string userid)
+    {
+        return await orderCollection.Find(order => order.userid == userid).ToListAsync();
+        //return order.Find(x => x.id == Id);
+    }
+
     public async Task<bool> updateOrder(string Id, Order updatedOrder)
     {
-        // bool result = false;
-        // int index = order.FindIndex(x => x.id == Id);
-        // if (index != -1)
-        // {
-        //     updatedOrder.id = Id;
-        //     order[index] = updatedOrder;
-        //     result = true;
-        // }
-        // return result;
 
         ReplaceOneResult r = await orderCollection.ReplaceOneAsync(order => order.id == updatedOrder.id, updatedOrder);
         return r.IsModifiedCountAvailable && r.ModifiedCount == 1;
@@ -63,15 +73,7 @@ public class OrderService
 
     public async Task deleteOrder(string Id)
     {
-        // bool deleted = false;
-        // int index = order.FindIndex(x => x.id == Id);
-        // if (index != -1)
-        // {
-        //     order.RemoveAt(index);
-        //     deleted = true;
-        // }
-        // return deleted;
-
+      
         await orderCollection.DeleteOneAsync(order => order.id == Id);
     }
 }

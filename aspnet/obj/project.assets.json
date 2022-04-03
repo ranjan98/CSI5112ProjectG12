@@ -591,11 +591,19 @@
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "/Users/ranjan/Desktop/github/CSI5112ProjectG12/aspnet/aspnet.csproj",
       "projectName": "aspnet",
       "projectPath": "/Users/ranjan/Desktop/github/CSI5112ProjectG12/aspnet/aspnet.csproj",
       "packagesPath": "/Users/ranjan/.nuget/packages/",
       "outputPath": "/Users/ranjan/Desktop/github/CSI5112ProjectG12/aspnet/obj/",
+=======
+      "projectUniqueName": "/Users/harikishanreddygottam/Desktop/courses/CSI5112/CSI5112ProjectG12/aspnet/aspnet.csproj",
+      "projectName": "aspnet",
+      "projectPath": "/Users/harikishanreddygottam/Desktop/courses/CSI5112/CSI5112ProjectG12/aspnet/aspnet.csproj",
+      "packagesPath": "/Users/harikishanreddygottam/.nuget/packages/",
+      "outputPath": "/Users/harikishanreddygottam/Desktop/courses/CSI5112/CSI5112ProjectG12/aspnet/obj/",
+>>>>>>> adf9a6c (Added mongodb indexes)
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/ranjan/.nuget/NuGet/NuGet.Config"
