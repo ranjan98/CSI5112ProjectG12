@@ -1,6 +1,6 @@
 using aspnet.models;
-using MongoDB.Driver;  
-using Microsoft.Extensions.Options; 
+using MongoDB.Driver;
+using Microsoft.Extensions.Options;
 
 namespace aspnet.services;
 public class UserService
@@ -19,10 +19,10 @@ public class UserService
 
     public UserService(IOptions<uomartDatabaseSettings> uomartDatabaseSettings)
     {
-        var settings = MongoClientSettings.FromConnectionString(uomartDatabaseSettings.Value.ConnectionString);
+        var settings = MongoClientSettings.FromConnectionString("mongodb://csi5112group12:csi5112group12@cluster0-shard-00-00.vtqbg.mongodb.net:27017,cluster0-shard-00-01.vtqbg.mongodb.net:27017,cluster0-shard-00-02.vtqbg.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-gv1oje-shard-0&authSource=admin&retryWrites=true&w=majority");
         settings.ServerApi = new ServerApi(ServerApiVersion.V1);
         var client = new MongoClient(settings);
-        var database = client.GetDatabase(uomartDatabaseSettings.Value.DatabaseName);
+        var database = client.GetDatabase("uomart");
         userCollection = database.GetCollection<User>("user");
     }
 
@@ -50,7 +50,8 @@ public class UserService
         //return user.Find(x => x.email == email);
     }
 
-    public async Task<bool> updateUser(string Id, User updatedUser){
+    public async Task<bool> updateUser(string Id, User updatedUser)
+    {
         ReplaceOneResult r = await userCollection.ReplaceOneAsync(user => user.uid == updatedUser.uid, updatedUser);
         return r.IsModifiedCountAvailable && r.ModifiedCount == 1;
     }
@@ -81,7 +82,8 @@ public class UserService
     // }
 
 
-    public async Task deleteUser(string Id) {
+    public async Task deleteUser(string Id)
+    {
         await userCollection.DeleteOneAsync(user => user.uid == Id);
     }
 }

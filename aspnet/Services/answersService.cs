@@ -1,6 +1,6 @@
 using aspnet.models;
-using MongoDB.Driver;  
-using Microsoft.Extensions.Options; 
+using MongoDB.Driver;
+using Microsoft.Extensions.Options;
 
 namespace aspnet.services;
 public class AnswersService
@@ -15,10 +15,10 @@ public class AnswersService
 
     public AnswersService(IOptions<uomartDatabaseSettings> uomartDatabaseSettings)
     {
-        var settings = MongoClientSettings.FromConnectionString(uomartDatabaseSettings.Value.ConnectionString);
+        var settings = MongoClientSettings.FromConnectionString("mongodb://csi5112group12:csi5112group12@cluster0-shard-00-00.vtqbg.mongodb.net:27017,cluster0-shard-00-01.vtqbg.mongodb.net:27017,cluster0-shard-00-02.vtqbg.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-gv1oje-shard-0&authSource=admin&retryWrites=true&w=majority");
         settings.ServerApi = new ServerApi(ServerApiVersion.V1);
         var client = new MongoClient(settings);
-        var database = client.GetDatabase(uomartDatabaseSettings.Value.DatabaseName);
+        var database = client.GetDatabase("uomart");
         answerCollection = database.GetCollection<Answer>("answers");
     }
 
