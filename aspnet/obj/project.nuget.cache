@@ -1,14 +1,8 @@
 {
   "version": 2,
-<<<<<<< HEAD
   "dgSpecHash": "iRV91Vguolvz3RgsKaCxMokzUL5yqqqngi/tCxfLGhKm585HLPejBu01976kKvXFxtIBm72VOqmL1ODxMl+7Sg==",
   "success": true,
   "projectFilePath": "/Users/ranjan/Desktop/github/CSI5112ProjectG12/aspnet/aspnet.csproj",
-=======
-  "dgSpecHash": "rAgVfCEiD6QmkOjIBFckyIgFuvzw3g1+kDIaTX14U76m7GNAUR8A5XecBzmaTAemfpvVTxKTgxbQSR7VePwL1g==",
-  "success": true,
-  "projectFilePath": "/Users/harikishanreddygottam/Desktop/courses/CSI5112/CSI5112ProjectG12/aspnet/aspnet.csproj",
->>>>>>> adf9a6c (Added mongodb indexes)
   "expectedPackageFiles": [
     "/Users/ranjan/.nuget/packages/dnsclient/1.4.0/dnsclient.1.4.0.nupkg.sha512",
     "/Users/ranjan/.nuget/packages/microsoft.extensions.apidescription.server/3.0.0/microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
@@ -25,5 +19,12 @@
     "/Users/ranjan/.nuget/packages/system.buffers/4.5.1/system.buffers.4.5.1.nupkg.sha512",
     "/Users/ranjan/.nuget/packages/system.runtime.compilerservices.unsafe/5.0.0/system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file /Users/ranjan/Desktop/github/CSI5112ProjectG12/aspnet/obj/project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

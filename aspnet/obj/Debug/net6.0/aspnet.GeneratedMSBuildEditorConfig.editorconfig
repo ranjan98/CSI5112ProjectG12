@@ -8,17 +8,9 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = aspnet
 build_property.RootNamespace = aspnet
-<<<<<<< HEAD
 build_property.ProjectDir = /Users/ranjan/Desktop/github/CSI5112ProjectG12/aspnet/
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
 build_property.MSBuildProjectDirectory = /Users/ranjan/Desktop/github/CSI5112ProjectG12/aspnet
-=======
-build_property.ProjectDir = /Users/harikishanreddygottam/Desktop/courses/CSI5112/CSI5112ProjectG12/aspnet/
-build_property.RazorLangVersion = 6.0
-build_property.SupportLocalizedComponentNames = 
-build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /Users/harikishanreddygottam/Desktop/courses/CSI5112/CSI5112ProjectG12/aspnet
->>>>>>> adf9a6c (Added mongodb indexes)
 build_property._RazorSourceGeneratorDebug = 
