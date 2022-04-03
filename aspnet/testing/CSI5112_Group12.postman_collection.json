@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "7d79174b-f7e4-4a41-b578-75c9e03e449a",
+		"_postman_id": "90652fca-138e-4f42-b16d-49531e1b053f",
 		"name": "CSI5112_Group12",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -27,6 +27,9 @@
 								}
 							],
 							"request": {
+								"auth": {
+									"type": "noauth"
+								},
 								"method": "GET",
 								"header": [],
 								"url": {
@@ -51,7 +54,7 @@
 									"listen": "prerequest",
 									"script": {
 										"exec": [
-											"pm.collectionVariables.set(\"id\", \"2\");"
+											"pm.collectionVariables.set(\"uid\", \"623e25ac0e07e3b4f7e4a682\");"
 										],
 										"type": "text/javascript"
 									}
@@ -83,7 +86,7 @@
 									"urlencoded": []
 								},
 								"url": {
-									"raw": "https://localhost:7067/api/user/{{id}}",
+									"raw": "https://localhost:7067/api/user/{{uid}}",
 									"protocol": "https",
 									"host": [
 										"localhost"
@@ -92,7 +95,7 @@
 									"path": [
 										"api",
 										"user",
-										"{{id}}"
+										"{{uid}}"
 									]
 								}
 							},
@@ -123,7 +126,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"uid\":\"10\",\n    \"name\":\"harikishan\",\n    \"email\":\"hari@uottawa.ca\",\n    \"password\":\"hari12345@\",\n    \"role\":\"customer\"\n}",
+									"raw": "{\n        \n        \"name\": \"ashish\",\n        \"email\": \"ashish@uottawa.ca\",\n        \"password\": \"ashish@\",\n        \"role\": \"customer\"\n    }",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -164,7 +167,7 @@
 									"listen": "prerequest",
 									"script": {
 										"exec": [
-											"pm.collectionVariables.set(\"id\", \"10\");"
+											"pm.collectionVariables.set(\"uid\", \"623e3af0fc7385505144c9a7\");"
 										],
 										"type": "text/javascript"
 									}
@@ -178,7 +181,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"uid\":\"10\",\n    \"name\":\"harikishanreddy\",\n    \"email\":\"hari@uottawa.ca\",\n    \"password\":\"hari12345@\",\n    \"role\":\"customer\"\n}",
+									"raw": "{\n        \"uid\": \"623e3af0fc7385505144c9a7\",\n        \"name\": \"ktr\",\n        \"email\": \"ranjan@uottawa.ca\",\n        \"password\": \"ranjan12345@\",\n        \"role\": \"merchant\"\n    }",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -186,7 +189,7 @@
 									}
 								},
 								"url": {
-									"raw": "https://localhost:7067/api/user/{{id}}",
+									"raw": "https://localhost:7067/api/user/{{uid}}",
 									"protocol": "https",
 									"host": [
 										"localhost"
@@ -195,7 +198,7 @@
 									"path": [
 										"api",
 										"user",
-										"{{id}}"
+										"{{uid}}"
 									]
 								}
 							},
@@ -219,7 +222,7 @@
 									"listen": "prerequest",
 									"script": {
 										"exec": [
-											"pm.collectionVariables.set(\"id\", \"10\");"
+											"pm.collectionVariables.set(\"uid\", \"623e25c30e07e3b4f7e4a683\");"
 										],
 										"type": "text/javascript"
 									}
@@ -232,7 +235,7 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "https://localhost:7067/api/user/{{id}}",
+									"raw": "https://localhost:7067/api/user/{{uid}}",
 									"protocol": "https",
 									"host": [
 										"localhost"
@@ -241,7 +244,40 @@
 									"path": [
 										"api",
 										"user",
-										"{{id}}"
+										"{{uid}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getUserByEmail",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.collectionVariables.set(\"email\", \"hari@uottawa.ca\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:7067/api/user/byemail/{{email}}",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7067",
+									"path": [
+										"api",
+										"user",
+										"byemail",
+										"{{email}}"
 									]
 								}
 							},
@@ -318,7 +354,7 @@
 									"listen": "prerequest",
 									"script": {
 										"exec": [
-											"pm.collectionVariables.set(\"pid\", \"p2\");"
+											"pm.collectionVariables.set(\"pid\", \"6241ee2fef2a33f1cd1d48f1\");"
 										],
 										"type": "text/javascript"
 									}
@@ -388,7 +424,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"id\": \"p10\",\n    \"name\": \"Trousers_Jeans\",\n    \"merchantid\": \"2\",\n    \"category\": \"1\",\n    \"imageurl\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Trousers%2C_dress_%28AM_1960.022-8%29.jpg/512px-Trousers%2C_dress_%28AM_1960.022-8%29.jpg\",\n    \"description\": \"A nice pair of trousers.\",\n    \"price\": \"69.99\"\n}",
+									"raw": "{\n    \n        \"name\": \"Parx trouser\",\n        \"merchantid\": \"1\",\n        \"category\": \"6241ef93ef2a33f1cd1d48f3\",\n        \"imageurl\": \"https://cdn.pixabay.com/photo/2016/10/02/22/17/red-t-shirt-1710578_1280.jpg\",\n        \"description\": \"Parx trouser\",\n        \"price\": \"49.99\"\n    }\n\n   ",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -442,7 +478,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"id\": \"p10\",\n    \"name\": \"Trousers\",\n    \"merchantid\": \"2\",\n    \"category\": \"1\",\n    \"imageurl\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Trousers%2C_dress_%28AM_1960.022-8%29.jpg/512px-Trousers%2C_dress_%28AM_1960.022-8%29.jpg\",\n    \"description\": \"A nice pair of trousers.\",\n    \"price\": \"59.99\"\n}",
+									"raw": "{\n    \"id\": \"6241ccd31e271369f8f1c751\",\n    \"name\": \"Tommy hilfiger Red T-Shirt\",\n    \"merchantid\": \"1\",\n    \"category\": \"1\",\n    \"imageurl\": \"https://cdn.pixabay.com/photo/2016/10/02/22/17/red-t-shirt-1710578_1280.jpg\",\n    \"description\": \"A red shirt - it is pretty red!\",\n    \"price\": \"29.99\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -484,7 +520,7 @@
 									"listen": "prerequest",
 									"script": {
 										"exec": [
-											"pm.collectionVariables.set(\"pid\", \"p10\");"
+											"pm.collectionVariables.set(\"pid\", \"6241ccd31e271369f8f1c751\");"
 										],
 										"type": "text/javascript"
 									}
@@ -507,6 +543,39 @@
 										"api",
 										"prod",
 										"{{pid}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getProductByCategory",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.collectionVariables.set(\"cid\", \"6241ef93ef2a33f1cd1d48f3\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:7067/api/prod/bycid/{{cid}}",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7067",
+									"path": [
+										"api",
+										"prod",
+										"bycid",
+										"{{cid}}"
 									]
 								}
 							},
@@ -586,7 +655,7 @@
 									"listen": "prerequest",
 									"script": {
 										"exec": [
-											"pm.collectionVariables.set(\"Id\", \"1\");"
+											"pm.collectionVariables.set(\"Id\", \"6241d20f9e748be500186019\");"
 										],
 										"type": "text/javascript"
 									}
@@ -646,7 +715,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"id\": \"4\",\n    \"title\": \"Features of home refrigerator\",\n    \"description\": \"Is there any lock?\",\n    \"uid\": \"1\",\n    \"answers\": [\n        \"1\",\n        \"2\",\n        \"3\"\n    ],\n    \"datetime\": \"2021-04-15 08:37:44\"\n}",
+									"raw": "{\n    \"title\": \"Features of home refrigerator\",\n    \"description\": \"Is there any lock?\",\n    \"uid\": \"623e25ac0e07e3b4f7e4a682\",\n    \"answers\": [\n        \"1\",\n        \"2\",\n        \"3\"\n    ],\n    \"datetime\": \"2021-04-15 08:37:44\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -700,7 +769,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"id\": \"4\",\n    \"title\": \"Features of a home refrigerator\",\n    \"description\": \"Is there any lock?\",\n    \"uid\": \"1\",\n    \"answers\": [\n        \"1\",\n        \"2\",\n        \"3\"\n    ],\n    \"datetime\": \"2021-04-15 08:37:44\"\n}",
+									"raw": "{\n    \"id\": \"6241d20f9e748be500186019\",\n    \"title\": \"Features of samsung refrigerator\",\n    \"description\": \"Is there any lock?\",\n    \"uid\": \"623e25ac0e07e3b4f7e4a682\",\n    \"answers\": [\n        \"1\",\n        \"2\",\n        \"3\"\n    ],\n    \"datetime\": \"2021-04-15 08:37:44\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -730,7 +799,7 @@
 									"listen": "prerequest",
 									"script": {
 										"exec": [
-											"pm.collectionVariables.set(\"Id\", \"4\");"
+											"pm.collectionVariables.set(\"Id\", \"6241d20f9e748be500186019\");"
 										],
 										"type": "text/javascript"
 									}
@@ -840,7 +909,7 @@
 									"listen": "prerequest",
 									"script": {
 										"exec": [
-											"pm.collectionVariables.set(\"Id\", \"1\");"
+											"pm.collectionVariables.set(\"Id\", \"6241ee2fef2a33f1cd1d48f1\");"
 										],
 										"type": "text/javascript"
 									}
@@ -864,7 +933,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "https://localhost:7067/api/orders/{{Id}}",
+									"raw": "https://localhost:7067/api/orders/users/{{Id}}",
 									"protocol": "https",
 									"host": [
 										"localhost"
@@ -873,7 +942,20 @@
 									"path": [
 										"api",
 										"orders",
+										"users",
 										"{{Id}}"
+									],
+									"query": [
+										{
+											"key": "Id",
+											"value": "6241ee2fef2a33f1cd1d48f1",
+											"disabled": true
+										},
+										{
+											"key": "userID",
+											"value": "Yes",
+											"disabled": true
+										}
 									]
 								}
 							},
@@ -900,7 +982,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"id\": \"4\",\n    \"invoicenumber\": \"1647391364239\",\n    \"userid\": \"1\",\n    \"amount\": 260.94,\n    \"items\": [\n        {\n            \"id\": \"p1\",\n            \"price\": 29.99,\n            \"quantity\": 2,\n            \"title\": \"Tommy Red T-Shirt\"\n        }\n    ],\n    \"datetime\": \"2022-04-15 08:37:44\"\n}",
+									"raw": "\n    {\n       \n        \"invoicenumber\": \"1647391364239\",\n        \"userid\": \"62494818d70b49024640248b\",\n        \"amount\": 120.94,\n        \"items\": [\n            {\n                \"id\": \"6248bc390c05699e2f5e6a2d\",\n                \"price\": 59.99,\n                \"quantity\": 2,\n                \"title\": \"Trousers\"\n            }\n        ],\n        \"datetime\": \"2022-04-15 10:37:44\"\n    }\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -954,7 +1036,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"id\": \"4\",\n    \"invoicenumber\": \"1647391364239\",\n    \"userid\": \"1\",\n    \"amount\": 261.94,\n    \"items\": [\n        {\n            \"id\": \"p1\",\n            \"price\": 29.99,\n            \"quantity\": 2,\n            \"title\": \"Tommy Red T-Shirt\"\n        }\n    ],\n    \"datetime\": \"2022-04-15 08:37:44\"\n}",
+									"raw": "\n    {\n        \"id\": \"6241ee2fef2a33f1cd1d48f1\",\n        \"invoicenumber\": \"1647391364239\",\n        \"userid\": \"623e25ac0e07e3b4f7e4a682\",\n        \"amount\": 260.94,\n        \"items\": [\n            {\n                \"id\": \"6241ee2fef2a33f1cd1d48f1\",\n                \"price\": 99.99,\n                \"quantity\": 2,\n                \"title\": \"Tommy Red T-Shirt\"\n            }\n        ],\n        \"datetime\": \"2022-04-15 08:37:44\"\n    }\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -984,7 +1066,7 @@
 									"listen": "prerequest",
 									"script": {
 										"exec": [
-											"pm.collectionVariables.set(\"Id\", \"4\");"
+											"pm.collectionVariables.set(\"Id\", \"6241ede9ef2a33f1cd1d48f0\");"
 										],
 										"type": "text/javascript"
 									}
@@ -1015,6 +1097,39 @@
 										"api",
 										"orders",
 										"{{Id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getOrderByUser",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.collectionVariables.set(\"userid\", \"623e25ac0e07e3b4f7e4a682\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:7067/api/orders/userorders/{{userid}}",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7067",
+									"path": [
+										"api",
+										"orders",
+										"userorders",
+										"{{userid}}"
 									]
 								}
 							},
@@ -1092,7 +1207,9 @@
 									"listen": "prerequest",
 									"script": {
 										"exec": [
-											"pm.collectionVariables.set(\"Id\", \"1\");"
+											"pm.collectionVariables.set(\"Id\", \"6241ef28ef2a33f1cd1d48f2\");",
+											"",
+											""
 										],
 										"type": "text/javascript"
 									}
@@ -1152,7 +1269,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n        \"id\": \"4\",\n        \"reply\": \"No, it does not have a thermostat\",\n        \"uid\": \"1\",\n        \"datetime\": \"2022-03-15 08:37:44\",\n        \"qid\": \"2\"\n    }",
+									"raw": "{\n        \n        \"reply\": \"No, it does not have a thermostat\",\n        \"uid\": \"623e25ac0e07e3b4f7e4a682\",\n        \"datetime\": \"2022-03-15 08:37:44\",\n        \"qid\": \"6241d20f9e748be500186019\"\n    }",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1206,7 +1323,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n        \"id\": \"4\",\n        \"reply\": \"No, it does not have thermostat\",\n        \"uid\": \"1\",\n        \"datetime\": \"2022-03-15 08:37:44\",\n        \"qid\": \"2\"\n    }",
+									"raw": "{\n    \"id\": \"6241ef28ef2a33f1cd1d48f2\",\n    \"reply\": \"No, it does not have a thermostat or thermometer readings\",\n    \"uid\": \"623e25ac0e07e3b4f7e4a682\",\n    \"datetime\": \"2022-03-15 08:37:44\",\n    \"qid\": \"6241d20f9e748be500186019\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1236,7 +1353,7 @@
 									"listen": "prerequest",
 									"script": {
 										"exec": [
-											"pm.collectionVariables.set(\"Id\", \"4\");"
+											"pm.collectionVariables.set(\"Id\", \"6241ef28ef2a33f1cd1d48f2\");"
 										],
 										"type": "text/javascript"
 									}
@@ -1267,6 +1384,41 @@
 										"api",
 										"answers",
 										"{{Id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getAnswerByQuestionId",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.collectionVariables.set(\"qid\", \"6241d20f9e748be500186019\");",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:7067/api/answers/question/{{qid}}",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7067",
+									"path": [
+										"api",
+										"answers",
+										"question",
+										"{{qid}}"
 									]
 								}
 							},
@@ -1346,7 +1498,7 @@
 									"listen": "prerequest",
 									"script": {
 										"exec": [
-											"pm.collectionVariables.set(\"Id\", \"2\");"
+											"pm.collectionVariables.set( \"Id\", \"6241ef93ef2a33f1cd1d48f3\") "
 										],
 										"type": "text/javascript"
 									}
@@ -1406,7 +1558,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"cid\": \"10\",\n    \"cName\": \"Laptops and Mobiles accessories\",\n    \"imgUrl\": \"https://m.media-amazon.com/images/I/71an9eiBxpL._AC_UL640_QL65_.jpg\"\n}",
+									"raw": "{\n    \n    \"cName\": \"Laptops and Mobiles accessories\",\n    \"imgUrl\": \"https://m.media-amazon.com/images/I/71an9eiBxpL._AC_UL640_QL65_.jpg\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1460,7 +1612,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"cid\": \"10\",\n    \"cName\": \"Laptops and Mobiles accessoriess\",\n    \"imgUrl\": \"https://m.media-amazon.com/images/I/71an9eiBxpL._AC_UL640_QL65_.jpg\"\n}",
+									"raw": "{\n    \"cid\": \"6241ef94ef2a33f1cd1d48f4\",\n    \"cName\": \"Laptops accessoriess\",\n    \"imgUrl\": \"https://m.media-amazon.com/images/I/71an9eiBxpL._AC_UL640_QL65_.jpg\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1490,7 +1642,7 @@
 									"listen": "prerequest",
 									"script": {
 										"exec": [
-											"pm.collectionVariables.set(\"Id\", \"10\");"
+											"pm.collectionVariables.set(\"Id\", \"6241ef94ef2a33f1cd1d48f4\");"
 										],
 										"type": "text/javascript"
 									}
@@ -1521,6 +1673,39 @@
 										"api",
 										"cat",
 										"{{Id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getCategoryByName",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.collectionVariables.set(\"cname\", \"Laptops and Mobiles accessories\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:7067/api/cat/Name/{{cname}}",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7067",
+									"path": [
+										"api",
+										"cat",
+										"Name",
+										"{{cname}}"
 									]
 								}
 							},
@@ -3142,6 +3327,30 @@
 		},
 		{
 			"key": "pid",
+			"value": ""
+		},
+		{
+			"key": "uid",
+			"value": ""
+		},
+		{
+			"key": "cname",
+			"value": ""
+		},
+		{
+			"key": "userid",
+			"value": ""
+		},
+		{
+			"key": "qid",
+			"value": ""
+		},
+		{
+			"key": "cid",
+			"value": ""
+		},
+		{
+			"key": "email",
 			"value": ""
 		}
 	]

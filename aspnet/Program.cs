@@ -38,7 +38,7 @@ builder.Services.Configure<uomartDatabaseSettings>(
 // Adding services for Direct Injection
 
 var options = builder.Configuration.GetSection(nameof(uomartDatabaseSettings)).Get<uomartDatabaseSettings>();
-builder.Services.AddSingleton<uomartDatabaseSettings>(options);
+builder.Services.AddSingleton<uomartDatabaseSettings>();
 
 var app = builder.Build();
 

@@ -31,17 +31,17 @@ public class UserController : ControllerBase
         return user;  // returns the user with the provided id
     }
 
-    // commenting this for now as we are fetching the user from uid
-    // [HttpGet("{email}")]
-    // public async Task<ActionResult<User>> Get(string Email)
-    // {
-    //     var user = await userService.getUserFromEmail(Email);
-    //     if (user is null)
-    //     {
-    //         return NotFound();
-    //     }
-    //     return user;
-    // }
+   
+    [HttpGet("byemail/{email}")]
+    public async Task<ActionResult<User>> GetByEmail(string Email)
+    {
+        var user = await userService.getUserFromEmail(Email);
+        if (user is null)
+        {
+            return NotFound();
+        }
+        return user;
+    }
 
     [HttpPost]
     public async Task<ActionResult> Post(User newUser)

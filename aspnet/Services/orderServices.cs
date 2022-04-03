@@ -18,11 +18,23 @@ public class OrderService
 
     public OrderService(IOptions<uomartDatabaseSettings> uomartDatabaseSettings)
     {
-        var settings = MongoClientSettings.FromConnectionString(uomartDatabaseSettings.Value.ConnectionString);
+        var settings = MongoClientSettings.FromConnectionString("mongodb://csi5112group12:csi5112group12@cluster0-shard-00-00.vtqbg.mongodb.net:27017,cluster0-shard-00-01.vtqbg.mongodb.net:27017,cluster0-shard-00-02.vtqbg.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-gv1oje-shard-0&authSource=admin&retryWrites=true&w=majority");
         settings.ServerApi = new ServerApi(ServerApiVersion.V1);
         var client = new MongoClient(settings);
-        var database = client.GetDatabase(uomartDatabaseSettings.Value.DatabaseName);
+        var database = client.GetDatabase("uomart");
         orderCollection = database.GetCollection<Order>("orders");
+
+        var indexOptions = new CreateIndexOptions();
+        var indexKeys = Builders<Order>.IndexKeys.Ascending(orders => orders.userid);
+        var indexModel = new CreateIndexModel<Order>(indexKeys, indexOptions);
+        orderCollection.Indexes.CreateOneAsync(indexModel);
+        
+        var indexes = database.GetCollection<Order>("orders").Indexes.List().ToList();
+
+        foreach (var index in indexes)
+        {
+            Console.WriteLine(index);
+        }
     }
 
 
@@ -45,17 +57,15 @@ public class OrderService
         //return order.Find(x => x.id == Id);
     }
 
+
+    public async Task<List<Order>> getOrderByUser(string userid)
+    {
+        return await orderCollection.Find(order => order.userid == userid).ToListAsync();
+        //return order.Find(x => x.id == Id);
+    }
+
     public async Task<bool> updateOrder(string Id, Order updatedOrder)
     {
-        // bool result = false;
-        // int index = order.FindIndex(x => x.id == Id);
-        // if (index != -1)
-        // {
-        //     updatedOrder.id = Id;
-        //     order[index] = updatedOrder;
-        //     result = true;
-        // }
-        // return result;
 
         ReplaceOneResult r = await orderCollection.ReplaceOneAsync(order => order.id == updatedOrder.id, updatedOrder);
         return r.IsModifiedCountAvailable && r.ModifiedCount == 1;
@@ -63,15 +73,7 @@ public class OrderService
 
     public async Task deleteOrder(string Id)
     {
-        // bool deleted = false;
-        // int index = order.FindIndex(x => x.id == Id);
-        // if (index != -1)
-        // {
-        //     order.RemoveAt(index);
-        //     deleted = true;
-        // }
-        // return deleted;
-
+      
         await orderCollection.DeleteOneAsync(order => order.id == Id);
     }
 }

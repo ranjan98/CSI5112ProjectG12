@@ -31,6 +31,18 @@ public class ProdController : ControllerBase
         return prod; // returns product with the provided id
     }
 
+     [HttpGet("bycid/{cid}")]
+    public async Task<ActionResult<List<Product>>> GetByCategory(string cid)
+    {
+        var prod = await prodService.getProdByCategory(cid);
+        if (prod is null)
+        {
+            return NotFound();
+        }
+        return prod; // returns product with the provided id
+    }
+
+
     [HttpPost]
     public async Task<ActionResult> Post(Product newProd)
     {
