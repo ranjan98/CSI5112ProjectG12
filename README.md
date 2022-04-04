@@ -29,3 +29,10 @@ Link for Backend - https://service.uomart.net/api/
 
 ### API Documentation
 https://documenter.getpostman.com/view/11041377/UVyuREpy
+
+## Screenshots
+### Desktop View
+  <img src="frontend/Desktop_View.png" width="1080" title="Desktop View" alt="Desktop View">
+  
+### Mobile View
+  <img src="frontend/Mobile_View.png" width="350" title="Mobile View" alt="Mobile View">
