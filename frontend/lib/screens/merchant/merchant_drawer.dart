@@ -72,6 +72,11 @@ class MerchantDrawer extends StatelessWidget {
           //   Navigator.of(context).popAndPushNamed('/cart');
           // }),
           const Divider(),
+          buildDrawerItem(
+              'Ask and Answer', Icons.question_answer, Colors.orange, () {
+            Navigator.of(context).popAndPushNamed('/questions');
+          }),
+          const Divider(),
           buildDrawerItem('Sign Out', Icons.person_outline, Colors.deepPurple,
               () {
             userProvider.signOut();

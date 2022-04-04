@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import '../../models/product.dart';
 import 'merchant_products_grid.dart';
 
 class MerchantProductsScreen extends StatefulWidget {
@@ -10,6 +10,8 @@ class MerchantProductsScreen extends StatefulWidget {
 }
 
 class _MerchantProductsScreenState extends State<MerchantProductsScreen> {
+  late Future<List<Product>> futureProducts;
+
   @override
   Widget build(BuildContext context) {
     final categoryArguments =
@@ -17,7 +19,7 @@ class _MerchantProductsScreenState extends State<MerchantProductsScreen> {
     return Scaffold(
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-          Navigator.of(context).pushNamed('/add-product');
+          Navigator.of(context).popAndPushNamed('/add-product');
         },
         label: const Text('Add Product'),
         icon: const Icon(

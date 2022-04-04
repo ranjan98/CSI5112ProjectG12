@@ -24,6 +24,8 @@ class _AnswersScreenState extends State<AnswersScreen> {
     final userProvider = Provider.of<UserProvider>(context);
     final loadedQuestion =
         ModalRoute.of(context)!.settings.arguments as Question; // is the id
+    futureAnswers = fetchAnswersByQid(loadedQuestion.id);
+    final TextEditingController _replyController = TextEditingController();
     return Scaffold(
       appBar: AppBar(
         title: const Text('Discussion'),
@@ -38,21 +40,24 @@ class _AnswersScreenState extends State<AnswersScreen> {
               child: Center(child: CircularProgressIndicator()),
             );
           }
-          try {
-            // List<String> ansIds = loadedQuestion.answers;
-            // one question can have many answers
-            // (snapshot.data as List<Answer>)
-            //     .removeWhere((element) => !ansIds.contains(element.id));
-            // one answer belongs to one question
-            (snapshot.data as List<Answer>)
-                .removeWhere((element) => element.qid != loadedQuestion.id);
-          } catch (e) {
-            // ignore: avoid_print
-            print(e.toString());
-          }
+          // try {
+          // List<String> ansIds = loadedQuestion.answers;
+          // one question can have many answers
+          // (snapshot.data as List<Answer>)
+          //     .removeWhere((element) => !ansIds.contains(element.id));
+          // one answer belongs to one question
+          // (snapshot.data as List<Answer>)
+          //     .removeWhere((element) => element.qid != loadedQuestion.id);
+          // } catch (e) {
+          //   // ignore: avoid_print
+          //   print(e.toString());
+          // }
           return Stack(
             children: [
               buildQuestionItem(loadedQuestion, snapshot),
+              const SizedBox(
+                height: 20,
+              ),
               Positioned(
                 bottom: MediaQuery.of(context).viewInsets.bottom,
                 left: 0,
@@ -65,13 +70,14 @@ class _AnswersScreenState extends State<AnswersScreen> {
                     child: Row(children: [
                       Expanded(
                           child: TextFormField(
+                        controller: _replyController,
                         cursorColor: Colors.black,
                         keyboardType: TextInputType.name,
                         onChanged: (value) {
-                          reply = value.toString();
+                          reply = value.trim().toString();
                         },
                         validator: (value) {
-                          if (value!.isEmpty) {
+                          if (value!.trim().isEmpty) {
                             return 'Please Enter Answer';
                           }
                           return null;
@@ -87,6 +93,7 @@ class _AnswersScreenState extends State<AnswersScreen> {
                                       .format(DateTime.now())
                                       .toString(),
                                   loadedQuestion.id);
+
                               // ignore: unnecessary_null_comparison
                               if (result == null) {
                                 // setState(() {
@@ -97,8 +104,10 @@ class _AnswersScreenState extends State<AnswersScreen> {
                                 // ignore: avoid_print
                                 print("Answer Added: CID is : " + result.id);
                                 setState(() {
-                                  futureAnswers = fetchAnswers();
                                   reply = "";
+                                  _replyController.clear();
+                                  futureAnswers =
+                                      fetchAnswersByQid(loadedQuestion.id);
                                 });
                               }
                             }
@@ -156,9 +165,9 @@ class _AnswersScreenState extends State<AnswersScreen> {
     );
   }
 
-  @override
-  void initState() {
-    super.initState();
-    futureAnswers = fetchAnswers();
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   futureAnswers = fetchAnswers();
+  // }
 }

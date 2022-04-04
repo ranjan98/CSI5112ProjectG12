@@ -53,7 +53,7 @@ class _AddProductState extends State<AddProduct> {
               child: Column(children: [
                 const SizedBox(height: 30),
                 SizedBox(
-                  width: 320,
+                  width: 350,
                   child: FutureBuilder(
                     future: futureCategories,
                     builder: (context, snapshot) {
@@ -90,7 +90,7 @@ class _AddProductState extends State<AddProduct> {
                 ),
                 const SizedBox(height: 6),
                 SizedBox(
-                  width: 320,
+                  width: 350,
                   child: TextFormField(
                     keyboardType: TextInputType.name,
                     onChanged: (value) {
@@ -119,7 +119,7 @@ class _AddProductState extends State<AddProduct> {
                 ),
                 const SizedBox(height: 6),
                 SizedBox(
-                  width: 320,
+                  width: 350,
                   child: TextFormField(
                     keyboardType: TextInputType.name,
                     onChanged: (value) {
@@ -144,7 +144,7 @@ class _AddProductState extends State<AddProduct> {
                 ),
                 const SizedBox(height: 6),
                 SizedBox(
-                  width: 320,
+                  width: 350,
                   child: TextFormField(
                     keyboardType: TextInputType.number,
                     onChanged: (value) {
@@ -169,7 +169,7 @@ class _AddProductState extends State<AddProduct> {
                 ),
                 const SizedBox(height: 6),
                 SizedBox(
-                  width: 320,
+                  width: 350,
                   child: TextFormField(
                     keyboardType: TextInputType.url,
                     onChanged: (value) {

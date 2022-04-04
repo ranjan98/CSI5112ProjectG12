@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/providers/user_provider.dart';
 import 'package:provider/provider.dart';
-
-import '../../../models/user.dart';
 import '../../../services/signin_service.dart';
 
 class SignIn extends StatefulWidget {
@@ -13,13 +11,13 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
-  late Future<List<User>> futureUsers;
+  // late Future<List<User>> futureUsers;
 
-  @override
-  void initState() {
-    super.initState();
-    futureUsers = fetchUsers(); //mocking up the login for now
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   futureUsers = fetchUsers(); //We do not need to fetch all users
+  // }
 
   bool showPassword = true;
   IconData visibility = Icons.visibility;
@@ -145,18 +143,17 @@ class _SignInState extends State<SignIn> {
                   onPressed: () async {
                     if (_formKey.currentState!.validate()) {
                       setState(() => loading = true);
-                      // var result = await fetchUser(email);
-                      var result = await fetchUsers();
+                      var user = await fetchUserByEmail(email);
+                      // var result = await fetchUsers();
                       // ignore: unnecessary_null_comparison
-                      if (result == null) {
+                      if (user == null) {
                         setState(() {
                           error = 'Could not Sign In';
                           loading = false;
                         });
                       } else {
-                        // ignore: avoid_print
-                        var user = result
-                            .firstWhere((element) => element.email == email);
+                        // var user = result
+                        //     .firstWhere((element) => element.email == email);
                         // ignore: avoid_print
                         print("It is working: UID during sign in is : " +
                             user.uid);

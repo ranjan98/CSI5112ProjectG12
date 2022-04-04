@@ -25,6 +25,10 @@ class _OrdersScreenState extends State<OrdersScreen> {
   Widget build(BuildContext context) {
     // final orderData = Provider.of<Orders>(context);
     final userProvider = Provider.of<UserProvider>(context);
+    if (userProvider.users.isEmpty) {
+      Navigator.of(context).popUntil(ModalRoute.withName('/signin'));
+      Navigator.pushNamed(context, '/signin');
+    }
     return Scaffold(
       appBar: AppBar(
         title: const Text('Orders'),

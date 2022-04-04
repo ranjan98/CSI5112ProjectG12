@@ -34,14 +34,14 @@ class Product {
     return result;
   }
 
-  static List<Product> fromListJsonOneCategory(
-      List<dynamic> json, String category) {
-    List<Product> result = <Product>[];
-    for (Map<String, dynamic> d in json) {
-      if (Product.fromJson(d).category == category) {
-        result.add(Product.fromJson(d));
-      }
-    }
-    return result;
-  }
+  // static List<Product> fromListJsonOneCategory(
+  //     List<dynamic> json, String category) {
+  //   List<Product> result = <Product>[];
+  //   for (Map<String, dynamic> d in json) {
+  //     if (Product.fromJson(d).category == category) {
+  //       result.add(Product.fromJson(d));
+  //     }
+  //   }
+  //   return result;
+  // }
 }

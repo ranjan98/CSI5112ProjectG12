@@ -19,7 +19,7 @@ class CustomerSpecificOrdersScreen extends StatefulWidget {
 
 class _CustomerSpecificOrdersScreenState
     extends State<CustomerSpecificOrdersScreen> {
-  late Future<List<Order>> futureOrders;
+  // late Future<List<Order>> futureOrders;  // Not used as here we are fetching orders for only one user
 
   // removed the static data for orders and fetching from backend
   @override
@@ -28,13 +28,15 @@ class _CustomerSpecificOrdersScreenState
     // final userProvider = Provider.of<UserProvider>(context);
     final loadedUser =
         ModalRoute.of(context)!.settings.arguments as User; // is the id
+    late Future<List<Order>> futureOrdersByUid =
+        fetchOrdersByUid(loadedUser.uid);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Orders'),
       ),
       // drawer: const MainDrawer(),
       body: FutureBuilder(
-        future: futureOrders,
+        future: futureOrdersByUid,
         builder: (context, snapshot) {
           if (snapshot.hasData == false) {
             return const Padding(
@@ -107,9 +109,10 @@ class _CustomerSpecificOrdersScreenState
     );
   }
 
-  @override
-  void initState() {
-    super.initState();
-    futureOrders = fetchOrders(); // fetch the orders
-  }
+  // fetch orders for all users, not used here since we are only fetching orders for one user
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   futureOrders = fetchOrders(); // fetch the orders
+  // }
 }

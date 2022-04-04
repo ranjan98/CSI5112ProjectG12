@@ -45,7 +45,7 @@ class _AddQuestionState extends State<AddQuestion> {
                   child: TextFormField(
                     keyboardType: TextInputType.name,
                     onChanged: (value) {
-                      name = value.toString();
+                      name = value.trim().toString();
                     },
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(
@@ -57,7 +57,7 @@ class _AddQuestionState extends State<AddQuestion> {
                       labelText: 'Title',
                     ),
                     validator: (value) {
-                      if (value!.isEmpty) {
+                      if (value!.trim().isEmpty) {
                         return 'Please Enter Title of Question';
                       }
                       // else if (RegExp(r'[!@#<>?":_`~;[\]\\|=+)(*&^%0-9-]')
@@ -74,7 +74,7 @@ class _AddQuestionState extends State<AddQuestion> {
                   child: TextFormField(
                     keyboardType: TextInputType.text,
                     onChanged: (value) {
-                      description = value.toString();
+                      description = value.trim().toString();
                     },
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(
@@ -86,7 +86,7 @@ class _AddQuestionState extends State<AddQuestion> {
                       labelText: 'Description',
                     ),
                     validator: (value) {
-                      if (value!.isEmpty) {
+                      if (value!.trim().isEmpty) {
                         return 'Please Enter Your Question Description';
                       }
                       return null;

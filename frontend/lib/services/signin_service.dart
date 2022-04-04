@@ -15,13 +15,13 @@ Future<List<User>> fetchUsers() async {
   }
 }
 
-// Future<User> fetchUser(String email) async {
-//   final response = await http
-//       .get(Uri.parse('https://service.uomart.net/api/User/ranjan@uottawa.ca'));
+Future<User> fetchUserByEmail(String email) async {
+  final response = await http
+      .get(Uri.parse('https://service.uomart.net/api/User/byemail/' + email));
 
-//   if (response.statusCode == 200) {
-//     return User.fromJson(jsonDecode(response.body));
-//   } else {
-//     throw Exception('Failed to get user data');
-//   }
-// }
+  if (response.statusCode == 200) {
+    return User.fromJson(jsonDecode(response.body));
+  } else {
+    throw Exception('Failed to get user data');
+  }
+}

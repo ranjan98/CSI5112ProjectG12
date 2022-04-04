@@ -28,28 +28,43 @@ class _HomeState extends State<Home> {
     }
     final List<Widget> imageSliders = sliderList
         .map(
-          (item) => Container(
-            margin: const EdgeInsets.all(5.0),
-            child: ClipRRect(
-                borderRadius: const BorderRadius.all(Radius.circular(5.0)),
-                child: Stack(
-                  children: <Widget>[
-                    InkWell(
-                      onTap: () {
-                        Navigator.of(context).pushNamed(
-                          '/products-overview',
-                          arguments: {
-                            'id': item[0].toString(),
-                            'title': item[1].toString(),
+          (item) => FutureBuilder(
+            future: futureCategories,
+            builder: (context, snapshot) {
+              if (!snapshot.hasData) {
+                return const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Center(child: CircularProgressIndicator()),
+                );
+              }
+              return Container(
+                margin: const EdgeInsets.all(5.0),
+                child: ClipRRect(
+                    borderRadius: const BorderRadius.all(Radius.circular(5.0)),
+                    child: Stack(
+                      children: <Widget>[
+                        InkWell(
+                          onTap: () {
+                            Navigator.of(context).pushNamed(
+                              '/products-overview',
+                              arguments: {
+                                'id': (snapshot.data as List<Category>)
+                                    .firstWhere((element) => element.cName
+                                        .contains(item[0].toString()))
+                                    .cid
+                                    .toString(),
+                                'title': item[1].toString(),
+                              },
+                            );
                           },
-                        );
-                      },
-                      child: Image.network(item[2],
-                          fit: BoxFit.cover,
-                          width: MediaQuery.of(context).size.width),
-                    )
-                  ],
-                )),
+                          child: Image.network(item[2],
+                              fit: BoxFit.cover,
+                              width: MediaQuery.of(context).size.width),
+                        )
+                      ],
+                    )),
+              );
+            },
           ),
         )
         .toList();
@@ -296,31 +311,24 @@ class _HomeState extends State<Home> {
   }
 }
 
-// final List<String> imgList = [
-//   'https://images.unsplash.com/photo-1607082349566-187342175e2f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80',
-//   'https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80',
-//   'https://images.unsplash.com/photo-1423666639041-f56000c27a9a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80',
-//   'https://images.unsplash.com/photo-1522205408450-add114ad53fe?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=368f45b0888aeb0b7b08e3a1084d3ede&auto=format&fit=crop&w=1950&q=80',
-// ];
-
 final List sliderList = [
   [
-    5,
+    "Books",
     "Sale",
     'https://images.unsplash.com/photo-1607082349566-187342175e2f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80'
   ],
   [
-    1,
+    "Clothing",
     "Fashion",
     'https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80'
   ],
   [
-    2,
+    "Laptop",
     "Laptop and Mobiles",
     'https://images.unsplash.com/photo-1423666639041-f56000c27a9a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80'
   ],
   [
-    4,
+    "Accessories",
     "Accessories",
     'https://images.unsplash.com/photo-1522205408450-add114ad53fe?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=368f45b0888aeb0b7b08e3a1084d3ede&auto=format&fit=crop&w=1950&q=80'
   ]

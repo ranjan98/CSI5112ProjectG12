@@ -16,12 +16,11 @@ Future<List<Product>> fetchProducts() async {
 }
 
 Future<List<Product>> fetchProductsForOneCategory(String category) async {
-  final response =
-      await http.get(Uri.parse('https://service.uomart.net/api/Prod/'));
-  // print(response.body);
+  final response = await http
+      .get(Uri.parse('https://service.uomart.net/api/Prod/bycid/' + category));
   if (response.statusCode == 200) {
     // process the categories received in the response body
-    return Product.fromListJsonOneCategory(jsonDecode(response.body), category);
+    return Product.fromListJson(jsonDecode(response.body));
   } else {
     throw Exception('Failed to get user data');
   }
@@ -29,44 +28,15 @@ Future<List<Product>> fetchProductsForOneCategory(String category) async {
 
 Future<Product> addProduct(String name, String merchantid, String category,
     String description, String price, String imageUrl) async {
-  final responseGet =
-      await http.get(Uri.parse('https://service.uomart.net/api/Prod/'));
-  var total = 0;
-  if (responseGet.statusCode == 200) {
-    var products = Product.fromListJson(jsonDecode(responseGet.body));
-    total = products.length;
-    final response = await http.post(
-      Uri.parse(
-        'https://service.uomart.net/api/Prod/',
-      ),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
-      body: jsonEncode(<String, String>{
-        'name': name,
-        'merchantid': merchantid,
-        'category': category,
-        'description': description,
-        'price': price,
-        'imageurl': imageUrl
-      }),
-    );
-
-    if (response.statusCode == 201) {
-      return Product.fromJson(jsonDecode(response.body));
-    } else {
-      throw Exception('Failed to create product. Please try later');
-    }
-  } else {
-    throw Exception('Failed to create product');
-  }
-}
-
-Future<Product> editProduct(String id, String name, String merchantid,
-    String category, String description, String price, String imageUrl) async {
-  final response = await http.put(
+  // final responseGet =
+  //     await http.get(Uri.parse('https://service.uomart.net/api/Prod/'));
+  // var total = 0;
+  // if (responseGet.statusCode == 200) {
+  //   var products = Product.fromListJson(jsonDecode(responseGet.body));
+  //   total = products.length;
+  final response = await http.post(
     Uri.parse(
-      'https://service.uomart.net/api/Prod/' + id,
+      'https://service.uomart.net/api/Prod/',
     ),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
@@ -80,8 +50,39 @@ Future<Product> editProduct(String id, String name, String merchantid,
       'imageurl': imageUrl
     }),
   );
+
+  if (response.statusCode == 201) {
+    return Product.fromJson(jsonDecode(response.body));
+  } else {
+    throw Exception('Failed to create product. Please try later');
+  }
+  // } else {
+  //   throw Exception('Failed to create product');
+  // }
+}
+
+Future<Product> editProduct(String id, String name, String merchantid,
+    String category, String description, String price, String imageUrl) async {
+  final response = await http.put(
+    Uri.parse(
+      'https://service.uomart.net/api/Prod/' + id,
+    ),
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+    body: jsonEncode(<String, String>{
+      'id': id,
+      'name': name,
+      'merchantid': merchantid,
+      'category': category,
+      'description': description,
+      'price': price,
+      'imageurl': imageUrl
+    }),
+  );
   if (response.statusCode == 204) {
     return Product.fromJson(<String, String>{
+      'id': id,
       'name': name,
       'merchantid': merchantid,
       'category': category,

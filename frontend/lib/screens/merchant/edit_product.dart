@@ -61,7 +61,7 @@ class _EditProductState extends State<EditProduct> {
               child: Column(children: [
                 const SizedBox(height: 30),
                 SizedBox(
-                  width: 320,
+                  width: 350,
                   child: FutureBuilder(
                     future: futureCategories,
                     builder: (context, snapshot) {
@@ -98,7 +98,7 @@ class _EditProductState extends State<EditProduct> {
                 ),
                 const SizedBox(height: 6),
                 SizedBox(
-                  width: 320,
+                  width: 350,
                   child: TextFormField(
                     initialValue: product.name,
                     keyboardType: TextInputType.name,
@@ -128,7 +128,7 @@ class _EditProductState extends State<EditProduct> {
                 ),
                 const SizedBox(height: 6),
                 SizedBox(
-                  width: 320,
+                  width: 350,
                   child: TextFormField(
                     initialValue: product.description,
                     keyboardType: TextInputType.name,
@@ -154,7 +154,7 @@ class _EditProductState extends State<EditProduct> {
                 ),
                 const SizedBox(height: 6),
                 SizedBox(
-                  width: 320,
+                  width: 350,
                   child: TextFormField(
                     initialValue: product.price,
                     keyboardType: TextInputType.number,
@@ -180,7 +180,7 @@ class _EditProductState extends State<EditProduct> {
                 ),
                 const SizedBox(height: 6),
                 SizedBox(
-                  width: 320,
+                  width: 350,
                   child: TextFormField(
                     initialValue: product.imageUrl,
                     keyboardType: TextInputType.url,
