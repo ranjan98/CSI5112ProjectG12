@@ -14,9 +14,9 @@ Public Link - https://web.uomart.net/
 For SignIn Screen - Enter Login using Either of the Users or Sign Up (or Check all the Available Mock Users from https://service.uomart.net/api/User)\
 
 Customer:\
-Email: ranjan@uottawa.ca\
-Password: ranjan12345@
+Email: hanna@uottawa.ca\
+Password: hanna12345@
 
 Merchant:\
-Email: hannah@uottawa.ca\
-Password: hanna12345@
+Email: ranjan@uottawa.ca\
+Password: ranjan12345@
