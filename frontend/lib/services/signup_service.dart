@@ -13,12 +13,12 @@ Future<User> createUser(
   //   var user = User.fromListJson(jsonDecode(responseGet.body));
   //   total = user.length;
   final response = await http.post(
-    // Uri.parse(
-    //   'https://service.uomart.net/api/User/',
-    // ),
     Uri.parse(
-      'https://localhost:7067/api/user',
+      'https://service.uomart.net/api/User/',
     ),
+    // Uri.parse(
+    //   'https://localhost:7067/api/User',
+    // ),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },
